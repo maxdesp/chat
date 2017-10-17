@@ -37,9 +37,9 @@ public class DB {
 	}
 	
 	public Connection makeConnection(String base, String user) throws SQLException, ClassNotFoundException {
-		Class.forName("com.mysql.jdbc.Driver");
-		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+ base +"?useSSL=false", user, "");
-		return con;
+		// Class.forName("com.mysql.jdbc.Driver");
+		// Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+ base +"?useSSL=false", user, "");
+		return DriverManager.getConnection("jdbc:mysql://localhost:3306/"+ base +"?useSSL=false", user, "");
 		
 	}
 	
