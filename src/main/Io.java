@@ -46,14 +46,7 @@ public class Io {
 		System.out.print(a);
 		System.out.print("\n");
 	}
-//	static void print(int[] monTab){
-//	       for (int i=0; i< algo.len(monTab); i++){
-//	    	   System.out.print(monTab[i]);
-//	    	   System.out.print(" ");
-//	       }
-//	       Io.print("\n");
-//	   }
-	
+
 	public static void niet() {
 		Io.print ("NIET : Not implemented Error Triggered");
 	}
