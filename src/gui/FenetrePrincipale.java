@@ -19,6 +19,8 @@ import javax.swing.JTextField;
 public class FenetrePrincipale extends JFrame implements ActionListener, KeyListener{
 	
 	private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+	private int height = (int) screenSize.getHeight()-40;
+	private int width = (int) screenSize.getWidth();
 	private BorderLayout layout = new BorderLayout();
 	private Container contentPane = this.getContentPane();
 	private JPanel pannelUtilisateurs = new JPanel();
@@ -41,7 +43,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 	
 	private void init(){
 		this.setTitle("The chat");
-		this.setSize(this.screenSize);
+		this.setSize(this.width, this.height);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.contentPane.setLayout(layout);
 		
