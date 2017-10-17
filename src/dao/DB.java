@@ -16,6 +16,18 @@ import main.Io;
 
 public class DB {
 	
+	private Connection connection;
+	private Statement statement;
+	private String dbName;
+	private String dbUser;
+	
+	public DB() throws SQLException, ClassNotFoundException{
+		this.dbName = "chat";
+		this.dbUser = "root";
+		// this.dbUser ="chatuser";
+		this.connection = getConnection("chat", "root");
+		this.statement = getStatement();
+	}
 	public Connection getConnection() {
 		return connection;
 	}
@@ -29,13 +41,7 @@ public class DB {
 	}
 
 
-	private Connection connection;
-	private Statement statement;
-	
-	public DB() throws SQLException, ClassNotFoundException{
-		this.connection = getConnection("chat", "root");
-		this.statement = getStatement();
-	}
+
 	
 	public static void main() {
 		
