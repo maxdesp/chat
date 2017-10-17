@@ -1,4 +1,4 @@
-package Controleur;
+package dao;
 
 public interface DAO {
 
