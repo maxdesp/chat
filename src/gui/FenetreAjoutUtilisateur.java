@@ -88,7 +88,7 @@ public class FenetreAjoutUtilisateur  extends JFrame implements ActionListener, 
 			String avatar = this.textFieldAvatar.getText();
 			avatar.replaceAll("'", "\'");
 			if((pseudo!="") && (mdp!="")){
-				if(avatar!=""){
+				if(avatar!=""&&avatar!="URL de votre avatar"){
 					Utilisateur utilisateur = new Utilisateur(pseudo, mdp, avatar);
 					f.setUtilisateur(utilisateur);
 					DaoUtilisateurSql dao = new DaoUtilisateurSql().creer(utilisateur, Main.getDb());
