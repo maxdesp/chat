@@ -17,7 +17,7 @@ public class Main {
 		FenetrePrincipale fenetre = new FenetrePrincipale();
 		// test
 		Utilisateur user = new Utilisateur();
-		IDAO_Utilisateur daoUSer = new IDAO_Utilisateur;
+		IDAO_Utilisateur daoUSer = new IDAO_Utilisateur();
 	}
 
 }
