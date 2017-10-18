@@ -259,7 +259,6 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 			this.connecteAuSalon2.setText(this.salon.getSAL_NAME());
 			Io.print("affiche nom du salon: "+this.salon.getSAL_NAME());
 		}
-		Io.print("affiche nom du salon: null");
 		return false;
 	}
 	
@@ -292,8 +291,9 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 	}
 	
 	private boolean rafraichirZoneMessages() throws SQLException{
-		Salon salon = new DaoSalonSql().charger(Integer.valueOf(1), Main.getDb());
+		Salon salon = new DaoSalonSql().charger(this.salon.getSAL_ID(), Main.getDb());//// ici
 		ArrayList<Message> listeMessages = new DaoMessageSql().getParSalon(Main.getDb(), salon);
+		Io.print(salon.getSAL_NAME());
 		Utilisateur uti = null;
 		
 		for(Message m : listeMessages){
