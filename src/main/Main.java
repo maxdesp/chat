@@ -16,7 +16,6 @@ public class Main {
 		FenetrePrincipale fenetre = new FenetrePrincipale();
 		// test
 		Utilisateur user = new Utilisateur();
-		
 	}
 
 }
