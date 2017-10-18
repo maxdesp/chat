@@ -14,6 +14,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import dao.DaoSalonSql;
+import dao.DaoUtilisateurSql;
+import main.Main;
 import model.Salon;
 import model.Utilisateur;
 
@@ -67,13 +70,22 @@ public class FenetreAjoutSalon  extends JFrame implements ActionListener, KeyLis
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
 		if(arg0.getSource()==this.boutonAnnuler){
-			super.dispose();
-		}else if(arg0.getSource()==this.boutonCreation){
-			Salon salon= new Salon(textFieldName.getText(), textFieldMDP.getText(), createur.getUTI_ID());
-			super.dispose();
+			this.dispose();
+		}
+		if(arg0.getSource()==this.boutonCreation){
+			String name = this.textFieldName.getText();
+			name.replaceAll("'", "\'");
+			String mdp = this.textFieldMDP.getText();
+			mdp.replaceAll("'", "\'");
+			if((!name.equals("")) && (!mdp.equals(""))){
+				Salon salon = new Salon(name, mdp, this.createur.getUTI_ID());
+				f.setSalon(salon);
+				new DaoSalonSql().creer(salon, Main.getDb());
+			}
+			f.creationUtilisateur();
+			this.dispose();
 		}
 	}
-
 
 
 

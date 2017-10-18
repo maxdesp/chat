@@ -19,8 +19,10 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import dao.DaoSalonSql;
 import dao.DaoUtilisateurSql;
 import main.Main;
+import model.Salon;
 import model.Utilisateur;
 
 public class FenetreConnexionSalon extends JFrame implements ActionListener, KeyListener, MouseListener {
@@ -75,16 +77,12 @@ public class FenetreConnexionSalon extends JFrame implements ActionListener, Key
 		// TODO Auto-generated method stub
 		if(arg0.getSource()==this.boutonConnexion){
 			try{
-				Salon salon = new DaoSalonSql().getByIdentifiants(
-				Main.getDb(),
-				this.textFieldPseudo.getText(),
-				this.textFieldMDP.getText());
+				Salon salon = new DaoSalonSql().charger(1,Main.getDb());
+				//Main.getDb(),
+				//this.textFieldName.getText(),
+				//this.textFieldMDP.getText());
 				f.setSalon(salon);
 			super.dispose();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				JOptionPane messageErreur = new JOptionPane();
-				messageErreur.showMessageDialog(null, "Salon inexistant");
 			}
 			finally{
 				this.dispose();
