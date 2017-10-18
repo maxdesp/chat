@@ -28,6 +28,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.Timer;
 
 import dao.DaoMessageSql;
 import dao.DaoUtilisateurSql;
@@ -76,6 +77,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 	private JButton envoyer = new JButton("Envoyer");
 	private Utilisateur utilisateur = new Utilisateur();
 	private Salon salon = new Salon();
+	private Timer t = new Timer(100, this);
 	
 	
 	public Utilisateur getUtilisateur() {
@@ -97,9 +99,6 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 	public FenetrePrincipale() throws SQLException{
 		
 		this.init();
-		while(true){
-			this.rafraichirListeUtilisateursConnectes();
-		}
 		
 		
 		
@@ -349,6 +348,14 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 		}
 		if(arg0.getSource()==this.menuDeconnexionSalon){
 			this.deconnexionSalon();
+		}
+		if(arg0.getSource()==this.t){
+			try {
+				this.rafraichirListeUtilisateursConnectes();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 
