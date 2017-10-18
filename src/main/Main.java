@@ -20,6 +20,7 @@ public class Main {
 	public static void setDb(DB db) {
 		Main.db = db;
 	}
+	
 
 	static DB db;
 	public static void main(String[] args) throws SQLException, ClassNotFoundException {
