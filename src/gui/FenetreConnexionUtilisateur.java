@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.BorderLayout;
+import java.awt.Container;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,6 +19,7 @@ public class FenetreConnexionUtilisateur extends JFrame implements ActionListene
 
 	private BorderLayout layoutPrincipal = new BorderLayout();
 	private GridLayout layoutCentral = new GridLayout(4,2);
+	private Container pannelPrincipal = this.getContentPane();
 	private JPanel pannelCentral = new JPanel();
 	private JLabel labelConnexion = new JLabel("Connexion au profil");
 	private JLabel labelPseudo = new JLabel("Pseudo");
@@ -33,6 +35,9 @@ public class FenetreConnexionUtilisateur extends JFrame implements ActionListene
 		this.setTitle("Fenetre de connexion");
 		this.setLocationRelativeTo(null);
 		this.setSize(300,400);
+		
+		this.pannelPrincipal.setLayout(layoutPrincipal);
+		this.pannelPrincipal.add(labelConnexion,BorderLayout.NORTH);
 		
 		
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
