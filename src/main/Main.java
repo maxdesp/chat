@@ -37,6 +37,7 @@ public class Main {
 		dao.creer(max, db);
 		dao.creer(marie, db);
 		dao.creer(francois, db);
+		Io.print(dao.getAll());
 	}
 	
 	public static void creerSalonPrincipal() {
