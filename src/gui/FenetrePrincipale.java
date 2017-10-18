@@ -122,6 +122,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 		this.menuSalon.add(menuConnexionSalon);
 		this.menuConnexionSalon.addActionListener(this);
 		this.menuSalon.add(menuAjoutSalon);
+		this.menuAjoutSalon.enable(false);
 		this.menuAjoutSalon.addActionListener(this);
 		this.menuSalon.add(menuModifierSalon);
 		this.menuModifierSalon.addActionListener(this);
@@ -182,6 +183,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 		this.menuConnexionUtilisateur.setEnabled(false);
 		if(this.utilisateur.getUTI_PSEUDO()!=null){
 			this.connecteEnTantQue2.setText(this.utilisateur.getUTI_PSEUDO());
+			menuAjoutSalon.setEnabled(true);
 		}
 		return false;
 	}
@@ -216,7 +218,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 	}
 	
 	private boolean creationSalon(){
-		FenetreAjoutSalon fCreationSalon = new FenetreAjoutSalon(this);
+		FenetreAjoutSalon fCreationSalon = new FenetreAjoutSalon(this, utilisateur);
 		this.menuDeconnexionSalon.setEnabled(true);
 		this.menuConnexionSalon.setEnabled(false);
 		if(this.salon.getSAL_NAME()!=null){
