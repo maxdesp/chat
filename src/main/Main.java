@@ -18,7 +18,7 @@ public class Main {
 		Io.print(test);
 		FenetrePrincipale fenetre = new FenetrePrincipale();
 		// test
-		Utilisateur user = new Utilisateur();
+		// Utilisateur user = new Utilisateur();
 		// IDAO_Utilisateur daoUSer = new IDAO_Utilisateur();
 	}
 
