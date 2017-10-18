@@ -31,6 +31,7 @@ import javax.swing.SwingConstants;
 
 import dao.DaoMessageSql;
 import dao.DaoUtilisateurSql;
+import main.Io;
 import main.Main;
 import model.Message;
 import model.Salon;
@@ -93,7 +94,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 		this.salon = salon;
 	}
 
-	public FenetrePrincipale(){
+	public FenetrePrincipale() throws SQLException{
 		
 		this.init();
 		
@@ -102,7 +103,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 		
 	}
 	
-	private void init(){
+	private void init() throws SQLException{
 		this.setTitle("The chat");
 		this.setSize(this.width, this.height);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -174,12 +175,19 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 	}
 	
 	
-	private boolean rafraichirListeUtilisateursConnectes(){
+	private boolean rafraichirListeUtilisateursConnectes() throws SQLException{
 		
 		DaoUtilisateurSql daoUtilisateur = new DaoUtilisateurSql();
-		ArrayList<Utilisateur> users =daoUtilisateur.getAll();
+		ArrayList<Utilisateur> users =daoUtilisateur.getAll(Main.getDb());
 		for(Utilisateur user: users){
-			this.listeUtilisateursConnectes2.add((user.getUTI_PSEUDO()));
+			if (user.isUTI_CONNECTED() == true) {
+				this.listeUtilisateursConnectes2.add((user.getUTI_PSEUDO()));
+				
+			}
+			else {
+				Io.print(user.getUTI_PSEUDO() + " n'est pas connecté");
+			}
+			
 		}
 		return false;
 	}
