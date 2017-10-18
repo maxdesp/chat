@@ -34,7 +34,7 @@ public class Main {
 		DaoUtilisateurSql dao = new DaoUtilisateurSql();
 		Io.print(dao.getByIdentifiants(db, "'marie'", "'password'"));
 		// testCreerUtilisateurs();
-		// testgetAll();
+		 //testgetAll();
 		// testCreerSalonPrincipal();
 	}
 	
