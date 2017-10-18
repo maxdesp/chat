@@ -35,7 +35,7 @@ public class FenetreConnexionSalon extends JFrame implements ActionListener, Key
 	private JPanel pannelCentral = new JPanel();
 	private JLabel labelConnexion = new JLabel("Connexion au salon");
 	private JLabel labelName = new JLabel("Nom du salon");
-	private JTextField textFieldName = new JTextField("Ecrivez le nom du salon");
+	private JTextField textFieldName = new JTextField("MasterClassSopra");
 	private JLabel labelMDP = new JLabel("Mot de passe");
 	private JTextField textFieldMDP = new JTextField("Ecrivez votre mot de passe");
 	private JButton boutonConnexion = new JButton("Connexion");
