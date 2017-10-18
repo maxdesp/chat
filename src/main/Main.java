@@ -46,7 +46,10 @@ public class Main {
 		mess.setMES_SAL_ID(1);
 		daoMess.creer(mess, db);
 		
-//		spam spam = new spam();
+		
+		
+		spam spam = new spam();
+		spam.cleanBot();
 //		spam.spamJeremie();
 
 		// testCreerUtilisateurs();
