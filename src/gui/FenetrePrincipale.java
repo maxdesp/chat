@@ -28,9 +28,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-import DAO.DAOProduit;
 import dao.DaoUtilisateurSql;
-import eshop.Produit;
 import model.Utilisateur;
 
 public class FenetrePrincipale extends JFrame implements ActionListener, KeyListener, MouseListener{
