@@ -249,7 +249,9 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 		this.menuConnexionSalon.setEnabled(false);
 		if(this.salon.getSAL_NAME()!=null){
 			this.connecteAuSalon2.setText(this.salon.getSAL_NAME());
+			Io.print("affiche nom du salon: "+this.salon.getSAL_NAME());
 		}
+		Io.print("affiche nom du salon: null");
 		return false;
 	}
 	
@@ -259,7 +261,9 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 		this.menuConnexionSalon.setEnabled(false);
 		if(this.salon.getSAL_NAME()!=null){
 			this.connecteAuSalon2.setText(this.salon.getSAL_NAME());
+			Io.print("affiche nom du salon: "+this.salon.getSAL_NAME());
 		}
+		Io.print("affiche nom du salon: null");
 		return false;
 	}
 	
@@ -274,6 +278,8 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 	private boolean deconnexionSalon(){
 		this.menuDeconnexionSalon.setEnabled(false);
 		this.menuConnexionSalon.setEnabled(true);
+		this.connecteAuSalon2.setText("- non connecté -");
+		Io.print("affiche nom du salon: - non connecté -");
 		return false;
 	}
 	
