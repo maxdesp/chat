@@ -31,7 +31,7 @@ public class FenetreAjoutUtilisateur  extends JFrame implements ActionListener, 
 	private JButton boutonAnnuler = new JButton("Annuler");
 	
 	public FenetreAjoutUtilisateur(){
-		this.setTitle("Fenetre de connexion");
+		this.setTitle("Fenetre de création");
 		this.setLocationRelativeTo(null);
 		this.setSize(400,400);
 		
