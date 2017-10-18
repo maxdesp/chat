@@ -32,8 +32,9 @@ public class FenetreAjoutSalon  extends JFrame implements ActionListener, KeyLis
 	private JTextField textFieldMDP = new JTextField("Ecrivez votre mot de passe");
 	private JButton boutonCreation = new JButton("Création");
 	private JButton boutonAnnuler = new JButton("Annuler");
+	private Utilisateur createur= new Utilisateur();
 	
-	public FenetreAjoutSalon(FenetrePrincipale f){
+	public FenetreAjoutSalon(FenetrePrincipale f, Utilisateur user){
 		this.f = f;
 		
 		this.setTitle("Fenetre de création");
@@ -52,7 +53,7 @@ public class FenetreAjoutSalon  extends JFrame implements ActionListener, KeyLis
 		this.pannelCentral.add(boutonCreation);
 		this.pannelCentral.add(boutonAnnuler);
 		this.boutonAnnuler.addActionListener(this);
-		
+		this.createur=user;
 		
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		this.setVisible(true);
@@ -67,6 +68,8 @@ public class FenetreAjoutSalon  extends JFrame implements ActionListener, KeyLis
 		// TODO Auto-generated method stub
 		if(arg0.getSource()==this.boutonAnnuler){
 			super.dispose();
+		}else if(arg0.getSource()==this.boutonCreation){
+			Salon salon= new Salon(textFieldName.getText(), textFieldMDP.getText(), createur.getUTI_ID());
 		}
 	}
 
