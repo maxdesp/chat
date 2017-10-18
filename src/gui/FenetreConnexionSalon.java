@@ -21,6 +21,7 @@ import javax.swing.SwingConstants;
 
 import dao.DaoSalonSql;
 import dao.DaoUtilisateurSql;
+import main.Io;
 import main.Main;
 import model.Salon;
 import model.Utilisateur;
@@ -82,13 +83,12 @@ public class FenetreConnexionSalon extends JFrame implements ActionListener, Key
 				salonTmp.setSAL_NAME(this.textFieldName.getText());
 				salonTmp.setSAL_MDP(this.textFieldMDP.getText());
 				Salon salon = salonTmp.existe();
-				
+				Io.print("salon existe? "+salon.getSAL_NAME());
 				if(salon != null){
 					f.setSalon(salon);
 					//f.getSalon().seConnecter(Main.getDb());
 				}
 				else{
-				
 				JOptionPane messageErreur = new JOptionPane();
 				messageErreur.showMessageDialog(null, "Salon inexistant ou mauvais mot de passe");
 				}
