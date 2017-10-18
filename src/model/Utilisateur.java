@@ -123,7 +123,8 @@ public class Utilisateur {
 		
 	}
 	
-	public boolean creerSalon(){
+	public boolean creerSalon(String SAL_NOM, String SAL_PASSWORD, int i){
+		Salon salon = new Salon(SAL_NOM, SAL_PASSWORD, this.UTI_ID);
 		return false;
 		
 	
