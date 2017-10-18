@@ -14,8 +14,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class FenetreAjoutUtilisateur  extends JFrame implements ActionListener, KeyListener {
+import model.Salon;
+import model.Utilisateur;
 
+public class FenetreAjoutUtilisateur  extends JFrame implements ActionListener, KeyListener {
+	
 	private BorderLayout layoutPrincipal = new BorderLayout();
 	private GridLayout layoutCentral = new GridLayout(4,2);
 	private Container pannelPrincipal = this.getContentPane();

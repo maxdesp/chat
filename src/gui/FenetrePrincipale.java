@@ -25,7 +25,13 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import model.Salon;
+import model.Utilisateur;
+
 public class FenetrePrincipale extends JFrame implements ActionListener, KeyListener, MouseListener{
+	
+	private Utilisateur utilisateur = null;
+	private Salon salon = null;
 	
 	private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 	private int height = (int) screenSize.getHeight()-40;
