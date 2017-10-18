@@ -51,6 +51,20 @@ public class DaoUtilisateurSql implements IDAO_Utilisateur{
 		}
 	}
 	
+	public boolean modifier(String pseudo, String caractere_changement, String valeur,DB db) {
+		try{
+			String query = String.format("UPDATE utilisateur set %s = %s where `UTI_PSEUDO` = '%s';", caractere_changement,valeur,pseudo);
+			boolean myResult = db.execute(query);	
+			System.out.println("Modification de l utilisateur");
+			System.out.println(myResult);
+			return myResult;
+		}
+		catch (SQLException e){
+			System.out.println("echec de la modification");
+			return false;
+		}
+	}
+	
 	@Override
 	public Utilisateur charger(Integer id,DB db) {
 		try{			
