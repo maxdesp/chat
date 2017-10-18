@@ -76,4 +76,10 @@ public class DaoMessageSql implements IDAO_Message {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public ArrayList<Message> getAll(DB db) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

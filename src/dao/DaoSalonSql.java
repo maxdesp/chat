@@ -78,4 +78,10 @@ public class DaoSalonSql implements IDAO_Salon{
 		return null;
 	}
 
+	@Override
+	public ArrayList<Salon> getAll(DB db) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
