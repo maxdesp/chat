@@ -37,15 +37,16 @@ public class Main {
 		dao.creer(max, db);
 		dao.creer(marie, db);
 		dao.creer(francois, db);
+		Io.print("test");
 		Io.print(dao.getAll());
+		Io.print("test");
 	}
 	
 	public static void creerSalonPrincipal() {
 		
 		DaoSalonSql daoSalon = new DaoSalonSql();
 		Salon salonPrincipal = new Salon("principal", "", 1);
-		daoSalon.creer(salonPrincipal, db);
-		// max.creerSalon("principal", "", 1);
+		// daoSalon.creer(salonPrincipal, db);
 	
 	}
 
