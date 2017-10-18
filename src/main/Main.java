@@ -25,7 +25,7 @@ public class Main {
 		dao.creer(max, db);
 		dao.creer(marie, db);
 		dao.creer(francois, db);
-		max.creerSalon();
+		max.creerSalon("principal", "", 1);
 		
 	}
 
