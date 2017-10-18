@@ -87,12 +87,27 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 	private Utilisateur utilisateur = new Utilisateur();
 	private Salon salon = new Salon();
 	private ArrayList<Message> listeMessagesPostes = new ArrayList<Message>();
-	public ArrayList<Message> getListeMessagesPostes() {
-		return listeMessagesPostes;
-	}
+	
 
-	public void setListeMessagesPostes(ArrayList<Message> listeMessagesPostes) {
-		this.listeMessagesPostes = listeMessagesPostes;
+	public void reinitialiseListeMessagesPostes() throws SQLException {
+	
+		Salon salon = new DaoSalonSql().charger(this.salon.getSAL_ID(), Main.getDb());
+		Io.print("reinitialisation de la liste de messages avec salon= "+ salon.getSAL_NAME());
+		this.listeMessagesPostes.clear();
+		this.listeMessages.clear();
+		Io.print("taille de la liste de message: " +this.listeMessagesPostes.size());
+		ArrayList<Message> listeMessages = new DaoMessageSql().getParSalon(Main.getDb(), salon);
+		
+		Utilisateur uti = null;
+		
+		for(Message m : listeMessages){
+			Io.print(m.getMES_MESSAGE());
+			this.listeMessagesPostes.add(m);
+			uti = new DaoUtilisateurSql().charger(m.getMES_UTI_ID(), Main.getDb());
+			this.listeMessages.add(uti.getUTI_PSEUDO()+" a écrit :");
+			this.listeMessages.add("	"+m.getMES_MESSAGE());
+			this.listeMessages.add("\r");
+		}
 	}
 
 	private Timer t = new Timer(100, this);
