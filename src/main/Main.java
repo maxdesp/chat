@@ -23,7 +23,8 @@ public class Main {
 		ResultSet usersSet = db.executeQuery("SELECT * FROM chat.utilisateur");
 		Io.print(usersSet);
 		FenetrePrincipale fenetre = new FenetrePrincipale();
-
+		DaoUtilisateurSql dao = new DaoUtilisateurSql();
+		Io.print(dao.getByIdentifiants(db, "'marie'", "'password'"));
 		// testCreerUtilisateurs();
 		// testgetAll();
 		// testCreerSalonPrincipal();

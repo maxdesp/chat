@@ -54,6 +54,16 @@ public class DaoUtilisateurSql implements IDAO_Utilisateur{
 		return users;
 	}
 	
+	public Utilisateur getByIdentifiants(DB db, String UTI_PSEUDO, String UTI_MDP) throws SQLException{
+		ResultSet usersSet = db.executeQuery("SELECT UTI_ID FROM chat.utilisateur WHERE UTI_PSEUDO="+UTI_PSEUDO+" AND UTI_MDP="+UTI_MDP+"");
+		while (usersSet.next()){
+			Utilisateur user = charger(usersSet.getInt("UTI_ID"), db);
+			return user ;
+		}
+		return null;
+		
+	}
+	
 	@Override
 	public void creer(Utilisateur o,DB db) {
 		try{
@@ -117,8 +127,10 @@ public class DaoUtilisateurSql implements IDAO_Utilisateur{
 			ResultSet myResult = db.executeQuery("SELECT * FROM utilisateur where UTI_ID="+id);	
 			Utilisateur myUtilisateur = new Utilisateur();
 			while (myResult.next()){
+				myUtilisateur.setUTI_ID(myResult.getInt("UTI_ID"));
 				myUtilisateur.setUTI_PSEUDO(myResult.getString("UTI_PSEUDO"));
-				myUtilisateur.setUTI_CONNECTED(myResult.getBoolean("UTI_CONNECTED"));    
+				myUtilisateur.setUTI_MDP(myResult.getString("UTI_MDP"));
+				myUtilisateur.setUTI_CONNECTED(myResult.getBoolean("UTI_CONNECTED"));
 				myUtilisateur.setUTI_AVATAR(myResult.getString("UTI_AVATAR"));
 			}
 			return myUtilisateur;
