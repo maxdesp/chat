@@ -21,6 +21,7 @@ public class Main {
 	public static void setDb(DB db) {
 		Main.db = db;
 	}
+	
 
 	static DB db;
 	public static void main(String[] args) throws SQLException, ClassNotFoundException {
@@ -33,9 +34,9 @@ public class Main {
 		Io.print(usersSet);
 		FenetrePrincipale fenetre = new FenetrePrincipale();
 		DaoUtilisateurSql dao = new DaoUtilisateurSql();
-		Io.print(dao.getByIdentifiants(db, "'marie'", "'password'"));
+		Io.print(dao.getByIdentifiants(db, "marie", "password"));
 		// testCreerUtilisateurs();
-		testgetAll();
+		 testgetAll();
 		// testCreerSalonPrincipal();
 	}
 	
