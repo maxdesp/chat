@@ -63,6 +63,7 @@ public class DaoSalonSql implements IDAO_Salon{
 			while (myResult.next()){
 				mySalon.setSAL_NAME(myResult.getString("SAL_NAME"));
 				mySalon.setSAL_MDP(myResult.getString("UTI_MDP"));    
+				mySalon.setSAL_ID(myResult.getInt("SAL_ID"));
 			}
 			return mySalon;
 		}

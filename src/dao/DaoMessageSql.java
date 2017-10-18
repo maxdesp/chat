@@ -87,14 +87,14 @@ public class DaoMessageSql implements IDAO_Message {
 	@Override
 	public ArrayList<Message> getAll(DB db) throws SQLException {
 		ArrayList<Message> messages = new ArrayList<Message>();
-		ResultSet usersSet = db.executeQuery("SELECT * FROM chat.message as m ORDER BY m.MES_DATE DESC");
-		while (usersSet.next()){
+		ResultSet messSet = db.executeQuery("SELECT * FROM chat.message as m ORDER BY m.MES_DATE ASC");
+		while (messSet.next()){
 			Message mess = new Message();
-			mess.setMES_ID(usersSet.getInt("MES_ID"));
-			mess.setMES_UTI_ID(usersSet.getInt("MES_USER_ID"));
-			mess.setMES_MESSAGE(usersSet.getString("MES_MESSAGE"));
-			mess.setMES_DATE(usersSet.getDate("MES_DATE"));
-			mess.setMES_SAL_ID(usersSet.getInt("MES_SALON_ID"));
+			mess.setMES_ID(messSet.getInt("MES_ID"));
+			mess.setMES_UTI_ID(messSet.getInt("MES_USER_ID"));
+			mess.setMES_MESSAGE(messSet.getString("MES_MESSAGE"));
+			mess.setMES_DATE(messSet.getDate("MES_DATE"));
+			mess.setMES_SAL_ID(messSet.getInt("MES_SALON_ID"));
 			messages.add(mess);
 		}
 		return messages;

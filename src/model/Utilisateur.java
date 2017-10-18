@@ -1,5 +1,9 @@
 package model;
 
+import java.sql.SQLException;
+
+import dao.DB;
+import dao.DaoSalonSql;
 import dao.DaoUtilisateurSql;
 
 public class Utilisateur {
@@ -109,11 +113,17 @@ public class Utilisateur {
 		
 	}
 	
-	public boolean seConnecter(){
+	public boolean seConnecter(DB db) throws SQLException{
+		String query = "UPDATE `chat`.`utilisateur` SET `UTI_CONNECTED`='1' WHERE `UTI_ID`='"+ this.UTI_ID+ "'";
+
+		db.execute(query);
 		return false;
 	}
 	
-	public boolean seDeconnecter(){
+	public boolean seDeconnecter(DB db) throws SQLException{
+		String query = "UPDATE `chat`.`utilisateur` SET `UTI_CONNECTED`='0' WHERE `UTI_ID`='"+ this.UTI_ID+ "'";
+
+		db.execute(query);
 		return false;
 	}
 	
@@ -132,8 +142,10 @@ public class Utilisateur {
 		
 	}
 	
-	public boolean creerSalon(String SAL_NOM, String SAL_PASSWORD, int i){
+	public boolean creerSalon(String SAL_NOM, String SAL_PASSWORD, DB db){
 		Salon salon = new Salon(SAL_NOM, SAL_PASSWORD, this.UTI_ID);
+		DaoSalonSql dao = new DaoSalonSql();
+		dao.creer(salon, db);
 		return false;
 		
 	
