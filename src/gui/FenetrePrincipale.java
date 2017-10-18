@@ -73,6 +73,22 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 	private Salon salon = new Salon();
 	
 	
+	public Utilisateur getUtilisateur() {
+		return utilisateur;
+	}
+
+	public void setUtilisateur(Utilisateur utilisateur) {
+		this.utilisateur = utilisateur;
+	}
+
+	public Salon getSalon() {
+		return salon;
+	}
+
+	public void setSalon(Salon salon) {
+		this.salon = salon;
+	}
+
 	public FenetrePrincipale(){
 		
 		this.init();
