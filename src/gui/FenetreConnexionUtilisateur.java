@@ -82,10 +82,13 @@ public class FenetreConnexionUtilisateur extends JFrame implements ActionListene
 						this.textFieldMDP.getText()
 						);
 				f.setUtilisateur(utilisateur);
-				this.dispose();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
-				new JOptionPane("Profil inexistant");
+				JOptionPane messageErreur = new JOptionPane();
+				messageErreur.showMessageDialog(null, "Profil inexistant");
+			}
+			finally{
+				this.dispose();
 			}
 		}
 		if(arg0.getSource()==this.boutonAnnuler){
