@@ -34,7 +34,7 @@ public class FenetreConnexionUtilisateur extends JFrame implements ActionListene
 	public FenetreConnexionUtilisateur(){
 		this.setTitle("Fenetre de connexion");
 		this.setLocationRelativeTo(null);
-		this.setSize(300,400);
+		this.setSize(400,400);
 		
 		this.pannelPrincipal.setLayout(layoutPrincipal);
 		this.pannelPrincipal.add(labelConnexion,BorderLayout.NORTH);
@@ -62,7 +62,8 @@ public class FenetreConnexionUtilisateur extends JFrame implements ActionListene
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
-		
+		if(arg0.getSource()==this.boutonAnnuler){
+		}
 	}
 
 
