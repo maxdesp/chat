@@ -90,12 +90,12 @@ public class DB {
 
 	
 	public ResultSet executeQuery(String query) throws SQLException {
-		Io.print(query);
+		//Io.print(query);
 		return statement.executeQuery(query);
 		
 	}
 	public boolean execute(String query) throws SQLException {
-		Io.print(query);
+		//Io.print(query);
 		return statement.execute(query);
 		
 	}
