@@ -1,5 +1,6 @@
 package main;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import gui.FenetrePrincipale;
@@ -13,7 +14,8 @@ public class Main {
 		// TODO Auto-generated method stub
 		DB db = new DB();
 		db.getConnection();
-		
+		ResultSet test = db.executeQuery("SELECT * FROM chat.utilisateur");
+		Io.print(test);
 		FenetrePrincipale fenetre = new FenetrePrincipale();
 		// test
 		Utilisateur user = new Utilisateur();

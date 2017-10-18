@@ -25,11 +25,11 @@ public class DB {
 	public DB() throws SQLException, ClassNotFoundException{
 		Class.forName("com.mysql.jdbc.Driver");
 		this.setDbName("chat");
-		//this.setDbUser("root");
-		this.dbUser = "chatuser";
-		this.dbIP = "192.68.1.78";
+		this.setDbUser("root");
+		// this.dbUser = "chatuser";
+		// this.dbIP = "192.68.1.78";
 		//this.dbIP = "localhost";
-		this.connection = makeConnection(this.getDbName(), this.getDbUser(), this.dbIP);
+		this.connection = makeConnection(this.getDbName(), this.getDbUser(), "localhost");
 		this.statement = this.connection.createStatement();
 	}
 	
