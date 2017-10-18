@@ -247,7 +247,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 		FenetreConnexionSalon fConnexionSalon = new FenetreConnexionSalon(this);
 		this.menuDeconnexionSalon.setEnabled(true);
 		this.menuConnexionSalon.setEnabled(false);
-		if(this.salon.getSAL_NAME()!=null){
+		if(this.salon!=null){
 			this.connecteAuSalon2.setText(this.salon.getSAL_NAME());
 			Io.print("affiche nom du salon: "+this.salon.getSAL_NAME());
 		}
@@ -259,7 +259,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 		FenetreAjoutSalon fCreationSalon = new FenetreAjoutSalon(this, utilisateur);
 		this.menuDeconnexionSalon.setEnabled(true);
 		this.menuConnexionSalon.setEnabled(false);
-		if(this.salon.getSAL_NAME()!=null){
+		if(this.salon!=null){
 			this.connecteAuSalon2.setText(this.salon.getSAL_NAME());
 			Io.print("affiche nom du salon: "+this.salon.getSAL_NAME());
 		}
