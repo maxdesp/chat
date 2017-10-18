@@ -32,8 +32,18 @@ public class DaoUtilisateurSql implements IDAO_Utilisateur{
 //	}
 //	*/
 	
-	public ArrayList<Utilisateur> getAll(){
+	public ArrayList<Utilisateur> getAll(DB db) throws SQLException{
 		ArrayList<Utilisateur> users = new ArrayList<Utilisateur>();
+		ResultSet usersSet = db.getFromTable("*", "utilisateur");
+		while (usersSet.next()){
+			Utilisateur user = new Utilisateur();
+			user.setUTI_ID(usersSet.getInt("UTI_ID"));
+			user.setUTI_PSEUDO(usersSet.getString("UTI_PSEUDO"));
+			user.setUTI_MDP(usersSet.getString("UTI_MDP"));
+			user.setUTI_CONNECTED(usersSet.getBoolean("UTI_CONNECTED"));
+			user.setUTI_AVATAR(usersSet.getString("UTI_AVATAR"));
+			users.add(user);
+		}
 		return users;
 	}
 	
@@ -110,6 +120,12 @@ public class DaoUtilisateurSql implements IDAO_Utilisateur{
 			System.out.println("echec de connection");
 			return null;
 		}
+	}
+
+	@Override
+	public ArrayList<Utilisateur> getAll() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
