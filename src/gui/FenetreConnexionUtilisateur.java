@@ -76,20 +76,14 @@ public class FenetreConnexionUtilisateur extends JFrame implements ActionListene
 		// TODO Auto-generated method stub
 		if(arg0.getSource()==this.boutonConnexion){
 			try {
-				System.out.println("test1");
-				System.out.println("Main.getDb():"+Main.getDb().getDbName());
-				System.out.println("this.textFieldPseudo.getText():"+this.textFieldPseudo.getText());
-				System.out.println("this.textFieldMDP.getText():"+this.textFieldMDP.getText());
-				Utilisateur utilisateur =new DaoUtilisateurSql().getByIdentifiants(
-						Main.getDb(),
+				Utilisateur utilisateur =new Utilisateur(
 						this.textFieldPseudo.getText(),
 						this.textFieldMDP.getText()
 						);
-			
-				f.setUtilisateur(utilisateur);
-			} catch (SQLException e) {
-				System.out.println("fin test1");
-				// TODO Auto-generated catch block
+				if(utilisateur.seConnecter()){
+					f.setUtilisateur(utilisateur);
+				}
+				
 				JOptionPane messageErreur = new JOptionPane();
 				messageErreur.showMessageDialog(null, "Profil inexistant");
 			}
