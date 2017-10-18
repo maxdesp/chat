@@ -1,5 +1,6 @@
 package gui;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import dao.DaoMessageSql;
@@ -9,6 +10,25 @@ import model.Message;
 
 public class spam {
 
+	
+	public void cleanBot() throws SQLException {
+		Io.print("cleaning empty");
+		DaoMessageSql daoMess = new DaoMessageSql();
+		ArrayList<Message> messages = daoMess.getAll(Main.getDb());
+		int i = 0;
+		for (Message message : messages) {
+		
+			if (message.getMES_MESSAGE().equals(" ")) {
+				daoMess.supprimer(message, Main.getDb());
+				i++;
+			}
+			
+		}
+		String m = i + " messages vides supprimés";
+		Io.print(i + " messages vides supprimés");
+		daoMess.creer(new Message(23,m  ,1), Main.getDb());
+	}
+	
 	public void spamJeremie(){
 		Io.print("spamming jeremie");
 		DaoMessageSql daoMess = new DaoMessageSql();
