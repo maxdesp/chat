@@ -30,7 +30,6 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 	private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 	private int height = (int) screenSize.getHeight()-40;
 	private int width = (int) screenSize.getWidth();
-	private int widthUtilisateurs = 200;
 	private BorderLayout layoutPrincipal = new BorderLayout();
 	private BorderLayout layoutMessages = new BorderLayout();
 	private GridLayout layoutUtilisateurs = new GridLayout(10,1);
@@ -58,7 +57,8 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 	private JLabel connecteEnTantQue2 = new JLabel("- non connecté -",SwingConstants.CENTER);
 	private JLabel connecteAuSalon = new JLabel("Connecté au salon :");
 	private JLabel connecteAuSalon2 = new JLabel("- non connecté -",SwingConstants.CENTER);
-	private List listeUtilisateurs = new List();
+	private JLabel listeUtilisateursConnectes = new JLabel("Utilisateurs connectés");
+	private List listeUtilisateursConnectes2 = new List();
 	private List listeMessages = new List();
 	private JTextField message = new JTextField("Ecrivez votre message.",50);
 	private JButton envoyer = new JButton("Envoyer");
@@ -112,7 +112,8 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 		this.pannelUtilisateurs.add(connecteEnTantQue2);
 		this.pannelUtilisateurs.add(connecteAuSalon);
 		this.pannelUtilisateurs.add(connecteAuSalon2);
-		this.pannelUtilisateurs.add(listeUtilisateurs);
+		this.pannelUtilisateurs.add(listeUtilisateursConnectes);
+		this.pannelUtilisateurs.add(listeUtilisateursConnectes2);
 		
 		this.contentPane.add(pannelMessages, BorderLayout.CENTER);
 		this.pannelMessages.setLayout(this.layoutMessages);
@@ -192,6 +193,14 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 		return false;
 	}
 	
+	private boolean rafraichirZoneMessages(){
+		return false;
+	}
+	
+	private boolean envoyerMessage(){
+		return false;
+	}
+	
 
 	@Override
 	public void keyPressed(KeyEvent arg0) {
@@ -217,7 +226,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
 		if(arg0.getSource()==this.envoyer){
-			
+			this.envoyerMessage();
 		}
 		if(arg0.getSource()==this.menuConnexionUtilisateur){
 			this.connexionUtilisateur();
