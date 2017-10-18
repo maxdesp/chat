@@ -20,13 +20,16 @@ public class DB {
 	private Statement statement;
 	private String dbName;
 	private String dbUser;
+	private String dbIP;
 	
 	public DB() throws SQLException, ClassNotFoundException{
 		Class.forName("com.mysql.jdbc.Driver");
 		this.setDbName("chat");
 		this.setDbUser("root");
 		// this.dbUser ="chatuser";
-		this.connection = makeConnection(this.getDbName(), this.getDbUser());
+		this.dbIP = "192.68.1.78";
+		//this.dbIP = "localhost";
+		this.connection = makeConnection(this.getDbName(), this.getDbUser(), this.dbIP);
 		this.statement = this.connection.createStatement();
 	}
 	
@@ -36,9 +39,10 @@ public class DB {
 	public static void main() {
 	}
 	
-	public Connection makeConnection(String base, String user) throws SQLException, ClassNotFoundException {
+	public Connection makeConnection(String base, String user, String dbIP) throws SQLException, ClassNotFoundException {
 		Class.forName("com.mysql.jdbc.Driver");
-		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+ base +"?useSSL=false", user, "");
+		Connection con = DriverManager.getConnection("jdbc:mysql://"+ dbIP + ":3306/"+ base +"?useSSL=false", user, "");
+		
 		return con;
 		
 	}
