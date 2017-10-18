@@ -146,6 +146,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 	
 	
 	private boolean connexionUtilisateur(){
+		FenetreConnexionUtilisateur fConnexionUtilisateur = new FenetreConnexionUtilisateur();
 		this.menuDeconnexionUtilisateur.setEnabled(true);
 		this.menuConnexionUtilisateur.setEnabled(false);
 		return false;
