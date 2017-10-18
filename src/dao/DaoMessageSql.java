@@ -99,4 +99,21 @@ public class DaoMessageSql implements IDAO_Message {
 		}
 		return messages;
 	}
+	public ArrayList<Message> getParSalon(DB db, Salon salon) throws SQLException {
+		ArrayList<Message> messages = new ArrayList<Message>();
+		ResultSet messSet = db.executeQuery("SELECT * FROM chat.message as m ORDER BY m.MES_DATE ASC");
+		while (messSet.next()){
+			Message mess = new Message();
+			mess.setMES_ID(messSet.getInt("MES_ID"));
+			mess.setMES_UTI_ID(messSet.getInt("MES_USER_ID"));
+			mess.setMES_MESSAGE(messSet.getString("MES_MESSAGE"));
+			mess.setMES_DATE(messSet.getDate("MES_DATE"));
+			mess.setMES_SAL_ID(messSet.getInt("MES_SALON_ID"));
+			if (salon.getSAL_ID() == mess.getMES_SAL_ID()) {
+				messages.add(mess);
+			}
+			
+		}
+		return messages;
+	}
 }
