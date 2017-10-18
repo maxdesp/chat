@@ -14,6 +14,9 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -24,6 +27,11 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+
+import DAO.DAOProduit;
+import dao.DaoUtilisateurSql;
+import eshop.Produit;
+import model.Utilisateur;
 
 public class FenetrePrincipale extends JFrame implements ActionListener, KeyListener, MouseListener{
 	
@@ -141,6 +149,13 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 	}
 	
 	private boolean rafraichirListeUtilisateursConnectes(){
+		
+		DaoUtilisateurSql daoUtilisateur = new DaoUtilisateurSql();
+		ArrayList<Utilisateur> users =daoUtilisateur.getAll();
+		for(Utilisateur user: users){
+			this.listeUtilisateursConnectes2.add((user.getUTI_PSEUDO()));
+		}
+		
 		return false;
 	}
 	
