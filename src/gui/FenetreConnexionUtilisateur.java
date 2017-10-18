@@ -20,7 +20,7 @@ public class FenetreConnexionUtilisateur extends JFrame implements ActionListene
 	private FenetrePrincipale f;
 	
 	private BorderLayout layoutPrincipal = new BorderLayout();
-	private GridLayout layoutCentral = new GridLayout(4,2);
+	private GridLayout layoutCentral = new GridLayout(3,2);
 	private Container pannelPrincipal = this.getContentPane();
 	private JPanel pannelCentral = new JPanel();
 	private JLabel labelConnexion = new JLabel("Connexion au profil");
@@ -28,8 +28,6 @@ public class FenetreConnexionUtilisateur extends JFrame implements ActionListene
 	private JTextField textFieldPseudo = new JTextField("Ecrivez votre pseudo");
 	private JLabel labelMDP = new JLabel("Mot de passe");
 	private JTextField textFieldMDP = new JTextField("Ecrivez votre mot de passe");
-	private JLabel labelAvatar = new JLabel("Avatar");
-	private JTextField textFieldAvatar = new JTextField("URL de votre avatar");
 	private JButton boutonConnexion = new JButton("Connexion");
 	private JButton boutonAnnuler = new JButton("Annuler");
 	
@@ -49,8 +47,6 @@ public class FenetreConnexionUtilisateur extends JFrame implements ActionListene
 		this.pannelCentral.add(textFieldPseudo);
 		this.pannelCentral.add(labelMDP);
 		this.pannelCentral.add(textFieldMDP);
-		this.pannelCentral.add(labelAvatar);
-		this.pannelCentral.add(textFieldAvatar);
 		this.pannelCentral.add(boutonConnexion);
 		this.pannelCentral.add(boutonAnnuler);
 		this.boutonAnnuler.addActionListener(this);
@@ -67,6 +63,9 @@ public class FenetreConnexionUtilisateur extends JFrame implements ActionListene
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
+		if(arg0.getSource()==this.boutonConnexion){
+			
+		}
 		if(arg0.getSource()==this.boutonAnnuler){
 			super.dispose();
 		}
