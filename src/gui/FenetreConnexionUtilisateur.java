@@ -47,8 +47,10 @@ public class FenetreConnexionUtilisateur extends JFrame implements ActionListene
 		this.pannelCentral.setLayout(layoutCentral);
 		this.pannelCentral.add(labelPseudo);
 		this.pannelCentral.add(textFieldPseudo);
+		this.textFieldPseudo.addMouseListener(this);
 		this.pannelCentral.add(labelMDP);
 		this.pannelCentral.add(textFieldMDP);
+		this.textFieldMDP.addMouseListener(this);
 		this.pannelCentral.add(boutonConnexion);
 		this.pannelCentral.add(boutonAnnuler);
 		this.boutonAnnuler.addActionListener(this);
