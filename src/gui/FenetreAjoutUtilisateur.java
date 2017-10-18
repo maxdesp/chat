@@ -19,6 +19,8 @@ import model.Utilisateur;
 
 public class FenetreAjoutUtilisateur  extends JFrame implements ActionListener, KeyListener {
 	
+	private FenetrePrincipale f;
+	
 	private BorderLayout layoutPrincipal = new BorderLayout();
 	private GridLayout layoutCentral = new GridLayout(4,2);
 	private Container pannelPrincipal = this.getContentPane();
@@ -33,7 +35,9 @@ public class FenetreAjoutUtilisateur  extends JFrame implements ActionListener, 
 	private JButton boutonCreation = new JButton("Création");
 	private JButton boutonAnnuler = new JButton("Annuler");
 	
-	public FenetreAjoutUtilisateur(){
+	public FenetreAjoutUtilisateur(FenetrePrincipale f){
+		this.f = f;
+		
 		this.setTitle("Fenetre de création");
 		this.setLocationRelativeTo(null);
 		this.setSize(400,400);

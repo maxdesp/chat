@@ -17,6 +17,8 @@ import javax.swing.SwingConstants;
 
 public class FenetreConnexionUtilisateur extends JFrame implements ActionListener, KeyListener {
 
+	private FenetrePrincipale f;
+	
 	private BorderLayout layoutPrincipal = new BorderLayout();
 	private GridLayout layoutCentral = new GridLayout(4,2);
 	private Container pannelPrincipal = this.getContentPane();
@@ -31,7 +33,9 @@ public class FenetreConnexionUtilisateur extends JFrame implements ActionListene
 	private JButton boutonConnexion = new JButton("Connexion");
 	private JButton boutonAnnuler = new JButton("Annuler");
 	
-	public FenetreConnexionUtilisateur(){
+	public FenetreConnexionUtilisateur(FenetrePrincipale f){
+		this.f = f;
+		
 		this.setTitle("Fenetre de connexion");
 		this.setLocationRelativeTo(null);
 		this.setSize(400,400);
