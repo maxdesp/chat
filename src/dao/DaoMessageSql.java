@@ -85,7 +85,7 @@ public class DaoMessageSql implements IDAO_Message {
 		while (usersSet.next()){
 			Message mess = new Message();
 			mess.setMES_ID(usersSet.getInt("MES_ID"));
-			mess.setMES_UTI_ID(usersSet.getId("MES_USER_ID"));
+			mess.setMES_UTI_ID(usersSet.getInt("MES_USER_ID"));
 			mess.setMES_MESSAGE(usersSet.getString("MES_MESSAGE"));
 			mess.setMES_DATE(usersSet.getDate("MES_DATE"));
 			mess.setMES_SAL_ID(usersSet.getInt("MES_SALON_ID"));
