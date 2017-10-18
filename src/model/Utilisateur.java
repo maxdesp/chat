@@ -1,6 +1,10 @@
 package model;
 
+import dao.DaoUtilisateurSql;
+
 public class Utilisateur {
+	
+	DaoUtilisateurSql dao = new DaoUtilisateurSql();
 	
 	public String getUTI_MDP() {
 		return UTI_MDP;
