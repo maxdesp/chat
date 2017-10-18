@@ -77,11 +77,17 @@ public class DaoMessageSql implements IDAO_Message {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	
+	public ArrayList<Message> getIfNew(DB db, Message old) throws SQLException{
+		int oldId = old.getMES_ID();
+		ResultSet usersSet = db.executeQuery("SELECT * FROM chat.message");
+		return null;
+		
+	}
 	@Override
 	public ArrayList<Message> getAll(DB db) throws SQLException {
 		ArrayList<Message> messages = new ArrayList<Message>();
-		ResultSet usersSet = db.executeQuery("SELECT * FROM chat.message");
+		ResultSet usersSet = db.executeQuery("SELECT * FROM chat.message as m ORDER BY m.MES_DATE DESC");
 		while (usersSet.next()){
 			Message mess = new Message();
 			mess.setMES_ID(usersSet.getInt("MES_ID"));
