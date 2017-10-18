@@ -9,7 +9,7 @@ import eshop.Produit;
 import model.Utilisateur;
 
 public class DaoUtilisateurSql implements IDAO_Utilisateur{
-
+//
 	/*public ArrayList<Produit> getAll(){
 		try{
 			Statement myStatement = this.connection.createStatement();
