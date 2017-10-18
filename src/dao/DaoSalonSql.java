@@ -71,4 +71,10 @@ public class DaoSalonSql implements IDAO_Salon{
 		}
 	}
 
+	@Override
+	public Salon getAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
