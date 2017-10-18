@@ -182,9 +182,9 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 	
 	private boolean connexionUtilisateur(){
 		FenetreConnexionUtilisateur fConnexionUtilisateur = new FenetreConnexionUtilisateur(this);
-		this.menuDeconnexionUtilisateur.setEnabled(true);
-		this.menuConnexionUtilisateur.setEnabled(false);
 		if(this.utilisateur.getUTI_PSEUDO()!=null){
+			this.menuDeconnexionUtilisateur.setEnabled(true);
+			this.menuConnexionUtilisateur.setEnabled(false);
 			this.connecteEnTantQue2.setText(this.utilisateur.getUTI_PSEUDO());
 			this.menuAjoutSalon.setEnabled(true);
 			this.menuConnexionSalon.setEnabled(true);
@@ -196,6 +196,15 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 	
 	private boolean creationUtilisateur(){
 		FenetreAjoutUtilisateur fCreationUtilisateur = new FenetreAjoutUtilisateur(this);
+		if(this.utilisateur.getUTI_PSEUDO()!=null){
+			this.menuDeconnexionUtilisateur.setEnabled(true);
+			this.menuConnexionUtilisateur.setEnabled(false);
+			this.connecteEnTantQue2.setText(this.utilisateur.getUTI_PSEUDO());
+			this.menuAjoutSalon.setEnabled(true);
+			this.menuConnexionSalon.setEnabled(true);
+			this.menuSupprimerSalon.setEnabled(true);
+			this.menuModifierSalon.setEnabled(true);
+		}
 		return false;
 	}
 	
