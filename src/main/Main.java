@@ -38,7 +38,7 @@ public class Main {
 		Io.print("FINAL");
 		
 		// testCreerUtilisateurs();
-		// testgetAll();
+		testgetAll();
 		// testCreerSalonPrincipal();
 	}
 	
@@ -49,7 +49,9 @@ public class Main {
 		Io.print(daoUser.getAll(db));
 		Io.print("test");
 		DaoMessageSql daoMess = new DaoMessageSql();
-		Io.print(daoMess.getAll(db));
+		Salon salon = new Salon();
+		salon.setSAL_ID(1);
+		Io.print(daoMess.getParSalon(db, salon));
 	}
 	
 	public static void testCreerUtilisateurs() {
