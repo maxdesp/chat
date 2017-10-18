@@ -79,6 +79,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 	private Utilisateur utilisateur = new Utilisateur();
 	private Salon salon = new Salon();
 	private Timer t = new Timer(100, this);
+	private Timer t2 = new Timer(1000, this);
 	
 	
 	public Utilisateur getUtilisateur() {
@@ -101,6 +102,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 		
 		this.init();
 		this.t.start();
+		this.t2.start();
 		
 		
 		
@@ -356,6 +358,13 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 		if(arg0.getSource()==this.t){
 			try {
 				this.rafraichirListeUtilisateursConnectes();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		if(arg0.getSource()==this.t2){
+			try {
 				this.rafraichirZoneMessages();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
