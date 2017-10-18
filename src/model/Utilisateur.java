@@ -19,8 +19,9 @@ public class Utilisateur {
 	public Utilisateur(){
 		
 	}
-	public Utilisateur(String UTI_PSEUDO){
+	public Utilisateur(String UTI_PSEUDO, String UTI_MDP){
 		this.UTI_PSEUDO = UTI_PSEUDO;
+		this.UTI_MDP = UTI_MDP;
 		this.UTI_AVATAR = "http://www.larousse.fr/encyclopedie/data/images/1006415-Poney.jpg";
 	}
 	/**
