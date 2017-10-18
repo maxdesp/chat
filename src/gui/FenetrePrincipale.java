@@ -189,7 +189,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 				
 			}
 			else {
-				Io.print(user.getUTI_PSEUDO() + " n'est pas connecté");
+			//	Io.print(user.getUTI_PSEUDO() + " n'est pas connecté");
 			}
 			
 		}
