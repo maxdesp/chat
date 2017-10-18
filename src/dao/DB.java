@@ -95,7 +95,6 @@ public class DB {
 		return this.executeQuery(query);
  	}
 
-	
 	// accessors
 	public String getDbUser() {
 		return dbUser;
