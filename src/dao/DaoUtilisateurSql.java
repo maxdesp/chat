@@ -5,7 +5,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import eshop.Produit;
 import model.Utilisateur;
 
 public class DaoUtilisateurSql implements IDAO_Utilisateur{

@@ -29,6 +29,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import dao.DaoUtilisateurSql;
+import model.Salon;
 import model.Utilisateur;
 
 public class FenetrePrincipale extends JFrame implements ActionListener, KeyListener, MouseListener{
@@ -68,6 +69,8 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 	private List listeMessages = new List();
 	private JTextField message = new JTextField("Ecrivez votre message.",50);
 	private JButton envoyer = new JButton("Envoyer");
+	private Utilisateur utilisateur = new Utilisateur();
+	private Salon salon = new Salon();
 	
 	
 	public FenetrePrincipale(){
@@ -153,7 +156,6 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 		for(Utilisateur user: users){
 			this.listeUtilisateursConnectes2.add((user.getUTI_PSEUDO()));
 		}
-		
 		return false;
 	}
 	
