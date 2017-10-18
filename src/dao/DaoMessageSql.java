@@ -69,4 +69,10 @@ public class DaoMessageSql implements IDAO_Message {
 			return null;
 		}
 	}
+
+	@Override
+	public Message getAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

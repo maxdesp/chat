@@ -49,23 +49,7 @@ public class DB {
 		
 	}
 	
-	
-	/** useless ?
 
-	
-	public Statement makeStatement() {
-		try {
-			// Class.forName("com.mysql.jdbc.Driver");
-			
-			//Connection  eshopConnection = DriverManager.getConnection("jdbc:mysql://localhost:3306/eshop?useSSL=false", "root", "");
-			// Statement eshopStatement = eshopConnection.createStatement()
-			//ResultSet myResult = eshopStatement.executeQuery("SELECT PER_ID, PER_CP FROM personne");
-			return this.connection.createStatement();
-		} catch (Exception ex) {}
-		return null;
-		
-	}
-	 */
 	
 	public ResultSet executeQuery(String query) throws SQLException {
 		Io.print(query);
