@@ -11,8 +11,15 @@ public class DaoMessageSql implements IDAO_Message {
 
 	@Override
 	public void creer(Message o, DB db) {
-		// TODO Auto-generated method stub
-		
+		try{
+			String query = String.format("INSERT INTO message VALUES (NULL,%s,'%s','%s',%s);", o.getMES_UTI_ID(),o.getMES_MESSAGE(),o.getMES_DATE(),o.getMES_SAL_ID());
+			boolean myResult = db.execute(query);	
+			System.out.println("Ajout du message");
+			System.out.println(myResult);
+		}
+		catch (SQLException e){
+			System.out.println("echec de l'ajout");
+		}
 	}
 
 	@Override
@@ -32,8 +39,17 @@ public class DaoMessageSql implements IDAO_Message {
 
 	@Override
 	public boolean modifier(Integer id, String caractere_changement, String valeur,DB db) {
-		// TODO Auto-generated method stub
-		return false;
+		try{
+			String query = String.format("UPDATE message set %s = %s where `MES_ID` = %s;", caractere_changement,valeur,id);
+			boolean myResult = db.execute(query);	
+			System.out.println("Modification du messsage");
+			System.out.println(myResult);
+			return myResult;
+		}
+		catch (SQLException e){
+			System.out.println("echec de la modification");
+			return false;
+		}
 	}
 
 	@Override

@@ -11,8 +11,15 @@ public class DaoSalonSql implements IDAO_Salon{
 
 	@Override
 	public void creer(Salon o,DB db) {
-		// TODO Auto-generated method stub
-		
+		try{
+			String query = String.format("INSERT INTO salon VALUES (NULL,'%s','%s',%s);", o.getSAL_NAME(),o.getSAL_MDP(),o.getSAL_CREATEUR_ID());
+			boolean myResult = db.execute(query);	
+			System.out.println("Ajout du salon");
+			System.out.println(myResult);
+		}
+		catch (SQLException e){
+			System.out.println("echec de l'ajout");
+		}
 	}
 
 	@Override
@@ -32,9 +39,19 @@ public class DaoSalonSql implements IDAO_Salon{
 
 	@Override
 	public boolean modifier(Integer id, String caractere_changement, String valeur, DB db) {
-		// TODO Auto-generated method stub
-		return false;
+		try{
+			String query = String.format("UPDATE salon set %s = %s where `SAL_ID` = %s;", caractere_changement,valeur,id);
+			boolean myResult = db.execute(query);	
+			System.out.println("Modification du salon");
+			System.out.println(myResult);
+			return myResult;
+		}
+		catch (SQLException e){
+			System.out.println("echec de la modification");
+			return false;
+		}
 	}
+		
 
 	@Override
 	public Salon charger(Integer id,DB db) {
