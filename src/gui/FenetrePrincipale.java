@@ -14,6 +14,9 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -25,13 +28,10 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-import model.Salon;
+import dao.DaoUtilisateurSql;
 import model.Utilisateur;
 
 public class FenetrePrincipale extends JFrame implements ActionListener, KeyListener, MouseListener{
-	
-	private Utilisateur utilisateur = null;
-	private Salon salon = null;
 	
 	private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 	private int height = (int) screenSize.getHeight()-40;
@@ -147,25 +147,25 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 	}
 	
 	private boolean rafraichirListeUtilisateursConnectes(){
+		
+		DaoUtilisateurSql daoUtilisateur = new DaoUtilisateurSql();
+		ArrayList<Utilisateur> users =daoUtilisateur.getAll();
+		for(Utilisateur user: users){
+			this.listeUtilisateursConnectes2.add((user.getUTI_PSEUDO()));
+		}
+		
 		return false;
 	}
 	
 	
 	private boolean connexionUtilisateur(){
 		FenetreConnexionUtilisateur fConnexionUtilisateur = new FenetreConnexionUtilisateur();
-		try{
-			this.connecteEnTantQue2.setText(this.utilisateur.getUTI_PSEUDO());
-		}
-		catch(NullPointerException e){
-			
-		}
 		this.menuDeconnexionUtilisateur.setEnabled(true);
 		this.menuConnexionUtilisateur.setEnabled(false);
 		return false;
 	}
 	
 	private boolean creationUtilisateur(){
-		FenetreAjoutUtilisateur fAjoutUtilisateur = new FenetreAjoutUtilisateur();
 		return false;
 	}
 	
@@ -180,19 +180,12 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 	private boolean deconnexionUtilisateur(){
 		this.menuDeconnexionUtilisateur.setEnabled(false);
 		this.menuConnexionUtilisateur.setEnabled(true);
-		this.connecteEnTantQue2.setText("- non connecté -");
 		return false;
 	}
 	
 	private boolean connexionSalon(){
 		this.menuDeconnexionSalon.setEnabled(true);
 		this.menuConnexionSalon.setEnabled(false);
-		try{
-			this.connecteAuSalon2.setText(this.salon.getSAL_NAME());
-		}
-		catch(NullPointerException e){
-			
-		}
 		return false;
 	}
 	
@@ -211,7 +204,6 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 	private boolean deconnexionSalon(){
 		this.menuDeconnexionSalon.setEnabled(false);
 		this.menuConnexionSalon.setEnabled(true);
-		this.connecteAuSalon2.setText("- non connecté -");
 		return false;
 	}
 	
