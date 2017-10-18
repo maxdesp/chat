@@ -78,6 +78,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 	private JButton envoyer = new JButton("Envoyer");
 	private Utilisateur utilisateur = new Utilisateur();
 	private Salon salon = new Salon();
+	private ArrayList<Message> listeMessagesPostes = new ArrayList<Message>();
 	private Timer t = new Timer(100, this);
 	private Timer t2 = new Timer(1000, this);
 	
@@ -170,7 +171,17 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 		this.envoyer.setSize(100, 80);
 		this.envoyer.addActionListener(this);
 		
+		Salon salon = new DaoSalonSql().charger(Integer.valueOf(1), Main.getDb());
+		ArrayList<Message> listeMessages = new DaoMessageSql().getParSalon(Main.getDb(), salon);
+		Utilisateur uti = null;
 		
+		for(Message m : listeMessages){
+			this.listeMessagesPostes.add(m);
+			uti = new DaoUtilisateurSql().charger(m.getMES_UTI_ID(), Main.getDb());
+			this.listeMessages.add(uti.getUTI_PSEUDO()+" a écrit :");
+			this.listeMessages.add("	"+m.getMES_MESSAGE());
+			this.listeMessages.add("\r");
+		}
 		
 		this.rafraichirListeUtilisateursConnectes();
 		
@@ -288,7 +299,9 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 		ArrayList<Message> listeMessages = new DaoMessageSql().getParSalon(Main.getDb(), salon);
 		Utilisateur uti = null;
 		
-		for(Message m : listeMessages){
+		for(int i=(this.listeMessagesPostes.size()-1);i<listeMessages.size();i++){
+			Message m = listeMessages.get(i);
+			this.listeMessagesPostes.add(m);
 			uti = new DaoUtilisateurSql().charger(m.getMES_UTI_ID(), Main.getDb());
 			this.listeMessages.add(uti.getUTI_PSEUDO()+" a écrit :");
 			this.listeMessages.add("	"+m.getMES_MESSAGE());
@@ -298,7 +311,8 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 	}
 	
 	private boolean envoyerMessage(){
-		Message message = new Message(this.utilisateur.getUTI_ID(),this.message.getText(), this.salon.getSAL_ID());
+		Message message = new Message((int)this.utilisateur.getUTI_ID(),this.message.getText(), (int)this.salon.getSAL_ID());
+		new DaoMessageSql().creer(message, Main.getDb());
 		return false;
 	}
 	
