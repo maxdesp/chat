@@ -121,14 +121,16 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 		this.menuBar.add(menuSalon);
 		this.menuSalon.add(menuConnexionSalon);
 		this.menuConnexionSalon.addActionListener(this);
-		this.menuConnexionSalon.enable(false);
+		this.menuConnexionSalon.setEnabled(false);
 		this.menuSalon.add(menuAjoutSalon);
-		this.menuAjoutSalon.enable(false);
+		this.menuAjoutSalon.setEnabled(false);
 		this.menuAjoutSalon.addActionListener(this);
 		this.menuSalon.add(menuModifierSalon);
 		this.menuModifierSalon.addActionListener(this);
+		this.menuModifierSalon.setEnabled(false);
 		this.menuSalon.add(menuSupprimerSalon);
 		this.menuSupprimerSalon.addActionListener(this);
+		this.menuSupprimerSalon.setEnabled(false);
 		this.menuSalon.add(menuDeconnexionSalon);
 		this.menuDeconnexionSalon.addActionListener(this);
 		this.menuDeconnexionSalon.setEnabled(false);
@@ -184,8 +186,10 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 		this.menuConnexionUtilisateur.setEnabled(false);
 		if(this.utilisateur.getUTI_PSEUDO()!=null){
 			this.connecteEnTantQue2.setText(this.utilisateur.getUTI_PSEUDO());
-			menuAjoutSalon.enable(true);
-			menuConnexionSalon.enable(true);
+			this.menuAjoutSalon.setEnabled(true);
+			this.menuConnexionSalon.setEnabled(true);
+			this.menuSupprimerSalon.setEnabled(true);
+			this.menuModifierSalon.setEnabled(true);
 		}
 		return false;
 	}
@@ -206,8 +210,10 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 	private boolean deconnexionUtilisateur(){
 		this.menuDeconnexionUtilisateur.setEnabled(false);
 		this.menuConnexionUtilisateur.setEnabled(true);
-		menuAjoutSalon.enable(false);
-		menuConnexionSalon.enable(false);
+		this.menuAjoutSalon.setEnabled(false);
+		this.menuConnexionSalon.setEnabled(false);
+		this.menuSupprimerSalon.setEnabled(false);
+		this.menuModifierSalon.setEnabled(false);
 		return false;
 	}
 	
