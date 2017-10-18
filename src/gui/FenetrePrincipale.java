@@ -1,4 +1,4 @@
-package gui;
+package View;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
@@ -19,6 +19,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -30,8 +31,21 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 	private int widthUtilisateurs = 200;
 	private BorderLayout layoutPrincipal = new BorderLayout();
 	private BorderLayout layoutMessages = new BorderLayout();
+	private FlowLayout layoutUtilisateurs = new FlowLayout();
 	private JMenuBar menuBar = new JMenuBar();
 	private JMenu menuFichier = new JMenu("Fichier");
+	private JMenu menuUtilisateur = new JMenu("Utilisateur");
+	private JMenuItem menuConnexionUtilisateur = new JMenuItem("Se connecter");
+	private JMenuItem menuAjoutUtilisateur = new JMenuItem("Créer un profil");
+	private JMenuItem menuModifierUtilisateur = new JMenuItem("Modifier un profil");
+	private JMenuItem menuSupprimerUtilisateur = new JMenuItem("Supprimer un profil");
+	private JMenuItem menuDeconnexionUtilisateur = new JMenuItem("Se déconnecter");
+	private JMenu menuSalon = new JMenu("Salon");
+	private JMenuItem menuConnexionSalon = new JMenuItem("Entrer dans un salon");
+	private JMenuItem menuAjoutSalon = new JMenuItem("Créer un salon");
+	private JMenuItem menuModifierSalon = new JMenuItem("Modifier un salon");
+	private JMenuItem menuSupprimerSalon = new JMenuItem("Supprimer un salon");
+	private JMenuItem menuDeconnexionSalon = new JMenuItem("Quitter le salon");
 	private Container contentPane = this.getContentPane();
 	private JPanel pannelUtilisateurs = new JPanel();
 	private JPanel pannelMessages = new JPanel();
@@ -61,8 +75,21 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 		
 		this.setJMenuBar(menuBar);
 		this.menuBar.add(menuFichier);
+		this.menuBar.add(menuUtilisateur);
+		this.menuUtilisateur.add(menuConnexionUtilisateur);
+		this.menuUtilisateur.add(menuAjoutUtilisateur);
+		this.menuUtilisateur.add(menuModifierUtilisateur);
+		this.menuUtilisateur.add(menuSupprimerUtilisateur);
+		this.menuUtilisateur.add(menuDeconnexionUtilisateur);
+		this.menuBar.add(menuSalon);
+		this.menuSalon.add(menuConnexionSalon);
+		this.menuSalon.add(menuAjoutSalon);
+		this.menuSalon.add(menuModifierSalon);
+		this.menuSalon.add(menuSupprimerSalon);
+		this.menuSalon.add(menuDeconnexionSalon);
 		
 		this.contentPane.add(pannelUtilisateurs,BorderLayout.WEST);
+		this.pannelUtilisateurs.setLayout(layoutUtilisateurs);
 		this.pannelUtilisateurs.add(listeUtilisateurs);
 		
 		this.contentPane.add(pannelMessages, BorderLayout.CENTER);
