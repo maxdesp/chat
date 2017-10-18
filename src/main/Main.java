@@ -7,6 +7,7 @@ import gui.FenetrePrincipale;
 import model.Salon;
 import model.Utilisateur;
 import dao.DB;
+import dao.DaoMessageSql;
 import dao.DaoSalonSql;
 import dao.DaoUtilisateurSql;
 //import dao.IDAO_Utilisateur;
@@ -34,16 +35,18 @@ public class Main {
 		DaoUtilisateurSql dao = new DaoUtilisateurSql();
 		Io.print(dao.getByIdentifiants(db, "'marie'", "'password'"));
 		// testCreerUtilisateurs();
-		 //testgetAll();
+		 testgetAll();
 		// testCreerSalonPrincipal();
 	}
 	
 	public static void testgetAll() throws SQLException {
 
-		DaoUtilisateurSql dao = new DaoUtilisateurSql();
+		DaoUtilisateurSql daoUser = new DaoUtilisateurSql();
 		Io.print("test");
-		Io.print(dao.getAll(db));
+		Io.print(daoUser.getAll(db));
 		Io.print("test");
+		DaoMessageSql daoMess = new DaoMessageSql();
+		Io.print(daoMess.getAll());
 	}
 	
 	public static void testCreerUtilisateurs() {
