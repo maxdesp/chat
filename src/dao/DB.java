@@ -52,7 +52,7 @@ public class DB {
 		Class.forName("com.mysql.jdbc.Driver");
 		this.setDbName("chat");
 		
-		this.local = true; // CHANGER POUR SE CONNECTER EN LOCAL OU EN DISTANT
+		this.local = false; // CHANGER POUR SE CONNECTER EN LOCAL OU EN DISTANT
 		// distant
 		this.setDbUser("chatuser");
 		this.setDbPass("password");

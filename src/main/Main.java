@@ -47,7 +47,7 @@ public class Main {
 		Io.print(daoUser.getAll(db));
 		Io.print("test");
 		DaoMessageSql daoMess = new DaoMessageSql();
-		Io.print(daoMess.getAll());
+		Io.print(daoMess.getAll(db));
 	}
 	
 	public static void testCreerUtilisateurs() {
