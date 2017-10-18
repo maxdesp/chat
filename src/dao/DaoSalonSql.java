@@ -3,6 +3,7 @@ package dao;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import model.Salon;
 import model.Utilisateur;
@@ -72,7 +73,7 @@ public class DaoSalonSql implements IDAO_Salon{
 	}
 
 	@Override
-	public Salon getAll() {
+	public ArrayList<Salon> getAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}

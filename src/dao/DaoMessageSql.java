@@ -3,6 +3,7 @@ package dao;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import model.Message;
 import model.Salon;
@@ -71,7 +72,7 @@ public class DaoMessageSql implements IDAO_Message {
 	}
 
 	@Override
-	public Message getAll() {
+	public ArrayList<Message> getAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
