@@ -16,6 +16,7 @@ import javax.swing.JTextField;
 
 import dao.DaoSalonSql;
 import dao.DaoUtilisateurSql;
+import main.Io;
 import main.Main;
 import model.Salon;
 import model.Utilisateur;
@@ -56,6 +57,7 @@ public class FenetreAjoutSalon  extends JFrame implements ActionListener, KeyLis
 		this.pannelCentral.add(boutonCreation);
 		this.pannelCentral.add(boutonAnnuler);
 		this.boutonAnnuler.addActionListener(this);
+		this.boutonCreation.addActionListener(this);
 		this.createur=user;
 		
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -69,10 +71,11 @@ public class FenetreAjoutSalon  extends JFrame implements ActionListener, KeyLis
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
-		if(arg0.getSource()==this.boutonAnnuler){
+		if(arg0.getSource().equals(this.boutonAnnuler)){
 			this.dispose();
 		}
-		if(arg0.getSource()==this.boutonCreation){
+		else if (arg0.getSource().equals(this.boutonCreation)){
+			Io.print("bouton pressed");
 			String name = this.textFieldName.getText();
 			name.replaceAll("'", "\'");
 			String mdp = this.textFieldMDP.getText();
@@ -80,6 +83,7 @@ public class FenetreAjoutSalon  extends JFrame implements ActionListener, KeyLis
 			if((!name.equals("")) && (!mdp.equals(""))){
 				Salon salon = new Salon(name, mdp, this.createur.getUTI_ID());
 				f.setSalon(salon);
+				Io.print("salon en cration");
 				new DaoSalonSql().creer(salon, Main.getDb());
 			}
 			f.creationUtilisateur();
