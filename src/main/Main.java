@@ -30,31 +30,14 @@ public class Main {
 		// TODO Auto-generated method stub
 		db = new DB();
 		db.getConnection();
-		ResultSet test = db.executeQuery("SELECT * FROM chat.utilisateur");
-		Io.print("first");
-		ResultSet usersSet = db.executeQuery("SELECT * FROM chat.utilisateur");
-		Io.print(usersSet);
 		FenetrePrincipale fenetre = new FenetrePrincipale();
-		DaoUtilisateurSql dao = new DaoUtilisateurSql();
-		Io.print(dao.getByIdentifiants(db, "marie", "eiram"));
 		Io.print("FINAL");
 		
-		DaoMessageSql daoMess = new DaoMessageSql();
-		Message mess = new Message();
-		mess.setMES_MESSAGE("spam from fmm");
-		mess.setMES_UTI_ID(12);
-		mess.setMES_SAL_ID(1);
-		daoMess.creer(mess, db);
-		
-		
-		
+	}
+	public static void bot() throws SQLException {
 		spam spam = new spam();
 		spam.cleanBot();
-//		spam.spamJeremie();
-
-		// testCreerUtilisateurs();
-		// testgetAll();
-		// testCreerSalonPrincipal();
+		spam.spamJeremie();
 	}
 	
 	public static void testgetAll() throws SQLException {
