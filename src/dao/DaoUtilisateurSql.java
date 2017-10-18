@@ -11,9 +11,9 @@ public class DaoUtilisateurSql implements IDAO_Utilisateur{
 	@Override
 	public void creer(Utilisateur o,DB db) {
 		try{
-			String query = String.format("INSERT INTO produit VALUES (NULL,'%s','%s','%s',%s);", o.getUTI_PSEUDO(),o.getUTI_MDP(),o.getUTI_AVATAR(),o.getUTI_ID());
+			String query = String.format("INSERT INTO utilisateur VALUES (NULL,'%s','%s','%s',%s);", o.getUTI_PSEUDO(),o.getUTI_MDP(),o.getUTI_AVATAR(),o.getUTI_ID());
 			boolean myResult = db.execute(query);	
-			System.out.println("Ajout du salon");
+			System.out.println("Ajout de l'utilisateur");
 			System.out.println(myResult);
 		}
 		catch (SQLException e){

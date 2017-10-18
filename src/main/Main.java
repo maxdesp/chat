@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import gui.FenetrePrincipale;
 import model.Utilisateur;
 import dao.DB;
+import dao.DaoUtilisateurSql;
 //import dao.IDAO_Utilisateur;
 
 public class Main {
@@ -17,6 +18,11 @@ public class Main {
 		ResultSet test = db.executeQuery("SELECT * FROM chat.utilisateur");
 		Io.print(test);
 		FenetrePrincipale fenetre = new FenetrePrincipale();
+		Utilisateur max = new Utilisateur("max", "password");
+		Utilisateur marie = new Utilisateur("marie", "password");
+		Utilisateur francois = new Utilisateur("francois", "password");
+		DaoUtilisateurSql dao = new DaoUtilisateurSql();
+		dao.creer(max, db);
 	}
 
 }
