@@ -86,6 +86,10 @@ public class FenetreConnexionSalon extends JFrame implements ActionListener, Key
 				Io.print(salon);
 				if(salon != null){
 					f.setSalon(salon);
+					JLabel lab= new JLabel();
+					lab = f.getConnecteAuSalon2();
+					lab.setText(salon.getSAL_NAME());
+					f.setConnecteAuSalon2(lab);
 					//f.getSalon().seConnecter(Main.getDb());
 				}
 				else{

@@ -71,6 +71,14 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 	private JLabel connecteEnTantQue2 = new JLabel("- non connecté -",SwingConstants.CENTER);
 	private JLabel connecteAuSalon = new JLabel("Connecté au salon :");
 	private JLabel connecteAuSalon2 = new JLabel("- non connecté -",SwingConstants.CENTER);
+	public JLabel getConnecteAuSalon2() {
+		return connecteAuSalon2;
+	}
+
+	public void setConnecteAuSalon2(JLabel connecteAuSalon2) {
+		this.connecteAuSalon2 = connecteAuSalon2;
+	}
+
 	private JLabel listeUtilisateursConnectes = new JLabel("Utilisateurs connectés");
 	private List listeUtilisateursConnectes2 = new List();
 	private List listeMessages = new List();

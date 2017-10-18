@@ -84,6 +84,12 @@ public class FenetreAjoutSalon  extends JFrame implements ActionListener, KeyLis
 				Salon salon = new Salon(name, mdp, this.createur.getUTI_ID());
 				f.setSalon(salon);
 				Io.print("salon en cration");
+				f.setSalon(salon);
+				JLabel lab= new JLabel();
+				lab = f.getConnecteAuSalon2();
+				lab.setText(salon.getSAL_NAME());
+				f.setConnecteAuSalon2(lab);
+				
 				new DaoSalonSql().creer(salon, Main.getDb());
 			}
 			f.creationUtilisateur();
