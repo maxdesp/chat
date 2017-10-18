@@ -66,7 +66,7 @@ public class DB {
 		return this.statement.executeQuery(query);
 		
 	}
-	public boolean execute(String query) throws SQLException {
+	public static boolean execute(String query) throws SQLException {
 		Io.print(query);
 		return this.statement.execute(query);
 		
