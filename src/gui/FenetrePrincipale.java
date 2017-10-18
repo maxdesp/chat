@@ -108,7 +108,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 	}
 
 	public FenetrePrincipale() throws SQLException{
-		
+
 		this.init();
 		this.t.start();
 		this.t2.start();
@@ -116,6 +116,8 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 	}
 	
 	private void init() throws SQLException{
+		this.salon = new Salon();
+		this.salon.setSAL_ID(1);
 		this.setTitle("The chat");
 		this.setSize(this.width, this.height);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
