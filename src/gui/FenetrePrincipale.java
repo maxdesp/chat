@@ -182,7 +182,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 	
 	private boolean connexionUtilisateur(){
 		FenetreConnexionUtilisateur fConnexionUtilisateur = new FenetreConnexionUtilisateur(this);
-		if(this.utilisateur.getUTI_PSEUDO()!=null){
+		if(this.utilisateur!=null){
 			this.menuDeconnexionUtilisateur.setEnabled(true);
 			this.menuConnexionUtilisateur.setEnabled(false);
 			this.connecteEnTantQue2.setText(this.utilisateur.getUTI_PSEUDO());
@@ -196,7 +196,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 	
 	private boolean creationUtilisateur(){
 		FenetreAjoutUtilisateur fCreationUtilisateur = new FenetreAjoutUtilisateur(this);
-		if(this.utilisateur.getUTI_PSEUDO()!=null){
+		if(this.utilisateur!=null){
 			this.menuDeconnexionUtilisateur.setEnabled(true);
 			this.menuConnexionUtilisateur.setEnabled(false);
 			this.connecteEnTantQue2.setText(this.utilisateur.getUTI_PSEUDO());
