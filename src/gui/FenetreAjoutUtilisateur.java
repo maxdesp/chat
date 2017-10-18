@@ -13,31 +13,30 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.SwingConstants;
 
-public class FenetreConnexionUtilisateur extends JFrame implements ActionListener, KeyListener {
+public class FenetreAjoutUtilisateur  extends JFrame implements ActionListener, KeyListener {
 
 	private BorderLayout layoutPrincipal = new BorderLayout();
 	private GridLayout layoutCentral = new GridLayout(4,2);
 	private Container pannelPrincipal = this.getContentPane();
 	private JPanel pannelCentral = new JPanel();
-	private JLabel labelConnexion = new JLabel("Connexion au profil");
+	private JLabel labelCreation = new JLabel("Création du profil");
 	private JLabel labelPseudo = new JLabel("Pseudo");
 	private JTextField textFieldPseudo = new JTextField("Ecrivez votre pseudo");
 	private JLabel labelMDP = new JLabel("Mot de passe");
 	private JTextField textFieldMDP = new JTextField("Ecrivez votre mot de passe");
 	private JLabel labelAvatar = new JLabel("Avatar");
 	private JTextField textFieldAvatar = new JTextField("URL de votre avatar");
-	private JButton boutonConnexion = new JButton("Connexion");
+	private JButton boutonCreation = new JButton("Création");
 	private JButton boutonAnnuler = new JButton("Annuler");
 	
-	public FenetreConnexionUtilisateur(){
+	public FenetreAjoutUtilisateur(){
 		this.setTitle("Fenetre de connexion");
 		this.setLocationRelativeTo(null);
 		this.setSize(400,400);
 		
 		this.pannelPrincipal.setLayout(layoutPrincipal);
-		this.pannelPrincipal.add(labelConnexion,BorderLayout.NORTH);
+		this.pannelPrincipal.add(labelCreation,BorderLayout.NORTH);
 		
 		this.pannelPrincipal.add(pannelCentral,BorderLayout.CENTER);
 		this.pannelCentral.setLayout(layoutCentral);
@@ -47,7 +46,7 @@ public class FenetreConnexionUtilisateur extends JFrame implements ActionListene
 		this.pannelCentral.add(textFieldMDP);
 		this.pannelCentral.add(labelAvatar);
 		this.pannelCentral.add(textFieldAvatar);
-		this.pannelCentral.add(boutonConnexion);
+		this.pannelCentral.add(boutonCreation);
 		this.pannelCentral.add(boutonAnnuler);
 		this.boutonAnnuler.addActionListener(this);
 		
