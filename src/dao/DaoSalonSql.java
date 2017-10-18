@@ -80,8 +80,16 @@ public class DaoSalonSql implements IDAO_Salon{
 
 	@Override
 	public ArrayList<Salon> getAll(DB db) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+			ArrayList<Salon> salons = new ArrayList<Salon>();
+			ResultSet usersSet = db.executeQuery("SELECT * FROM chat.utilisateur");
+			while (usersSet.next()){
+				Salon salon = new Salon();
+				salon.setSAL_ID(usersSet.getInt("setSAL_ID"));
+				salon.setSAL_NAME(usersSet.getString("setSAL_NAME"));
+				salon.setSAL_MDP(usersSet.getString("setSAL_MDP"));
+				salon.setSAL_CREATEUR_ID(usersSet.getInt("setSAL_CREATEUR_ID"));
+				salons.add(salon);
+			}
+			return salons;
 	}
-
 }
