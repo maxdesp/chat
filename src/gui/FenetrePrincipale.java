@@ -31,6 +31,7 @@ import javax.swing.SwingConstants;
 import javax.swing.Timer;
 
 import dao.DaoMessageSql;
+import dao.DaoSalonSql;
 import dao.DaoUtilisateurSql;
 import main.Io;
 import main.Main;
@@ -277,6 +278,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 	}
 	
 	private boolean rafraichirZoneMessages() throws SQLException{
+		Salon salon = new DaoSalonSql().charger(Integer.valueOf(1), Main.getDb());
 		ArrayList<Message> listeMessages = new DaoMessageSql().getParSalon(Main.getDb(), salon);
 		Utilisateur uti = null;
 		
@@ -353,7 +355,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 		if(arg0.getSource()==this.t){
 			try {
 				this.rafraichirListeUtilisateursConnectes();
-				//this.rafraichirZoneMessages();
+				this.rafraichirZoneMessages();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
