@@ -68,7 +68,7 @@ public class FenetreConnexionSalon extends JFrame implements ActionListener, Key
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
 		if(arg0.getSource()==this.boutonConnexion){
-			
+			super.dispose();
 		}
 		if(arg0.getSource()==this.boutonAnnuler){
 			super.dispose();

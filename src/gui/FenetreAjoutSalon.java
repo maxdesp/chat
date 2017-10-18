@@ -70,6 +70,7 @@ public class FenetreAjoutSalon  extends JFrame implements ActionListener, KeyLis
 			super.dispose();
 		}else if(arg0.getSource()==this.boutonCreation){
 			Salon salon= new Salon(textFieldName.getText(), textFieldMDP.getText(), createur.getUTI_ID());
+			super.dispose();
 		}
 	}
 

@@ -194,7 +194,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 		return false;
 	}
 	
-	private boolean creationUtilisateur(){
+	public boolean creationUtilisateur(){
 		FenetreAjoutUtilisateur fCreationUtilisateur = new FenetreAjoutUtilisateur(this);
 		if(this.utilisateur!=null){
 			this.menuDeconnexionUtilisateur.setEnabled(true);
@@ -208,15 +208,15 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 		return false;
 	}
 	
-	private boolean modificationUtilisateur(){
+	public boolean modificationUtilisateur(){
 		return false;
 	}
 	
-	private boolean suppressionUtilisateur(){
+	public boolean suppressionUtilisateur(){
 		return false;
 	}
 	
-	private boolean deconnexionUtilisateur(){
+	public boolean deconnexionUtilisateur(){
 		this.menuDeconnexionUtilisateur.setEnabled(false);
 		this.menuConnexionUtilisateur.setEnabled(true);
 		this.menuAjoutSalon.setEnabled(false);
@@ -226,7 +226,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 		return false;
 	}
 	
-	private boolean connexionSalon(){
+	public boolean connexionSalon(){
 		FenetreConnexionSalon fConnexionSalon = new FenetreConnexionSalon(this);
 		this.menuDeconnexionSalon.setEnabled(true);
 		this.menuConnexionSalon.setEnabled(false);
@@ -236,7 +236,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 		return false;
 	}
 	
-	private boolean creationSalon(){
+	public boolean creationSalon(){
 		FenetreAjoutSalon fCreationSalon = new FenetreAjoutSalon(this, utilisateur);
 		this.menuDeconnexionSalon.setEnabled(true);
 		this.menuConnexionSalon.setEnabled(false);
@@ -246,11 +246,11 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 		return false;
 	}
 	
-	private boolean modificationSalon(){
+	public boolean modificationSalon(){
 		return false;
 	}
 	
-	private boolean suppressionSalon(){
+	public boolean suppressionSalon(){
 		return false;
 	}
 	
