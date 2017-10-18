@@ -2,9 +2,18 @@ package model;
 
 public class Utilisateur {
 	
+	public String getUTI_MDP() {
+		return UTI_MDP;
+	}
+	public void setUTI_MDP(String uTI_MDP) {
+		UTI_MDP = uTI_MDP;
+	}
+
 	protected int UTI_ID;
 	protected String UTI_PSEUDO;
+	protected String UTI_MDP;
 	protected String UTI_AVATAR;
+
 	protected boolean UTI_CONNECTED = false;
 	
 	public Utilisateur(){
