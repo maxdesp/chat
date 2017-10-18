@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import main.Io;
 import model.Utilisateur;
 
 public class DaoUtilisateurSql implements IDAO_Utilisateur{
@@ -31,10 +32,16 @@ public class DaoUtilisateurSql implements IDAO_Utilisateur{
 //		}
 //	}
 //	*/
-	
+
+	@Override
+	public ArrayList<Utilisateur> getAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
 	public ArrayList<Utilisateur> getAll(DB db) throws SQLException{
 		ArrayList<Utilisateur> users = new ArrayList<Utilisateur>();
-		ResultSet usersSet = db.getFromTable("*", "utilisateur");
+		ResultSet usersSet = db.executeQuery("SELECT * FROM chat.utilisateur");
 		while (usersSet.next()){
 			Utilisateur user = new Utilisateur();
 			user.setUTI_ID(usersSet.getInt("UTI_ID"));
@@ -122,10 +129,6 @@ public class DaoUtilisateurSql implements IDAO_Utilisateur{
 		}
 	}
 
-	@Override
-	public ArrayList<Utilisateur> getAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 
 }

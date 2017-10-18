@@ -19,17 +19,25 @@ public class Main {
 		db = new DB();
 		db.getConnection();
 		ResultSet test = db.executeQuery("SELECT * FROM chat.utilisateur");
-		Io.print(test);
+		Io.print("first");
+		ResultSet usersSet = db.executeQuery("SELECT * FROM chat.utilisateur");
+		Io.print(usersSet);
 		FenetrePrincipale fenetre = new FenetrePrincipale();
 
-		
-		// creer utilisateurs
-		creerUtilisateurs();
-		// creer salon principal
-		creerSalonPrincipal();
+		// testCreerUtilisateurs();
+		// testgetAll();
+		// testCreerSalonPrincipal();
 	}
 	
-	public static void creerUtilisateurs() {
+	public static void testgetAll() throws SQLException {
+
+		DaoUtilisateurSql dao = new DaoUtilisateurSql();
+		Io.print("test");
+		Io.print(dao.getAll(db));
+		Io.print("test");
+	}
+	
+	public static void testCreerUtilisateurs() {
 		Utilisateur max = new Utilisateur("max", "password");
 		Utilisateur marie = new Utilisateur("marie", "password");
 		Utilisateur francois = new Utilisateur("francois", "password");
@@ -37,12 +45,10 @@ public class Main {
 		dao.creer(max, db);
 		dao.creer(marie, db);
 		dao.creer(francois, db);
-		Io.print("test");
-		Io.print(dao.getAll());
-		Io.print("test");
+
 	}
 	
-	public static void creerSalonPrincipal() {
+	public static void testCreerSalonPrincipal() {
 		
 		DaoSalonSql daoSalon = new DaoSalonSql();
 		Salon salonPrincipal = new Salon("principal", "", 1);

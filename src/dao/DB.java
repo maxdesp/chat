@@ -82,6 +82,7 @@ public class DB {
 	 */
 	public ResultSet getFromTable(String column, String table) throws SQLException {
 		String query = "SELECT " + column + " FROM " + table;
+		Io.print(query);
 		return this.executeQuery(query);
  	}
 	
