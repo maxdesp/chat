@@ -34,7 +34,7 @@ public class Main {
 		Io.print(usersSet);
 		FenetrePrincipale fenetre = new FenetrePrincipale();
 		DaoUtilisateurSql dao = new DaoUtilisateurSql();
-		Io.print(dao.getByIdentifiants(db, "'marie'", "'password'"));
+		Io.print(dao.getByIdentifiants(db, "marie", "password"));
 		// testCreerUtilisateurs();
 		 testgetAll();
 		// testCreerSalonPrincipal();

@@ -10,29 +10,6 @@ import model.Utilisateur;
 
 public class DaoUtilisateurSql implements IDAO_Utilisateur{
 
-//	
-//	/*public ArrayList<Produit> getAll(){
-//		try{
-//			Statement myStatement = this.connection.createStatement();
-//			ResultSet myResult = myStatement.executeQuery("SELECT * FROM produit");	
-//			ArrayList<Produit> produits = new ArrayList<Produit>();
-//			while (myResult.next()){
-//				Produit myProduit = new Produit();
-//				myProduit.setId(myResult.getInt("PRO_ID"));
-//				myProduit.setDesignation(myResult.getString("PRO_DESIGNATION"));
-//				myProduit.setPrixVente(myResult.getDouble("PRO_PRIX_DE_VENTE"));
-//		
-//				produits.add(myProduit);
-//			}
-//			return produits;
-//		}
-//		catch (SQLException e){
-//			System.out.println("echec de connection");
-//			return null;
-//		}
-//	}
-//	*/
-
 	@Override
 	public ArrayList<Utilisateur> getAll() {
 		// TODO Auto-generated method stub
@@ -55,7 +32,7 @@ public class DaoUtilisateurSql implements IDAO_Utilisateur{
 	}
 	
 	public Utilisateur getByIdentifiants(DB db, String UTI_PSEUDO, String UTI_MDP) throws SQLException{
-		ResultSet usersSet = db.executeQuery("SELECT UTI_ID FROM chat.utilisateur WHERE UTI_PSEUDO="+UTI_PSEUDO+" AND UTI_MDP="+UTI_MDP+"");
+		ResultSet usersSet = db.executeQuery("SELECT UTI_ID FROM chat.utilisateur WHERE UTI_PSEUDO='"+UTI_PSEUDO+"' AND UTI_MDP='"+UTI_MDP+"'");
 		while (usersSet.next()){
 			Utilisateur user = charger(usersSet.getInt("UTI_ID"), db);
 			return user ;
