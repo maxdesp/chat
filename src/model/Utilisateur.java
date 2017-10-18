@@ -5,6 +5,8 @@ import java.sql.SQLException;
 import dao.DB;
 import dao.DaoSalonSql;
 import dao.DaoUtilisateurSql;
+import main.Io;
+import main.Main;
 
 public class Utilisateur {
 	
@@ -41,6 +43,7 @@ public class Utilisateur {
 	 * @return the uTI_ID
 	 */
 	public int getUTI_ID() {
+		
 		return UTI_ID;
 	}
 
@@ -114,10 +117,10 @@ public class Utilisateur {
 	}
 	
 	public boolean seConnecter(DB db) throws SQLException{
-		String query = "UPDATE `chat`.`utilisateur` SET `UTI_CONNECTED`='1' WHERE `UTI_ID`='"+ this.UTI_ID+ "'";
-
+		String query = "UPDATE chat.utilisateur SET UTI_CONNECTED=1 WHERE UTI_ID="+ this.getUTI_ID()+ "";
+		Io.print(query);
 		db.execute(query);
-		return false;
+		return true;
 	}
 	
 	public boolean seDeconnecter(DB db) throws SQLException{
@@ -159,6 +162,11 @@ public class Utilisateur {
 	public boolean supprimerSalon(){
 		return false;
 		
+	}
+	public Utilisateur existe() throws SQLException {
+		// TODO Auto-generated method stub
+		DaoUtilisateurSql dao = new DaoUtilisateurSql();
+		return dao.getByIdentifiants(Main.getDb(), this.UTI_PSEUDO, this.UTI_MDP);
 	}
 
 }

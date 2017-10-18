@@ -76,16 +76,20 @@ public class FenetreConnexionUtilisateur extends JFrame implements ActionListene
 		// TODO Auto-generated method stub
 		if(arg0.getSource()==this.boutonConnexion){
 			try {
-				Utilisateur utilisateur =new Utilisateur(
-						this.textFieldPseudo.getText(),
-						this.textFieldMDP.getText()
-						);
-				if(utilisateur.seConnecter(Main.getDb())){
+				Utilisateur utilisateurTmp =new Utilisateur();
+				utilisateurTmp.setUTI_PSEUDO(this.textFieldPseudo.getText());
+				utilisateurTmp.setUTI_MDP(this.textFieldMDP.getText());
+				Utilisateur utilisateur = utilisateurTmp.existe();
+				
+				if(utilisateur != null){
 					f.setUtilisateur(utilisateur);
+					f.getUtilisateur().seConnecter(Main.getDb());
 				}
+				else{
 				
 				JOptionPane messageErreur = new JOptionPane();
-				messageErreur.showMessageDialog(null, "Profil inexistant");
+				messageErreur.showMessageDialog(null, "Profil inexistant ou mauvais mot de passe");
+				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

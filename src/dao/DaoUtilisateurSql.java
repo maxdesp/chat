@@ -30,7 +30,14 @@ public class DaoUtilisateurSql implements IDAO_Utilisateur{
 		}
 		return users;
 	}
-	
+	/**
+	 * RETOURNE UN UTILISATEUR (depuis la BDD) SI NOM/PASSWORD existe
+	 * @param db
+	 * @param UTI_PSEUDO
+	 * @param UTI_MDP
+	 * @return
+	 * @throws SQLException
+	 */
 	public Utilisateur getByIdentifiants(DB db, String UTI_PSEUDO, String UTI_MDP) throws SQLException{
 		ResultSet usersSet = db.executeQuery("SELECT UTI_ID FROM chat.utilisateur WHERE UTI_PSEUDO='"+UTI_PSEUDO+"' AND UTI_MDP='"+UTI_MDP+"'");
 		while (usersSet.next()){
