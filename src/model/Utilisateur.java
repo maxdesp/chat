@@ -2,15 +2,28 @@ package model;
 
 public class Utilisateur {
 	
+	public String getUTI_MDP() {
+		return UTI_MDP;
+	}
+	public void setUTI_MDP(String uTI_MDP) {
+		UTI_MDP = uTI_MDP;
+	}
+
 	protected int UTI_ID;
 	protected String UTI_PSEUDO;
+	protected String UTI_MDP;
 	protected String UTI_AVATAR;
+
 	protected boolean UTI_CONNECTED = false;
 	
 	public Utilisateur(){
 		
 	}
-
+	public Utilisateur(String UTI_PSEUDO, String UTI_MDP){
+		this.UTI_PSEUDO = UTI_PSEUDO;
+		this.UTI_MDP = UTI_MDP;
+		this.UTI_AVATAR = "http://www.larousse.fr/encyclopedie/data/images/1006415-Poney.jpg";
+	}
 	/**
 	 * @return the uTI_ID
 	 */
