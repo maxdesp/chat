@@ -285,7 +285,8 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 		for(Message m : listeMessages){
 			uti = new DaoUtilisateurSql().charger(m.getMES_UTI_ID(), Main.getDb());
 			this.listeMessages.add(uti.getUTI_PSEUDO()+" a écrit :");
-			this.listeMessages.add(m.getMES_MESSAGE());
+			this.listeMessages.add("	"+m.getMES_MESSAGE());
+			this.listeMessages.add("\r");
 		}
 		return true;
 	}
