@@ -298,7 +298,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 	}
 	
 	private boolean envoyerMessage(){
-		Message message = new Message();
+		Message message = new Message(this.utilisateur.getUTI_ID(),this.message.getText(), this.salon.getSAL_ID());
 		return false;
 	}
 	
