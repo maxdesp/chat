@@ -4,6 +4,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import gui.FenetrePrincipale;
+import gui.spam;
+import model.Message;
 import model.Salon;
 import model.Utilisateur;
 import dao.DB;
@@ -37,8 +39,18 @@ public class Main {
 		Io.print(dao.getByIdentifiants(db, "marie", "eiram"));
 		Io.print("FINAL");
 		
+		DaoMessageSql daoMess = new DaoMessageSql();
+		Message mess = new Message();
+		mess.setMES_MESSAGE("spam from fmm");
+		mess.setMES_UTI_ID(12);
+		mess.setMES_SAL_ID(1);
+		daoMess.creer(mess, db);
+		
+//		spam spam = new spam();
+//		spam.spamJeremie();
+
 		// testCreerUtilisateurs();
-		testgetAll();
+		// testgetAll();
 		// testCreerSalonPrincipal();
 	}
 	

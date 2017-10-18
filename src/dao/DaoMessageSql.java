@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import main.Io;
 import model.Message;
 import model.Salon;
 import model.Utilisateur;
@@ -14,7 +15,10 @@ public class DaoMessageSql implements IDAO_Message {
 	@Override
 	public void creer(Message o, DB db) {
 		try{
-			String query = String.format("INSERT INTO message VALUES (NULL,%s,'%s','%s',%s);", o.getMES_UTI_ID(),o.getMES_MESSAGE(),o.getMES_DATE(),o.getMES_SAL_ID());
+
+
+			String query = String.format("INSERT INTO chat.message (MES_USER_ID, MES_MESSAGE, MES_SALON_ID) VALUES (%d, '%s', %d);", o.getMES_UTI_ID(),o.getMES_MESSAGE(),o.getMES_SAL_ID());
+			Io.print(query);
 			boolean myResult = db.execute(query);	
 			System.out.println("Ajout du message");
 			System.out.println(myResult);
@@ -43,6 +47,7 @@ public class DaoMessageSql implements IDAO_Message {
 	public boolean modifier(Integer id, String caractere_changement, String valeur,DB db) {
 		try{
 			String query = String.format("UPDATE message set %s = %s where `MES_ID` = %s;", caractere_changement,valeur,id);
+			Io.print(query);
 			boolean myResult = db.execute(query);	
 			System.out.println("Modification du messsage");
 			System.out.println(myResult);

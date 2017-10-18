@@ -90,7 +90,7 @@ public class DB {
 
 	
 	public ResultSet executeQuery(String query) throws SQLException {
-		//Io.print(query);
+		// Io.print(query);
 		return statement.executeQuery(query);
 		
 	}
