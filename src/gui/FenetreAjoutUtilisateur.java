@@ -7,6 +7,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -17,7 +19,7 @@ import javax.swing.JTextField;
 import model.Salon;
 import model.Utilisateur;
 
-public class FenetreAjoutUtilisateur  extends JFrame implements ActionListener, KeyListener {
+public class FenetreAjoutUtilisateur  extends JFrame implements ActionListener, KeyListener, MouseListener {
 	
 	private FenetrePrincipale f;
 	
@@ -48,11 +50,14 @@ public class FenetreAjoutUtilisateur  extends JFrame implements ActionListener, 
 		this.pannelPrincipal.add(pannelCentral,BorderLayout.CENTER);
 		this.pannelCentral.setLayout(layoutCentral);
 		this.pannelCentral.add(labelPseudo);
+		this.textFieldPseudo.addMouseListener(this);
 		this.pannelCentral.add(textFieldPseudo);
 		this.pannelCentral.add(labelMDP);
 		this.pannelCentral.add(textFieldMDP);
+		this.textFieldMDP.addMouseListener(this);
 		this.pannelCentral.add(labelAvatar);
 		this.pannelCentral.add(textFieldAvatar);
+		this.textFieldAvatar.addMouseListener(this);
 		this.pannelCentral.add(boutonCreation);
 		this.pannelCentral.add(boutonAnnuler);
 		this.boutonAnnuler.addActionListener(this);
@@ -102,6 +107,64 @@ public class FenetreAjoutUtilisateur  extends JFrame implements ActionListener, 
 	public void keyTyped(KeyEvent arg0) {
 		// TODO Auto-generated method stub
 		
+	}
+
+
+
+
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		if(e.getSource()==this.textFieldPseudo){
+			this.textFieldPseudo.setText("");
+		}
+		if(e.getSource()==this.textFieldMDP){
+			this.textFieldMDP.setText("");
+		}
+		if(e.getSource()==this.textFieldAvatar){
+			this.textFieldAvatar.setText("");
+		}
 	}
 
 }
