@@ -157,10 +157,12 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 			this.connecteEnTantQue2.setText(this.utilisateur.getUTI_PSEUDO());
 		}
 		catch(NullPointerException e){
+			this.menuDeconnexionUtilisateur.setEnabled(true);
+			this.menuConnexionUtilisateur.setEnabled(false);
+		}
+		if(this.utilisateur!=null){
 			
 		}
-		this.menuDeconnexionUtilisateur.setEnabled(true);
-		this.menuConnexionUtilisateur.setEnabled(false);
 		return false;
 	}
 	
