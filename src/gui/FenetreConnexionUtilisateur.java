@@ -9,14 +9,18 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.sql.SQLException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import dao.DaoUtilisateurSql;
+import main.Main;
 import model.Utilisateur;
 
 public class FenetreConnexionUtilisateur extends JFrame implements ActionListener, KeyListener, MouseListener {
@@ -71,9 +75,18 @@ public class FenetreConnexionUtilisateur extends JFrame implements ActionListene
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
 		if(arg0.getSource()==this.boutonConnexion){
-			Utilisateur utilisateur = new Utilisateur(
-					this.textFieldPseudo.getText(),
-					this.textFieldMDP.getText());
+			try {
+				Utilisateur utilisateur =new DaoUtilisateurSql().getByIdentifiants(
+						Main.getDb(),
+						this.textFieldPseudo.getText(),
+						this.textFieldMDP.getText()
+						);
+				f.setUtilisateur(utilisateur);
+				this.dispose();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				new JOptionPane("Profil inexistant");
+			}
 		}
 		if(arg0.getSource()==this.boutonAnnuler){
 			super.dispose();
