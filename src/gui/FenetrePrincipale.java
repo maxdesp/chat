@@ -187,6 +187,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 	}
 	
 	private boolean creationUtilisateur(){
+		FenetreAjoutUtilisateur fCreationUtilisateur = new FenetreAjoutUtilisateur(this);
 		return false;
 	}
 	
