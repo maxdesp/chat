@@ -92,4 +92,9 @@ public class Message {
 		return "Message [MES_ID=" + MES_ID + ", MES_UTI_ID=" + MES_UTI_ID + ", MES_MESSAGE=" + MES_MESSAGE
 				+ ", MES_DATE=" + MES_DATE + ", MES_SAL_ID=" + MES_SAL_ID + "]";
 	}
+
+	public void setMES_DATE(String string) {
+		// TODO Auto-generated method stub
+		
+	}
 }

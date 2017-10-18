@@ -148,7 +148,5 @@ public class Utilisateur {
 		return false;
 		
 	}
-	
-	
 
 }

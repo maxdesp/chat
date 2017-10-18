@@ -13,6 +13,14 @@ import dao.DaoUtilisateurSql;
 
 public class Main {
 	
+	public static DB getDb() {
+		return db;
+	}
+
+	public static void setDb(DB db) {
+		Main.db = db;
+	}
+
 	static DB db;
 	public static void main(String[] args) throws SQLException, ClassNotFoundException {
 		// TODO Auto-generated method stub

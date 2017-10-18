@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import model.Message;
 import model.Salon;
+import model.Utilisateur;
 
 public class DaoMessageSql implements IDAO_Message {
 
@@ -79,7 +80,17 @@ public class DaoMessageSql implements IDAO_Message {
 
 	@Override
 	public ArrayList<Message> getAll(DB db) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Message> messages = new ArrayList<Message>();
+		ResultSet usersSet = db.executeQuery("SELECT * FROM chat.message");
+		while (usersSet.next()){
+			Message mess = new Message();
+			mess.setMES_ID(usersSet.getInt("MES_ID"));
+			mess.setMES_UTI_ID(usersSet.getId("MES_USER_ID"));
+			mess.setMES_MESSAGE(usersSet.getString("MES_MESSAGE"));
+			mess.setMES_DATE(usersSet.getDate("MES_DATE"));
+			mess.setMES_SAL_ID(usersSet.getInt("MES_SALON_ID"));
+			messages.add(mess);
+		}
+		return messages;
 	}
 }
