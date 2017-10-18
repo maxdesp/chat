@@ -16,6 +16,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -28,7 +29,10 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import dao.DaoMessageSql;
 import dao.DaoUtilisateurSql;
+import main.Main;
+import model.Message;
 import model.Salon;
 import model.Utilisateur;
 
@@ -169,6 +173,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 		this.setVisible(true);
 	}
 	
+	
 	private boolean rafraichirListeUtilisateursConnectes(){
 		
 		DaoUtilisateurSql daoUtilisateur = new DaoUtilisateurSql();
@@ -260,8 +265,16 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 		return false;
 	}
 	
-	private boolean rafraichirZoneMessages(){
-		return false;
+	private boolean rafraichirZoneMessages() throws SQLException{
+		ArrayList<Message> listeMessages = new DaoMessageSql().getParSalon(Main.getDb(), salon);
+		Utilisateur uti = null;
+		
+		for(Message m : listeMessages){
+			uti = new DaoUtilisateurSql().charger(m.getMES_UTI_ID(), Main.getDb());
+			this.listeMessages.add(uti.getUTI_PSEUDO()+" a écrit :");
+			this.listeMessages.add(m.getMES_MESSAGE());
+		}
+		return true;
 	}
 	
 	private boolean envoyerMessage(){
