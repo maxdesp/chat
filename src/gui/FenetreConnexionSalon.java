@@ -92,6 +92,7 @@ public class FenetreConnexionSalon extends JFrame implements ActionListener, Key
 					f.setConnecteAuSalon2(lab);
 					f.reinitialiseListeMessagesPostes();
 					//f.getSalon().seConnecter(Main.getDb());
+					//
 				}
 				else{
 				JOptionPane messageErreur = new JOptionPane();
