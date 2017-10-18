@@ -91,6 +91,8 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 
 	public void reinitialiseListeMessagesPostes() throws SQLException {
 	
+		
+		
 		Salon salon = new DaoSalonSql().charger(this.salon.getSAL_ID(), Main.getDb());
 		Io.print("reinitialisation de la liste de messages avec salon= "+ salon.getSAL_NAME());
 		this.listeMessagesPostes.clear();
