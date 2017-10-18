@@ -29,7 +29,7 @@ public class Main {
 		// testCreerSalonPrincipal();
 	}
 	
-	public static void testgetAll() {
+	public static void testgetAll() throws SQLException {
 
 		DaoUtilisateurSql dao = new DaoUtilisateurSql();
 		Io.print("test");
