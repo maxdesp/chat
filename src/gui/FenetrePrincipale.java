@@ -215,6 +215,12 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 	}
 	
 	private boolean creationSalon(){
+		FenetreAjoutSalon fCreationSalon = new FenetreAjoutSalon(this);
+		this.menuDeconnexionSalon.setEnabled(true);
+		this.menuConnexionSalon.setEnabled(false);
+		if(this.salon.getSAL_NAME()!=null){
+			this.connecteAuSalon2.setText(this.salon.getSAL_NAME());
+		}
 		return false;
 	}
 	
