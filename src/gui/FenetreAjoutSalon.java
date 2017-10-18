@@ -25,17 +25,15 @@ public class FenetreAjoutSalon  extends JFrame implements ActionListener, KeyLis
 	private GridLayout layoutCentral = new GridLayout(4,2);
 	private Container pannelPrincipal = this.getContentPane();
 	private JPanel pannelCentral = new JPanel();
-	private JLabel labelCreation = new JLabel("Création du profil");
-	private JLabel labelPseudo = new JLabel("Pseudo");
-	private JTextField textFieldPseudo = new JTextField("Ecrivez votre pseudo");
+	private JLabel labelCreation = new JLabel("Création du salon");
+	private JLabel labelName = new JLabel("Nom du salon");
+	private JTextField textFieldName = new JTextField("Ecrivez le nom du salon");
 	private JLabel labelMDP = new JLabel("Mot de passe");
 	private JTextField textFieldMDP = new JTextField("Ecrivez votre mot de passe");
-	private JLabel labelAvatar = new JLabel("Avatar");
-	private JTextField textFieldAvatar = new JTextField("URL de votre avatar");
 	private JButton boutonCreation = new JButton("Création");
 	private JButton boutonAnnuler = new JButton("Annuler");
 	
-	public FenetreAjoutUtilisateur(FenetrePrincipale f){
+	public FenetreAjoutSalon(FenetrePrincipale f){
 		this.f = f;
 		
 		this.setTitle("Fenetre de création");
@@ -47,12 +45,10 @@ public class FenetreAjoutSalon  extends JFrame implements ActionListener, KeyLis
 		
 		this.pannelPrincipal.add(pannelCentral,BorderLayout.CENTER);
 		this.pannelCentral.setLayout(layoutCentral);
-		this.pannelCentral.add(labelPseudo);
-		this.pannelCentral.add(textFieldPseudo);
+		this.pannelCentral.add(labelName);
+		this.pannelCentral.add(textFieldName);
 		this.pannelCentral.add(labelMDP);
 		this.pannelCentral.add(textFieldMDP);
-		this.pannelCentral.add(labelAvatar);
-		this.pannelCentral.add(textFieldAvatar);
 		this.pannelCentral.add(boutonCreation);
 		this.pannelCentral.add(boutonAnnuler);
 		this.boutonAnnuler.addActionListener(this);

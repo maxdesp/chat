@@ -25,15 +25,15 @@ public class FenetreConnexionSalon extends JFrame implements ActionListener, Key
 	private GridLayout layoutCentral = new GridLayout(3,2);
 	private Container pannelPrincipal = this.getContentPane();
 	private JPanel pannelCentral = new JPanel();
-	private JLabel labelConnexion = new JLabel("Connexion au profil");
-	private JLabel labelPseudo = new JLabel("Pseudo");
-	private JTextField textFieldPseudo = new JTextField("Ecrivez votre pseudo");
+	private JLabel labelConnexion = new JLabel("Connexion au salon");
+	private JLabel labelName = new JLabel("Nom du salon");
+	private JTextField textFieldName = new JTextField("Ecrivez le nom du salon");
 	private JLabel labelMDP = new JLabel("Mot de passe");
 	private JTextField textFieldMDP = new JTextField("Ecrivez votre mot de passe");
 	private JButton boutonConnexion = new JButton("Connexion");
 	private JButton boutonAnnuler = new JButton("Annuler");
 	
-	public FenetreConnexionUtilisateur(FenetrePrincipale f){
+	public FenetreConnexionSalon(FenetrePrincipale f){
 		this.f = f;
 		
 		this.setTitle("Fenetre de connexion");
@@ -45,9 +45,9 @@ public class FenetreConnexionSalon extends JFrame implements ActionListener, Key
 		
 		this.pannelPrincipal.add(pannelCentral,BorderLayout.CENTER);
 		this.pannelCentral.setLayout(layoutCentral);
-		this.pannelCentral.add(labelPseudo);
-		this.pannelCentral.add(textFieldPseudo);
-		this.textFieldPseudo.addMouseListener(this);
+		this.pannelCentral.add(labelName);
+		this.pannelCentral.add(textFieldName);
+		this.textFieldName.addMouseListener(this);
 		this.pannelCentral.add(labelMDP);
 		this.pannelCentral.add(textFieldMDP);
 		this.textFieldMDP.addMouseListener(this);
@@ -152,8 +152,8 @@ public class FenetreConnexionSalon extends JFrame implements ActionListener, Key
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		if(arg0.getSource()==this.textFieldPseudo){
-			this.textFieldPseudo.setText("");
+		if(arg0.getSource()==this.textFieldName){
+			this.textFieldName.setText("");
 		}if(arg0.getSource()==this.textFieldMDP){
 			this.textFieldMDP.setText("");
 		}
