@@ -26,13 +26,10 @@ public class DB {
 		Class.forName("com.mysql.jdbc.Driver");
 		this.setDbName("chat");
 		this.setDbUser("root");
-<<<<<<< HEAD
 		// this.dbUser = "chatuser";
 		// this.dbIP = "192.68.1.78";
-=======
 		// this.dbUser ="chatuser";
 		this.dbIP = "192.68.1.78";
->>>>>>> d3ad1721fcf379ae6098cc7fc7962c95699aabaa
 		//this.dbIP = "localhost";
 		this.connection = makeConnection(this.getDbName(), this.getDbUser(), "localhost");
 		this.statement = this.connection.createStatement();
