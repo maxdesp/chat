@@ -32,7 +32,8 @@ public class Main {
 		db.getConnection();
 		FenetrePrincipale fenetre = new FenetrePrincipale();
 		Io.print("FINAL");
-		
+	
+		//bot();
 	}
 	public static void bot() throws SQLException {
 		spam spam = new spam();

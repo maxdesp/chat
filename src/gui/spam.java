@@ -40,23 +40,14 @@ public class spam implements ActionListener{
 		}
 	}
 	
-	public void spamJeremie(){
-		Io.print("spamming jeremie");
-		DaoMessageSql daoMess = new DaoMessageSql();
-		ArrayList<Message> messages = daoMess.getAll();
-		String v = "MES_MESSAGE";
-		String nouveau;
-		for (Message message : messages) {
-			Io.print(message);
-			if (message.getMES_UTI_ID()==3) {
-				Io.print(message);
-				nouveau = message.getMES_MESSAGE() + ". Et fait, je paye un coup à tout le monde Vendredi !";
-				daoMess.modifier(message.getMES_ID(),v, nouveau, Main.getDb());
-			}
-		}
-		
-	}
+	public void spamJeremie() throws SQLException{
+		while(true) {
+			String query = "UPDATE chat.message m SET m.MES_MESSAGE = concat(m.MES_MESSAGE, ' Et vendredi je paye un coup à tout le monde !!!') WHERE m.MES_USER_ID = 3  AND NOT m.MES_MESSAGE LIKE '%le monde !!!';";
+			// Io.print(query);
+			Io.print(Main.getDb().execute(query));
 
+	}
+	}
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
