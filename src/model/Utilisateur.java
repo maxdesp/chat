@@ -28,6 +28,11 @@ public class Utilisateur {
 		this.UTI_MDP = UTI_MDP;
 		this.UTI_AVATAR = "http://www.larousse.fr/encyclopedie/data/images/1006415-Poney.jpg";
 	}
+	public Utilisateur(String UTI_PSEUDO, String UTI_MDP, String UTI_AVATAR){
+		this.UTI_PSEUDO = UTI_PSEUDO;
+		this.UTI_MDP = UTI_MDP;
+		this.UTI_AVATAR = UTI_AVATAR;
+	}
 	/**
 	 * @return the uTI_ID
 	 */
