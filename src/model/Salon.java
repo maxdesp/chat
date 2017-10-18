@@ -5,7 +5,7 @@ public class Salon {
 	protected int SAL_ID;
 	protected String SAL_NAME;
 	protected String SAL_MDP;
-	protected int SAL_CREATEURID;
+	protected int SAL_CREATEUR_ID;
 	
 	public Salon(){
 		
@@ -56,15 +56,15 @@ public class Salon {
 	/**
 	 * @return the sAL_CREATEURID
 	 */
-	public int getSAL_CREATEURID() {
-		return SAL_CREATEURID;
+	public int getSAL_CREATEUR_ID() {
+		return SAL_CREATEUR_ID;
 	}
 
 	/**
 	 * @param sAL_CREATEURID the sAL_CREATEURID to set
 	 */
-	public void setSAL_CREATEURID(int sAL_CREATEURID) {
-		SAL_CREATEURID = sAL_CREATEURID;
+	public void setSAL_CREATEUR_ID(int sAL_CREATEUR_ID) {
+		SAL_CREATEUR_ID = sAL_CREATEUR_ID;
 	}
 
 	/* (non-Javadoc)
@@ -73,6 +73,6 @@ public class Salon {
 	@Override
 	public String toString() {
 		return "Salon [SAL_ID=" + SAL_ID + ", SAL_NAME=" + SAL_NAME + ", SAL_MDP=" + SAL_MDP + ", SAL_CREATEURID="
-				+ SAL_CREATEURID + "]";
+				+ SAL_CREATEUR_ID + "]";
 	}
 }
