@@ -93,4 +93,13 @@ public class DaoSalonSql implements IDAO_Salon{
 			}
 			return salons;
 	}
+	public Salon getByIdentifiants(DB db, String SAL_NAME, String SAL_MDP) throws SQLException{
+		ResultSet usersSet = db.executeQuery("SELECT SAL_ID FROM chat.salon WHERE SAL_NAME='"+SAL_NAME+"' AND SAL_MDP='"+SAL_MDP+"'");
+		while (usersSet.next()){
+			Salon salon = charger(usersSet.getInt("SAL_ID"), db);
+			return salon ;
+		}
+		return null;
+		
+	}
 }

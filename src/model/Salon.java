@@ -1,6 +1,12 @@
 package model;
 
+import java.sql.SQLException;
+
+import dao.DB;
 import dao.DaoSalonSql;
+import dao.DaoUtilisateurSql;
+import main.Io;
+import main.Main;
 
 public class Salon {
 
@@ -83,4 +89,10 @@ public class Salon {
 		return "Salon [SAL_ID=" + SAL_ID + ", SAL_NAME=" + SAL_NAME + ", SAL_MDP=" + SAL_MDP + ", SAL_CREATEURID="
 				+ SAL_CREATEUR_ID + "]";
 	}
+	public Salon existe() throws SQLException {
+		// TODO Auto-generated method stub
+		DaoSalonSql dao = new DaoSalonSql();
+		return dao.getByIdentifiants(Main.getDb(), this.SAL_NAME, this.SAL_MDP);
+	}
+	
 }

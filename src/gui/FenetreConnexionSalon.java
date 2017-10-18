@@ -76,15 +76,27 @@ public class FenetreConnexionSalon extends JFrame implements ActionListener, Key
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
 		if(arg0.getSource()==this.boutonConnexion){
-			try{
-				Salon salon = new DaoSalonSql().charger(1,Main.getDb());
-				//Main.getDb(),
-				//this.textFieldName.getText(),
-				//this.textFieldMDP.getText());
-				f.setSalon(salon);
-			super.dispose();
+			try {
+				Salon salonTmp =new Salon();
+				salonTmp.setSAL_NAME(this.textFieldName.getText());
+				salonTmp.setSAL_MDP(this.textFieldMDP.getText());
+				Salon salon = salonTmp.existe();
+				
+				if(salon != null){
+					f.setSalon(salon);
+					//f.getSalon().seConnecter(Main.getDb());
+				}
+				else{
+				
+				JOptionPane messageErreur = new JOptionPane();
+				messageErreur.showMessageDialog(null, "Salon inexistant ou mauvais mot de passe");
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 			finally{
+				f.connexionUtilisateur();
 				this.dispose();
 			}
 		}
