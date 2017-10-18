@@ -76,7 +76,7 @@ public class FenetreAjoutUtilisateur  extends JFrame implements ActionListener, 
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
 		if(arg0.getSource()==this.boutonAnnuler){
-			super.dispose();
+			this.dispose();
 		}
 		if(arg0.getSource()==this.boutonCreation){
 			String pseudo = this.textFieldPseudo.getText();
@@ -96,6 +96,7 @@ public class FenetreAjoutUtilisateur  extends JFrame implements ActionListener, 
 				}
 				
 			}
+			this.dispose();
 		}
 	}
 
