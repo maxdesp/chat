@@ -10,18 +10,18 @@ import model.Salon;
 public class DaoMessageSql implements IDAO_Message {
 
 	@Override
-	public void creer(Message o) {
+	public void creer(Message o, DB db) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public boolean supprimer(Message o) {
+	public boolean supprimer(Message o,DB db) {
 		// TODO Auto-generated method stub		
 		try{	
 			String query = String.format("delete from message where `MES_ID`=%s;", o.getMES_ID());
-			boolean myResult = DB.execute("SET SQL_SAFE_UPDATES = 0");	
-			myResult = DB.execute(query);	
+			boolean myResult = db.execute("SET SQL_SAFE_UPDATES = 0");	
+			myResult = db.execute(query);	
 			System.out.println("Suppression du produit");
 		}
 		catch (SQLException e){
@@ -31,15 +31,15 @@ public class DaoMessageSql implements IDAO_Message {
 	}
 
 	@Override
-	public boolean modifier(Integer id, String caractere_changement, String valeur) {
+	public boolean modifier(Integer id, String caractere_changement, String valeur,DB db) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public Message charger(Integer id) {
+	public Message charger(Integer id,DB db) {
 		try{			
-			ResultSet myResult = DB.executeQuery("SELECT * FROM message where MES_ID="+id);	
+			ResultSet myResult = db.executeQuery("SELECT * FROM message where MES_ID="+id);	
 			Message myMessage = new Message();
 			while (myResult.next()){
 				myMessage.setMES_UTI_ID(myResult.getInt("MES_USER_ID"));
@@ -52,8 +52,5 @@ public class DaoMessageSql implements IDAO_Message {
 			System.out.println("echec de connection");
 			return null;
 		}
-		return null;
 	}
-
-
 }

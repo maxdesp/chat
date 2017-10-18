@@ -9,18 +9,18 @@ import model.Utilisateur;
 public class DaoUtilisateurSql implements IDAO_Utilisateur{
 
 	@Override
-	public void creer(Utilisateur o) {
+	public void creer(Utilisateur o,DB db) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public boolean supprimer(Utilisateur o) {
+	public boolean supprimer(Utilisateur o,DB db) {
 		// TODO Auto-generated method stub		
 		try{	
 			String query = String.format("delete from utilisateur where `UTI_ID`=%s;", o.getUTI_ID());
-			boolean myResult = DB.execute("SET SQL_SAFE_UPDATES = 0");	
-			myResult = DB.execute(query);	
+			boolean myResult = db.execute("SET SQL_SAFE_UPDATES = 0");	
+			myResult = db.execute(query);	
 			System.out.println("Suppression du produit");
 		}
 		catch (SQLException e){
@@ -30,15 +30,15 @@ public class DaoUtilisateurSql implements IDAO_Utilisateur{
 	}
 
 	@Override
-	public boolean modifier(Integer id, String caractere_changement, String valeur) {
+	public boolean modifier(Integer id, String caractere_changement, String valeur,DB db) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 	
 	@Override
-	public Utilisateur charger(Integer id) {
+	public Utilisateur charger(Integer id,DB db) {
 		try{			
-			ResultSet myResult = DB.executeQuery("SELECT * FROM utilisateur where UTI_ID="+id);	
+			ResultSet myResult = db.executeQuery("SELECT * FROM utilisateur where UTI_ID="+id);	
 			Utilisateur myUtilisateur = new Utilisateur();
 			while (myResult.next()){
 				myUtilisateur.setUTI_PSEUDO(myResult.getString("UTI_PSEUDO"));
@@ -51,8 +51,6 @@ public class DaoUtilisateurSql implements IDAO_Utilisateur{
 			System.out.println("echec de connection");
 			return null;
 		}
-		
-		return null;
 	}
 
 }
