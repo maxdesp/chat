@@ -121,6 +121,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 		this.menuBar.add(menuSalon);
 		this.menuSalon.add(menuConnexionSalon);
 		this.menuConnexionSalon.addActionListener(this);
+		this.menuConnexionSalon.enable(false);
 		this.menuSalon.add(menuAjoutSalon);
 		this.menuAjoutSalon.enable(false);
 		this.menuAjoutSalon.addActionListener(this);
@@ -183,7 +184,8 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 		this.menuConnexionUtilisateur.setEnabled(false);
 		if(this.utilisateur.getUTI_PSEUDO()!=null){
 			this.connecteEnTantQue2.setText(this.utilisateur.getUTI_PSEUDO());
-			menuAjoutSalon.setEnabled(true);
+			menuAjoutSalon.enable(true);
+			menuConnexionSalon.enable(true);
 		}
 		return false;
 	}
