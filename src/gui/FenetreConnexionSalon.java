@@ -62,6 +62,7 @@ public class FenetreConnexionSalon extends JFrame implements ActionListener, Key
 		this.pannelCentral.add(boutonConnexion);
 		this.pannelCentral.add(boutonAnnuler);
 		this.boutonAnnuler.addActionListener(this);
+		this.boutonConnexion.addActionListener(this);
 		
 		
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
