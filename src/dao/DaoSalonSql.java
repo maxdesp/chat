@@ -19,6 +19,7 @@ public class DaoSalonSql implements IDAO_Salon{
 		}
 		catch (SQLException e){
 			System.out.println("echec de l'ajout");
+			//
 		}
 	}
 
