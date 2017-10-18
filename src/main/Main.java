@@ -3,6 +3,7 @@ package main;
 import java.sql.SQLException;
 
 import gui.FenetrePrincipale;
+import model.Utilisateur;
 import dao.DB;
 
 public class Main {
@@ -14,6 +15,8 @@ public class Main {
 		
 		FenetrePrincipale fenetre = new FenetrePrincipale();
 		// test
+		Utilisateur user = new Utilisateur();
+		
 	}
 
 }
