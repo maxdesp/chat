@@ -10,6 +10,12 @@ public class Salon {
 	public Salon(){
 		
 	}
+	
+	public Salon(String SAL_NAME, String SAL_MDP, int SAL_CREATEUR_ID){
+		this.SAL_NAME = SAL_NAME;
+		this.SAL_MDP = SAL_MDP;
+		this.SAL_CREATEUR_ID = SAL_CREATEUR_ID;
+	}
 
 	/**
 	 * @return the sAL_ID
