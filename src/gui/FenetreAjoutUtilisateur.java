@@ -16,6 +16,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import dao.DaoUtilisateurSql;
+import main.Main;
 import model.Salon;
 import model.Utilisateur;
 
@@ -89,6 +91,7 @@ public class FenetreAjoutUtilisateur  extends JFrame implements ActionListener, 
 				if(avatar!=""){
 					Utilisateur utilisateur = new Utilisateur(pseudo, mdp, avatar);
 					f.setUtilisateur(utilisateur);
+					DaoUtilisateurSql dao = new DaoUtilisateurSql().creer(utilisateur, Main.getDb());
 				}
 				else{
 					Utilisateur utilisateur = new Utilisateur(pseudo, mdp);
