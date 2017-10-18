@@ -21,13 +21,7 @@ public class Main {
 		ResultSet test = db.executeQuery("SELECT * FROM chat.utilisateur");
 		Io.print(test);
 		FenetrePrincipale fenetre = new FenetrePrincipale();
-;
-		
-		DaoSalonSql daoSalon = new DaoSalonSql();
-		Salon salonPrincipal = new Salon();
-		// daoSalon.creer(o, db);
-		// max.creerSalon("principal", "", 1);
-	
+
 		
 		// creer utilisateurs
 		creerUtilisateurs();
@@ -44,8 +38,14 @@ public class Main {
 		dao.creer(marie, db);
 		dao.creer(francois, db);
 	}
+	
 	public static void creerSalonPrincipal() {
 		
+		DaoSalonSql daoSalon = new DaoSalonSql();
+		Salon salonPrincipal = new Salon("principal", "", 1);
+		daoSalon.creer(salonPrincipal, db);
+		// max.creerSalon("principal", "", 1);
+	
 	}
 
 }
