@@ -100,6 +100,7 @@ public class FenetreAjoutUtilisateur  extends JFrame implements ActionListener, 
 				}
 				
 			}
+			f.creationUtilisateur();
 			this.dispose();
 		}
 	}

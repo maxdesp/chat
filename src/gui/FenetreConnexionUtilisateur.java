@@ -94,6 +94,7 @@ public class FenetreConnexionUtilisateur extends JFrame implements ActionListene
 				messageErreur.showMessageDialog(null, "Profil inexistant");
 			}
 			finally{
+				f.connexionUtilisateur();
 				this.dispose();
 			}
 		}

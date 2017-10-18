@@ -180,8 +180,8 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 	}
 	
 	
-	private boolean connexionUtilisateur(){
-		FenetreConnexionUtilisateur fConnexionUtilisateur = new FenetreConnexionUtilisateur(this);
+	public boolean connexionUtilisateur(){
+		
 		if(this.utilisateur!=null){
 			this.menuDeconnexionUtilisateur.setEnabled(true);
 			this.menuConnexionUtilisateur.setEnabled(false);
@@ -195,7 +195,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 	}
 	
 	public boolean creationUtilisateur(){
-		FenetreAjoutUtilisateur fCreationUtilisateur = new FenetreAjoutUtilisateur(this);
+		
 		if(this.utilisateur!=null){
 			this.menuDeconnexionUtilisateur.setEnabled(true);
 			this.menuConnexionUtilisateur.setEnabled(false);
@@ -296,10 +296,11 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 			this.envoyerMessage();
 		}
 		if(arg0.getSource()==this.menuConnexionUtilisateur){
-			this.connexionUtilisateur();
+			FenetreConnexionUtilisateur fConnexionUtilisateur = new FenetreConnexionUtilisateur(this);
 		}
 		if(arg0.getSource()==this.menuAjoutUtilisateur){
-			this.creationUtilisateur();
+			FenetreAjoutUtilisateur fCreationUtilisateur = new FenetreAjoutUtilisateur(this);
+			
 		}
 		if(arg0.getSource()==this.menuModifierUtilisateur){
 			this.modificationUtilisateur();
