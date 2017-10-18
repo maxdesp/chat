@@ -23,6 +23,8 @@ public class Main {
 		Utilisateur francois = new Utilisateur("francois", "password");
 		DaoUtilisateurSql dao = new DaoUtilisateurSql();
 		dao.creer(max, db);
+		dao.creer(marie, db);
+		dao.creer(francois, db);
 	}
 
 }
