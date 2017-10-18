@@ -16,34 +16,72 @@ import main.Io;
 
 public class DB {
 	
+	public String getDbIP() {
+		return dbIP;
+	}
+
+
+
+
+	public void setDbIP(String dbIP) {
+		this.dbIP = dbIP;
+	}
+
+
+
+
+	public String getDbPass() {
+		return dbPass;
+	}
+
+
+
+
+	public void setDbPass(String dbPass) {
+		this.dbPass = dbPass;
+	}
 	private Connection connection;
 	private static Statement statement;
 	private String dbName;
 	private String dbUser;
 	private String dbIP;
+	private String dbPass;
+	private boolean local;
 	
 	public DB() throws SQLException, ClassNotFoundException{
 		Class.forName("com.mysql.jdbc.Driver");
 		this.setDbName("chat");
-		this.setDbUser("root");
-		// this.dbUser = "chatuser";
-		// this.dbIP = "192.68.1.78";
-		// this.dbUser ="chatuser";
-		this.dbIP = "192.68.1.78";
-		//this.dbIP = "localhost";
-		this.connection = makeConnection(this.getDbName(), this.getDbUser(), "localhost");
-		this.statement = this.connection.createStatement();
+		
+		this.local = true; // CHANGER POUR SE CONNECTER EN LOCAL OU EN DISTANT
+		// distant
+		this.setDbUser("chatuser");
+		this.setDbPass("password");
+		this.setDbIP("192.168.1.78");
+		
+		if (this.local) {
+			this.setDbUser("root");
+			this.setDbPass("");
+			this.setDbIP("localhost");
+		}
+		// local
+
+
+		this.connection = makeConnection(this.getDbName(),  this.dbUser, this.getDbIP(), this.dbPass);
+		DB.statement = this.connection.createStatement();
 	}
 	
+
 
 
 	// useless if main exists ?
-	public static void main() {
+	public static void main() throws SQLException{
 	}
 	
-	public Connection makeConnection(String base, String user, String dbIP) throws SQLException, ClassNotFoundException {
+	public Connection makeConnection(String base, String user, String dbIP, String dbPass) throws SQLException, ClassNotFoundException {
 		Class.forName("com.mysql.jdbc.Driver");
-		Connection con = DriverManager.getConnection("jdbc:mysql://"+ dbIP + ":3306/"+ base +"?useSSL=false", user, "");
+		
+		Io.print("jdbc:mysql://"+ dbIP + ":3306/"+base);
+		Connection con = DriverManager.getConnection("jdbc:mysql://"+ dbIP + ":3306/"+ base +"?useSSL=false", user, dbPass);
 		
 		return con;
 		
