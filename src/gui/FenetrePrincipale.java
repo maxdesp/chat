@@ -87,6 +87,14 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 	private Utilisateur utilisateur = new Utilisateur();
 	private Salon salon = new Salon();
 	private ArrayList<Message> listeMessagesPostes = new ArrayList<Message>();
+	public ArrayList<Message> getListeMessagesPostes() {
+		return listeMessagesPostes;
+	}
+
+	public void setListeMessagesPostes(ArrayList<Message> listeMessagesPostes) {
+		this.listeMessagesPostes = listeMessagesPostes;
+	}
+
 	private Timer t = new Timer(100, this);
 	private Timer t2 = new Timer(1000, this);
 	
