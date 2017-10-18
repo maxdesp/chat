@@ -78,10 +78,10 @@ public class Utilisateur {
 	}
 
 	/**
-	 * @param uTI_CONNECTED the uTI_CONNECTED to set
+	 * @param b the uTI_CONNECTED to set
 	 */
-	public void setUTI_CONNECTED(boolean uTI_CONNECTED) {
-		UTI_CONNECTED = uTI_CONNECTED;
+	public void setUTI_CONNECTED(boolean b) {
+		UTI_CONNECTED = b;
 	}
 
 	/* (non-Javadoc)
