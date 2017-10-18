@@ -104,8 +104,6 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 		this.t.start();
 		this.t2.start();
 		
-		
-		
 	}
 	
 	private void init() throws SQLException{

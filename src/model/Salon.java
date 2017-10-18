@@ -91,7 +91,6 @@ public class Salon {
 	}
 	public Salon existe() throws SQLException {
 		// TODO Auto-generated method stub
-		Io.print("test");
 		DaoSalonSql dao = new DaoSalonSql();
 		return dao.getByIdentifiants(Main.getDb(), this.SAL_NAME, this.SAL_MDP);
 	}
