@@ -17,6 +17,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import model.Utilisateur;
+
 public class FenetreConnexionUtilisateur extends JFrame implements ActionListener, KeyListener, MouseListener {
 
 	private FenetrePrincipale f;
@@ -52,6 +54,7 @@ public class FenetreConnexionUtilisateur extends JFrame implements ActionListene
 		this.pannelCentral.add(textFieldMDP);
 		this.textFieldMDP.addMouseListener(this);
 		this.pannelCentral.add(boutonConnexion);
+		this.boutonConnexion.addActionListener(this);
 		this.pannelCentral.add(boutonAnnuler);
 		this.boutonAnnuler.addActionListener(this);
 		
@@ -68,7 +71,9 @@ public class FenetreConnexionUtilisateur extends JFrame implements ActionListene
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
 		if(arg0.getSource()==this.boutonConnexion){
-			
+			Utilisateur utilisateur = new Utilisateur(
+					this.textFieldPseudo.getText(),
+					this.textFieldMDP.getText());
 		}
 		if(arg0.getSource()==this.boutonAnnuler){
 			super.dispose();

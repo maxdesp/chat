@@ -59,6 +59,7 @@ public class FenetreAjoutUtilisateur  extends JFrame implements ActionListener, 
 		this.pannelCentral.add(textFieldAvatar);
 		this.textFieldAvatar.addMouseListener(this);
 		this.pannelCentral.add(boutonCreation);
+		this.boutonCreation.addActionListener(this);
 		this.pannelCentral.add(boutonAnnuler);
 		this.boutonAnnuler.addActionListener(this);
 		
@@ -76,6 +77,25 @@ public class FenetreAjoutUtilisateur  extends JFrame implements ActionListener, 
 		// TODO Auto-generated method stub
 		if(arg0.getSource()==this.boutonAnnuler){
 			super.dispose();
+		}
+		if(arg0.getSource()==this.boutonCreation){
+			String pseudo = this.textFieldPseudo.getText();
+			pseudo.replaceAll("'", "\'");
+			String mdp = this.textFieldMDP.getText();
+			mdp.replaceAll("'", "\'");
+			String avatar = this.textFieldAvatar.getText();
+			avatar.replaceAll("'", "\'");
+			if((pseudo!="") && (mdp!="")){
+				if(avatar!=""){
+					Utilisateur utilisateur = new Utilisateur(pseudo, mdp, avatar);
+					f.setUtilisateur(utilisateur);
+				}
+				else{
+					Utilisateur utilisateur = new Utilisateur(pseudo, mdp);
+					f.setUtilisateur(utilisateur);
+				}
+				
+			}
 		}
 	}
 
