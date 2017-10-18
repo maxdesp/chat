@@ -179,6 +179,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 	
 	private boolean rafraichirListeUtilisateursConnectes() throws SQLException{
 		
+		this.listeUtilisateursConnectes2.removeAll();
 		DaoUtilisateurSql daoUtilisateur = new DaoUtilisateurSql();
 		ArrayList<Utilisateur> users =daoUtilisateur.getAll(Main.getDb());
 		for(Utilisateur user: users){
