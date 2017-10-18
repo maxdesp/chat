@@ -91,11 +91,12 @@ public class FenetreAjoutUtilisateur  extends JFrame implements ActionListener, 
 				if(avatar!=""&&avatar!="URL de votre avatar"){
 					Utilisateur utilisateur = new Utilisateur(pseudo, mdp, avatar);
 					f.setUtilisateur(utilisateur);
-					DaoUtilisateurSql dao = new DaoUtilisateurSql().creer(utilisateur, Main.getDb());
+					new DaoUtilisateurSql().creer(utilisateur, Main.getDb());
 				}
 				else{
 					Utilisateur utilisateur = new Utilisateur(pseudo, mdp);
 					f.setUtilisateur(utilisateur);
+					new DaoUtilisateurSql().creer(utilisateur, Main.getDb());
 				}
 				
 			}
