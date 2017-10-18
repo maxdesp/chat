@@ -23,6 +23,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 public class FenetrePrincipale extends JFrame implements ActionListener, KeyListener, MouseListener{
 	
@@ -54,7 +55,9 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 	private JPanel cell11 = new JPanel();
 	private JPanel cell12 = new JPanel();
 	private JLabel connecteEnTantQue = new JLabel("Connecté en tant que :");
-	private JLabel connecteEnTantQue2 = new JLabel("- non connecté -");
+	private JLabel connecteEnTantQue2 = new JLabel("- non connecté -",SwingConstants.CENTER);
+	private JLabel connecteAuSalon = new JLabel("Connecté au salon :");
+	private JLabel connecteAuSalon2 = new JLabel("- non connecté -",SwingConstants.CENTER);
 	private List listeUtilisateurs = new List();
 	private List listeMessages = new List();
 	private JTextField message = new JTextField("Ecrivez votre message.",50);
@@ -80,21 +83,35 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 		this.menuBar.add(menuFichier);
 		this.menuBar.add(menuUtilisateur);
 		this.menuUtilisateur.add(menuConnexionUtilisateur);
+		this.menuConnexionUtilisateur.addActionListener(this);
 		this.menuUtilisateur.add(menuAjoutUtilisateur);
+		this.menuAjoutUtilisateur.addActionListener(this);
 		this.menuUtilisateur.add(menuModifierUtilisateur);
+		this.menuModifierUtilisateur.addActionListener(this);
 		this.menuUtilisateur.add(menuSupprimerUtilisateur);
+		this.menuSupprimerUtilisateur.addActionListener(this);
 		this.menuUtilisateur.add(menuDeconnexionUtilisateur);
+		this.menuDeconnexionUtilisateur.addActionListener(this);
+		this.menuDeconnexionUtilisateur.setEnabled(false);
 		this.menuBar.add(menuSalon);
 		this.menuSalon.add(menuConnexionSalon);
+		this.menuConnexionSalon.addActionListener(this);
 		this.menuSalon.add(menuAjoutSalon);
+		this.menuAjoutSalon.addActionListener(this);
 		this.menuSalon.add(menuModifierSalon);
+		this.menuModifierSalon.addActionListener(this);
 		this.menuSalon.add(menuSupprimerSalon);
+		this.menuSupprimerSalon.addActionListener(this);
 		this.menuSalon.add(menuDeconnexionSalon);
+		this.menuDeconnexionSalon.addActionListener(this);
+		this.menuDeconnexionSalon.setEnabled(false);
 		
 		this.contentPane.add(pannelUtilisateurs,BorderLayout.WEST);
 		this.pannelUtilisateurs.setLayout(layoutUtilisateurs);
 		this.pannelUtilisateurs.add(connecteEnTantQue);
 		this.pannelUtilisateurs.add(connecteEnTantQue2);
+		this.pannelUtilisateurs.add(connecteAuSalon);
+		this.pannelUtilisateurs.add(connecteAuSalon2);
 		this.pannelUtilisateurs.add(listeUtilisateurs);
 		
 		this.contentPane.add(pannelMessages, BorderLayout.CENTER);
@@ -121,6 +138,60 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 		
 		this.setVisible(true);
 	}
+	
+	private boolean rafraichirListeUtilisateursConnectes(){
+		return false;
+	}
+	
+	
+	private boolean connexionUtilisateur(){
+		this.menuDeconnexionUtilisateur.setEnabled(true);
+		this.menuConnexionUtilisateur.setEnabled(false);
+		return false;
+	}
+	
+	private boolean creationUtilisateur(){
+		return false;
+	}
+	
+	private boolean modificationUtilisateur(){
+		return false;
+	}
+	
+	private boolean suppressionUtilisateur(){
+		return false;
+	}
+	
+	private boolean deconnexionUtilisateur(){
+		this.menuDeconnexionUtilisateur.setEnabled(false);
+		this.menuConnexionUtilisateur.setEnabled(true);
+		return false;
+	}
+	
+	private boolean connexionSalon(){
+		this.menuDeconnexionSalon.setEnabled(true);
+		this.menuConnexionSalon.setEnabled(false);
+		return false;
+	}
+	
+	private boolean creationSalon(){
+		return false;
+	}
+	
+	private boolean modificationSalon(){
+		return false;
+	}
+	
+	private boolean suppressionSalon(){
+		return false;
+	}
+	
+	private boolean deconnexionSalon(){
+		this.menuDeconnexionSalon.setEnabled(false);
+		this.menuConnexionSalon.setEnabled(true);
+		return false;
+	}
+	
 
 	@Override
 	public void keyPressed(KeyEvent arg0) {
@@ -147,6 +218,36 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 		// TODO Auto-generated method stub
 		if(arg0.getSource()==this.envoyer){
 			
+		}
+		if(arg0.getSource()==this.menuConnexionUtilisateur){
+			this.connexionUtilisateur();
+		}
+		if(arg0.getSource()==this.menuAjoutUtilisateur){
+			this.creationUtilisateur();
+		}
+		if(arg0.getSource()==this.menuModifierUtilisateur){
+			this.modificationUtilisateur();
+		}
+		if(arg0.getSource()==this.menuSupprimerUtilisateur){
+			this.suppressionUtilisateur();
+		}
+		if(arg0.getSource()==this.menuDeconnexionUtilisateur){
+			this.deconnexionUtilisateur();
+		}
+		if(arg0.getSource()==this.menuConnexionSalon){
+			this.connexionSalon();
+		}
+		if(arg0.getSource()==this.menuAjoutSalon){
+			this.creationSalon();
+		}
+		if(arg0.getSource()==this.menuModifierSalon){
+			this.modificationSalon();
+		}
+		if(arg0.getSource()==this.menuSupprimerSalon){
+			this.suppressionSalon();
+		}
+		if(arg0.getSource()==this.menuDeconnexionSalon){
+			this.deconnexionSalon();
 		}
 	}
 
