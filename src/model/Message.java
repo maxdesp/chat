@@ -13,6 +13,11 @@ public class Message {
 	public Message(){
 		
 	}
+	public Message(int MES_UTI_ID, String MES_MESSAGE, int MES_SAL_ID){
+		this.MES_UTI_ID = MES_UTI_ID;
+		this.MES_MESSAGE = MES_MESSAGE;
+		this.MES_SAL_ID = MES_SAL_ID;
+	}
 
 	/**
 	 * @return the mES_ID
