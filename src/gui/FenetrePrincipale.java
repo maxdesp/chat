@@ -354,7 +354,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 			this.deconnexionSalon();
 		}
 		if(arg0.getSource()==this.envoyer){
-			
+			this.envoyerMessage();
 		}
 		if(arg0.getSource()==this.t){
 			try {
