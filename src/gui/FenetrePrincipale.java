@@ -168,7 +168,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 		
 		
 		
-		
+		this.rafraichirListeUtilisateursConnectes();
 		
 		this.setVisible(true);
 	}
