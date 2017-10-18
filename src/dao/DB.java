@@ -17,7 +17,7 @@ import main.Io;
 public class DB {
 	
 	private Connection connection;
-	private Statement statement;
+	private static Statement statement;
 	private String dbName;
 	private String dbUser;
 	private String dbIP;
@@ -72,7 +72,7 @@ public class DB {
 	}
 	public boolean execute(String query) throws SQLException {
 		Io.print(query);
-		return this.statement.execute(query);
+		return statement.execute(query);
 		
 	}
 	
