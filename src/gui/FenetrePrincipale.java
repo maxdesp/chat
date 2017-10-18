@@ -17,6 +17,7 @@ import java.awt.event.MouseListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -31,7 +32,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 	private int widthUtilisateurs = 200;
 	private BorderLayout layoutPrincipal = new BorderLayout();
 	private BorderLayout layoutMessages = new BorderLayout();
-	private FlowLayout layoutUtilisateurs = new FlowLayout();
+	private GridLayout layoutUtilisateurs = new GridLayout(10,1);
 	private JMenuBar menuBar = new JMenuBar();
 	private JMenu menuFichier = new JMenu("Fichier");
 	private JMenu menuUtilisateur = new JMenu("Utilisateur");
@@ -52,6 +53,8 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 	private JPanel pannelEnvoiMessage = new JPanel();
 	private JPanel cell11 = new JPanel();
 	private JPanel cell12 = new JPanel();
+	private JLabel connecteEnTantQue = new JLabel("Connecté en tant que :");
+	private JLabel connecteEnTantQue2 = new JLabel("- non connecté -");
 	private List listeUtilisateurs = new List();
 	private List listeMessages = new List();
 	private JTextField message = new JTextField("Ecrivez votre message.",50);
@@ -90,6 +93,8 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 		
 		this.contentPane.add(pannelUtilisateurs,BorderLayout.WEST);
 		this.pannelUtilisateurs.setLayout(layoutUtilisateurs);
+		this.pannelUtilisateurs.add(connecteEnTantQue);
+		this.pannelUtilisateurs.add(connecteEnTantQue2);
 		this.pannelUtilisateurs.add(listeUtilisateurs);
 		
 		this.contentPane.add(pannelMessages, BorderLayout.CENTER);
