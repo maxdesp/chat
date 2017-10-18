@@ -1,20 +1,26 @@
 package gui;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
+
+import javax.swing.Timer;
 
 import dao.DaoMessageSql;
 import main.Io;
 import main.Main;
 import model.Message;
 
-public class spam {
+public class spam implements ActionListener{
 
+	private Timer t = new Timer(100, this);
 	
 	public void cleanBot() throws SQLException {
 		Io.print("cleaning empty");
 		DaoMessageSql daoMess = new DaoMessageSql();
 		ArrayList<Message> messages = daoMess.getAll(Main.getDb());
+		while (true) {
 		int i = 0;
 		for (Message message : messages) {
 		
@@ -24,9 +30,14 @@ public class spam {
 			}
 			
 		}
-		String m = i + " messages vides supprimés";
-		Io.print(i + " messages vides supprimés");
-		daoMess.creer(new Message(23,m  ,1), Main.getDb());
+		
+		// Io.print(i + " messages vides supprimés");
+		if (i>0) {
+			String m = i + " messages vides supprimés";
+			daoMess.creer(new Message(23,m  ,1), Main.getDb());
+		}
+		
+		}
 	}
 	
 	public void spamJeremie(){
@@ -43,6 +54,12 @@ public class spam {
 				daoMess.modifier(message.getMES_ID(),v, nouveau, Main.getDb());
 			}
 		}
+		
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		// TODO Auto-generated method stub
 		
 	}
 }
