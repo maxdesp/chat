@@ -108,7 +108,7 @@ public class Utilisateur {
 		return false;
 	}
 	
-	public boolean ecrireMessage(){
+	public boolean envoyerMessage(){
 		return false;
 		
 	}
