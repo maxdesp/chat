@@ -158,6 +158,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 		int c3 = 25*new Random().nextInt(11);
 		this.menuBar.setBackground(new Color(c1,c2,c3));
 		this.menuBar.add(menuFichier);
+		this.menuBar.setForeground(new Color(255-c1,255-c2,255-c3));
 		this.menuBar.add(menuUtilisateur);
 		this.menuUtilisateur.add(menuConnexionUtilisateur);
 		this.menuConnexionUtilisateur.addActionListener(this);
@@ -287,13 +288,14 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 		return false;
 	}
 	
-	public boolean deconnexionUtilisateur(){
+	public boolean deconnexionUtilisateur() throws SQLException{
 		this.menuDeconnexionUtilisateur.setEnabled(false);
 		this.menuConnexionUtilisateur.setEnabled(true);
 		this.menuAjoutSalon.setEnabled(false);
 		this.menuConnexionSalon.setEnabled(false);
 		this.menuSupprimerSalon.setEnabled(false);
 		this.menuModifierSalon.setEnabled(false);
+		this.utilisateur.seDeconnecter(Main.getDb());
 		return false;
 	}
 	
@@ -422,7 +424,12 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 			this.suppressionUtilisateur();
 		}
 		if(arg0.getSource()==this.menuDeconnexionUtilisateur){
-			this.deconnexionUtilisateur();
+			try {
+				this.deconnexionUtilisateur();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		if(arg0.getSource()==this.menuConnexionSalon){
 			this.connexionSalon();

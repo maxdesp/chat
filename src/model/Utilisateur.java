@@ -124,7 +124,7 @@ public class Utilisateur {
 	}
 	
 	public boolean seDeconnecter(DB db) throws SQLException{
-		String query = "UPDATE `chat`.`utilisateur` SET `UTI_CONNECTED`='0' WHERE `UTI_ID`='"+ this.UTI_ID+ "'";
+		String query = "UPDATE chat.utilisateur SET UTI_CONNECTED=0 WHERE UTI_ID='"+ this.UTI_ID+ "'";
 
 		db.execute(query);
 		return false;
