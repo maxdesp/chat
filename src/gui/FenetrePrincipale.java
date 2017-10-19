@@ -158,9 +158,10 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 		int c3 = 25*new Random().nextInt(11);
 		this.menuBar.setBackground(new Color(c1,c2,c3));
 		this.menuBar.add(menuFichier);
-		this.menuBar.setForeground(new Color(255-c1,255-c2,255-c3));
+		this.menuFichier.setForeground(new Color(255-c1,255-c2,255-c3));
 		this.menuBar.add(menuUtilisateur);
 		this.menuUtilisateur.add(menuConnexionUtilisateur);
+		this.menuUtilisateur.setForeground(new Color(255-c1,255-c2,255-c3));
 		this.menuConnexionUtilisateur.addActionListener(this);
 		this.menuUtilisateur.add(menuAjoutUtilisateur);
 		this.menuAjoutUtilisateur.addActionListener(this);
@@ -172,6 +173,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 		this.menuDeconnexionUtilisateur.addActionListener(this);
 		this.menuDeconnexionUtilisateur.setEnabled(false);
 		this.menuBar.add(menuSalon);
+		this.menuSalon.setForeground(new Color(255-c1,255-c2,255-c3));
 		this.menuSalon.add(menuConnexionSalon);
 		this.menuConnexionSalon.addActionListener(this);
 		this.menuConnexionSalon.setEnabled(false);
