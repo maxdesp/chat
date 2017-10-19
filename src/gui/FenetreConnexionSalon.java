@@ -82,8 +82,12 @@ public class FenetreConnexionSalon extends JFrame implements ActionListener, Key
 				Salon salonTmp =new Salon();
 				salonTmp.setSAL_NAME(this.textFieldName.getText());
 				salonTmp.setSAL_MDP(this.textFieldMDP.getText());
+				Io.print(this.textFieldName.getText());
+				Io.print(this.textFieldMDP.getText());
 				Salon salon = salonTmp.existe();
-				Io.print(salon);
+				// Io.print(salon);
+				Io.print("DEBUG 1:");
+				Io.print(salon.getSAL_ID());
 				if(salon != null){
 					f.setSalon(salon);
 					JLabel lab= new JLabel();

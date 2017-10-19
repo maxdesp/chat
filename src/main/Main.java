@@ -37,7 +37,7 @@ public class Main {
 		
 	
 	
-		//bot();
+		// bot();
 	}
 	public static void bot() throws SQLException {
 		spam spam = new spam();

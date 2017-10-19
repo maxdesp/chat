@@ -84,7 +84,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 	private JLabel listeUtilisateursConnectes = new JLabel("Utilisateurs connectés");
 	private List listeUtilisateursConnectes2 = new List();
 	private List listeMessages = new List();
-	private JTextField message = new JTextField("Ecrivez votre message.",50);
+	private JTextField message = new JTextField("",50);
 	private JButton envoyer = new JButton("Envoyer");
 	private Utilisateur utilisateur = new Utilisateur();
 	private Salon salon = new Salon();
@@ -93,8 +93,6 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 
 	public void reinitialiseListeMessagesPostes() throws SQLException {
 	
-		
-		
 		Salon salon = new DaoSalonSql().charger(this.salon.getSAL_ID(), Main.getDb());
 		Io.print("reinitialisation de la liste de messages avec salon= "+ salon.getSAL_NAME());
 		this.listeMessagesPostes.clear();
@@ -336,7 +334,10 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 	private boolean rafraichirZoneMessages() throws SQLException{
 		Salon salon = new DaoSalonSql().charger(this.salon.getSAL_ID(), Main.getDb());//// ici
 		ArrayList<Message> listeMessages = new DaoMessageSql().getParSalon(Main.getDb(), salon);
-		Io.print(salon.getSAL_NAME());
+<<<<<<< HEAD
+		// Io.print(salon.getSAL_NAME());
+=======
+>>>>>>> 7abcb6a75452891dfee17c3246a9635dd8a0f6f5
 		Utilisateur uti = null;
 		
 		for(int i=(this.listeMessagesPostes.size()-1);i<listeMessages.size();i++){
