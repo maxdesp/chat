@@ -288,13 +288,14 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 		return false;
 	}
 	
-	public boolean deconnexionUtilisateur(){
+	public boolean deconnexionUtilisateur() throws SQLException{
 		this.menuDeconnexionUtilisateur.setEnabled(false);
 		this.menuConnexionUtilisateur.setEnabled(true);
 		this.menuAjoutSalon.setEnabled(false);
 		this.menuConnexionSalon.setEnabled(false);
 		this.menuSupprimerSalon.setEnabled(false);
 		this.menuModifierSalon.setEnabled(false);
+		this.utilisateur.seDeconnecter(Main.getDb());
 		return false;
 	}
 	
@@ -423,7 +424,12 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 			this.suppressionUtilisateur();
 		}
 		if(arg0.getSource()==this.menuDeconnexionUtilisateur){
-			this.deconnexionUtilisateur();
+			try {
+				this.deconnexionUtilisateur();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		if(arg0.getSource()==this.menuConnexionSalon){
 			this.connexionSalon();
@@ -443,7 +449,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 		if(arg0.getSource()==this.envoyer){
 			this.envoyerMessage();
 		}
-		if(arg0.getSource()==this.t){
+		if(arg0.getSource()==this.t2){
 			try {
 				boolean rafraichir=false;
 				for(Utilisateur c : usersConnected){
@@ -467,6 +473,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 						}
 					}
 				}
+				Io.print("rafraichir: "+rafraichir);
 				if(rafraichir){
 					this.rafraichirZoneMessages();
 				
