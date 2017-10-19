@@ -12,7 +12,7 @@ public class Salon {
 
 	protected int SAL_ID;
 	protected String SAL_NAME;
-	protected String SAL_MDP;
+	protected String SAL_MDP = "";
 	protected int SAL_CREATEUR_ID;
 	DaoSalonSql dao = new DaoSalonSql();
 	public Salon(){
