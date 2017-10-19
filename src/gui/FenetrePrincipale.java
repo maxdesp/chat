@@ -290,6 +290,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 	public boolean deconnexionUtilisateur() throws SQLException{
 		this.menuDeconnexionUtilisateur.setEnabled(false);
 		this.menuConnexionUtilisateur.setEnabled(true);
+		this.connecteEnTantQue2.setText("- non connecté -");
 		this.menuAjoutSalon.setEnabled(false);
 		this.menuConnexionSalon.setEnabled(false);
 		this.menuSupprimerSalon.setEnabled(false);
@@ -401,6 +402,41 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 	public void keyTyped(KeyEvent arg0) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public void checkUserConnection() {
+		try {
+			boolean rafraichir=false;
+			for(Utilisateur c : usersConnected){
+				if(!c.isUTI_CONNECTED()){
+					rafraichir=true;
+				}
+			}
+			boolean normal=true;
+			DaoUtilisateurSql daoUtilisateur = new DaoUtilisateurSql();
+			ArrayList<Utilisateur> users =daoUtilisateur.getAll(Main.getDb());
+			for(Utilisateur user: users){
+				if (user.isUTI_CONNECTED() == true) {
+					normal=false;
+					for(Utilisateur connect : usersConnected){
+						if(connect.getUTI_PSEUDO().equals(user.getUTI_PSEUDO())){
+							normal=true;
+						}
+					}
+					if(!normal){
+						rafraichir=true;
+					}
+				}
+			}
+			Io.print("rafraichir: "+rafraichir);
+			if(rafraichir){
+				this.rafraichirZoneMessages();
+			
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Override
