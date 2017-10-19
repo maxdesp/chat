@@ -163,6 +163,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 		this.menuFichier.add(this.menuQuitter);
 		this.menuQuitter.addActionListener(this);
 		this.menuBar.add(menuUtilisateur);
+		this.menuUtilisateur.setForeground(new Color(255-c1,255-c2,255-c3));
 		this.menuUtilisateur.add(menuConnexionUtilisateur);
 		this.menuConnexionUtilisateur.addActionListener(this);
 		this.menuUtilisateur.add(menuAjoutUtilisateur);
@@ -175,6 +176,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 		this.menuDeconnexionUtilisateur.addActionListener(this);
 		this.menuDeconnexionUtilisateur.setEnabled(false);
 		this.menuBar.add(menuSalon);
+		this.menuSalon.setForeground(new Color(255-c1,255-c2,255-c3));
 		this.menuSalon.add(menuConnexionSalon);
 		this.menuConnexionSalon.addActionListener(this);
 		this.menuConnexionSalon.setEnabled(false);
