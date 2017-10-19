@@ -456,6 +456,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 				}
 				if(rafraichir){
 					this.rafraichirZoneMessages();
+				
 				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
