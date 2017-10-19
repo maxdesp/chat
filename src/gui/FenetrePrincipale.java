@@ -153,7 +153,10 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.contentPane.setLayout(layoutPrincipal);
 		this.setJMenuBar(menuBar);
-		this.menuBar.setBackground(new Color(25*new Random().nextInt(11),25*new Random().nextInt(11),25*new Random().nextInt(11)));
+		int c1 = 25*new Random().nextInt(11);
+		int c2 = 25*new Random().nextInt(11);
+		int c3 = 25*new Random().nextInt(11);
+		this.menuBar.setBackground(new Color(c1,c2,c3));
 		this.menuBar.add(menuFichier);
 		this.menuBar.add(menuUtilisateur);
 		this.menuUtilisateur.add(menuConnexionUtilisateur);
@@ -219,7 +222,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 			this.listeMessagesPostes.add(m);
 			uti = new DaoUtilisateurSql().charger(m.getMES_UTI_ID(), Main.getDb());
 			this.listeMessages.add(uti.getUTI_PSEUDO()+" a écrit :");
-			this.listeMessages.add("	"+m.getMES_MESSAGE());
+			this.listeMessages.add("\t"+m.getMES_MESSAGE());
 			this.listeMessages.add("\r");
 		}
 		
@@ -445,7 +448,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 		if(arg0.getSource()==this.envoyer){
 			this.envoyerMessage();
 		}
-		if(arg0.getSource()==this.t){
+		if(arg0.getSource()==this.t2){
 			try {
 				boolean rafraichir=false;
 				for(Utilisateur c : usersConnected){
@@ -469,8 +472,10 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 						}
 					}
 				}
+				Io.print("rafraichir: "+rafraichir);
 				if(rafraichir){
 					this.rafraichirZoneMessages();
+				
 				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
