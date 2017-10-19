@@ -141,6 +141,9 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 	}
 	
 	private void init() throws SQLException{
+		this.addKeyListener(this);
+		this.contentPane.addKeyListener(this);
+		this.menuBar.addKeyListener(this);
 		this.salon = new Salon();
 		this.salon.setSAL_ID(1);
 		this.setTitle("The chat");
@@ -205,7 +208,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 		this.cell12.add(envoyer);
 		this.envoyer.setSize(100, 80);
 		this.envoyer.addActionListener(this);
-		
+		// this.contentPane.addc
 		Salon salon = new DaoSalonSql().charger(Integer.valueOf(1), Main.getDb());
 		ArrayList<Message> listeMessages = new DaoMessageSql().getParSalon(Main.getDb(), salon);
 		Utilisateur uti = null;
@@ -361,9 +364,23 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 	@Override
 	public void keyReleased(KeyEvent arg0) {
 		// TODO Auto-generated method stub
-		if(arg0.getKeyCode()==10){
+		int key = arg0.getKeyCode();
+		if(key==10){
 			
 		}
+		else if (key == 27 ) {
+			 this.exit();	
+			
+		}
+		else {
+			Io.print(arg0.getKeyCode());
+		}
+	}
+
+	private void exit() {
+		System.exit(0);
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
