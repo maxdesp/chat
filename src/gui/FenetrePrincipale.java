@@ -443,23 +443,32 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
+		// Io.print("bouton entendu");
 		if(arg0.getSource()==this.envoyer){
+			Io.print("ENVOYER !!!!");
 			this.envoyerMessage();
+			try {
+				this.rafraichirZoneMessages();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 		}
-		if(arg0.getSource()==this.menuConnexionUtilisateur){
+		else if (arg0.getSource()==this.menuConnexionUtilisateur){
 			FenetreConnexionUtilisateur fConnexionUtilisateur = new FenetreConnexionUtilisateur(this);
 		}
-		if(arg0.getSource()==this.menuAjoutUtilisateur){
+		else if (arg0.getSource()==this.menuAjoutUtilisateur){
 			FenetreAjoutUtilisateur fCreationUtilisateur = new FenetreAjoutUtilisateur(this);
 			
 		}
-		if(arg0.getSource()==this.menuModifierUtilisateur){
+		else if (arg0.getSource()==this.menuModifierUtilisateur){
 			this.modificationUtilisateur();
 		}
-		if(arg0.getSource()==this.menuSupprimerUtilisateur){
+		else if (arg0.getSource()==this.menuSupprimerUtilisateur){
 			this.suppressionUtilisateur();
 		}
-		if(arg0.getSource()==this.menuDeconnexionUtilisateur){
+		else if (arg0.getSource()==this.menuDeconnexionUtilisateur){
 			try {
 				this.deconnexionUtilisateur();
 			} catch (SQLException e) {
@@ -467,25 +476,22 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 				e.printStackTrace();
 			}
 		}
-		if(arg0.getSource()==this.menuConnexionSalon){
+		else if (arg0.getSource()==this.menuConnexionSalon){
 			this.connexionSalon();
 		}
-		if(arg0.getSource()==this.menuAjoutSalon){
+		else if(arg0.getSource()==this.menuAjoutSalon){
 			this.creationSalon();
 		}
-		if(arg0.getSource()==this.menuModifierSalon){
+		else if(arg0.getSource()==this.menuModifierSalon){
 			this.modificationSalon();
 		}
-		if(arg0.getSource()==this.menuSupprimerSalon){
+		else if(arg0.getSource()==this.menuSupprimerSalon){
 			this.suppressionSalon();
 		}
-		if(arg0.getSource()==this.menuDeconnexionSalon){
+		else if(arg0.getSource()==this.menuDeconnexionSalon){
 			this.deconnexionSalon();
 		}
-		if(arg0.getSource()==this.envoyer){
-			this.envoyerMessage();
-		}
-		if(arg0.getSource()==this.t2){
+		else if(arg0.getSource()==this.t2){
 			try {
 				boolean rafraichir=false;
 				for(Utilisateur c : usersConnected){
@@ -519,7 +525,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 				e.printStackTrace();
 			}
 		}
-		if(arg0.getSource()==this.t2){
+		else if(arg0.getSource()==this.t2){
 			try {
 				
 				this.rafraichirListeUtilisateursConnectes();
