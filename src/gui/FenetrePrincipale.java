@@ -383,7 +383,12 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 			
 		}
 		else if (key == 27 ) {
-			 this.exit();	
+			 try {
+				this.exit();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}	
 			
 		}
 		else {
@@ -391,14 +396,16 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 		}
 	}
 
-	private void exit() {
+	private void exit() throws SQLException {
 		int dialogButton = JOptionPane.YES_NO_OPTION;
 		int dialogResult = JOptionPane.showConfirmDialog(this, "Voulez vous quitter le programme ?", "Title on Box", dialogButton);
 		if(dialogResult == 0) {
-		  System.out.println("Quitter");
+		  System.out.println("Deconnecter et quitter");
+		  this.utilisateur.seDeconnecter(Main.getDb());
 		  System.exit(0);
+		 
 		} else {
-		  System.out.println("Revenir");
+		  System.out.println("l'utilisateur n'a pas confirmer l'exit");
 		} 
 		// System.exit(0);
 		// TODO Auto-generated method stub
