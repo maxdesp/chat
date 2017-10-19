@@ -439,7 +439,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 		if(arg0.getSource()==this.envoyer){
 			this.envoyerMessage();
 		}
-		if(arg0.getSource()==this.t){
+		if(arg0.getSource()==this.t2){
 			try {
 				boolean rafraichir=false;
 				for(Utilisateur c : usersConnected){
@@ -463,6 +463,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 						}
 					}
 				}
+				Io.print("rafraichir: "+rafraichir);
 				if(rafraichir){
 					this.rafraichirZoneMessages();
 				
