@@ -28,7 +28,7 @@ public class Salon {
 	/**
 	 * @return the sAL_ID
 	 */
-	public int getSAL_ID() {
+	public int getSAL_ID() {	
 		return SAL_ID;
 	}
 
