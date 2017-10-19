@@ -82,7 +82,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 	private JLabel listeUtilisateursConnectes = new JLabel("Utilisateurs connectés");
 	private List listeUtilisateursConnectes2 = new List();
 	private List listeMessages = new List();
-	private JTextField message = new JTextField("Ecrivez votre message.",50);
+	private JTextField message = new JTextField("",50);
 	private JButton envoyer = new JButton("Envoyer");
 	private Utilisateur utilisateur = new Utilisateur();
 	private Salon salon = new Salon();
@@ -331,7 +331,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 	private boolean rafraichirZoneMessages() throws SQLException{
 		Salon salon = new DaoSalonSql().charger(this.salon.getSAL_ID(), Main.getDb());//// ici
 		ArrayList<Message> listeMessages = new DaoMessageSql().getParSalon(Main.getDb(), salon);
-		Io.print(salon.getSAL_NAME());
+		// Io.print(salon.getSAL_NAME());
 		Utilisateur uti = null;
 		
 		for(int i=(this.listeMessagesPostes.size()-1);i<listeMessages.size();i++){
