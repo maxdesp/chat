@@ -74,6 +74,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 	private JLabel connecteEnTantQue2 = new JLabel("- non connecté -",SwingConstants.CENTER);
 	private JLabel connecteAuSalon = new JLabel("Connecté au salon :");
 	private JLabel connecteAuSalon2 = new JLabel("- non connecté -",SwingConstants.CENTER);
+	private ArrayList<Utilisateur> usersConnected= new ArrayList<Utilisateur>();
 	public JLabel getConnecteAuSalon2() {
 		return connecteAuSalon2;
 	}
@@ -236,7 +237,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 		for(Utilisateur user: users){
 			if (user.isUTI_CONNECTED() == true) {
 				this.listeUtilisateursConnectes2.add((user.getUTI_PSEUDO()));
-				
+				this.usersConnected.add(user);
 			}
 			else {
 				// Io.print(user.getUTI_PSEUDO() + " n'est pas connecté");
@@ -440,7 +441,31 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 		}
 		if(arg0.getSource()==this.t){
 			try {
-				this.rafraichirZoneMessages();
+				boolean rafraichir=false;
+				for(Utilisateur c : usersConnected){
+					if(!c.isUTI_CONNECTED()){
+						rafraichir=true;
+					}
+				}
+				boolean normal=true;
+				DaoUtilisateurSql daoUtilisateur = new DaoUtilisateurSql();
+				ArrayList<Utilisateur> users =daoUtilisateur.getAll(Main.getDb());
+				for(Utilisateur user: users){
+					if (user.isUTI_CONNECTED() == true) {
+						normal=false;
+						for(Utilisateur connect : usersConnected){
+							if(connect.getUTI_PSEUDO().equals(user.getUTI_PSEUDO())){
+								normal=true;
+							}
+						}
+						if(!normal){
+							rafraichir=true;
+						}
+					}
+				}
+				if(rafraichir){
+					this.rafraichirZoneMessages();
+				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
