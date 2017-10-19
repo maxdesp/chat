@@ -27,6 +27,7 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -142,9 +143,9 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 	}
 	
 	private void init() throws SQLException{
-		this.addKeyListener(this);
-		this.contentPane.addKeyListener(this);
-		this.menuBar.addKeyListener(this);
+		this.listeMessages.addKeyListener(this);
+		this.listeUtilisateursConnectes.addKeyListener(this);
+		this.listeUtilisateursConnectes2.addKeyListener(this);
 		this.salon = new Salon();
 		this.salon.setSAL_ID(1);
 		this.setTitle("The chat");
@@ -182,7 +183,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 		this.menuSalon.add(menuDeconnexionSalon);
 		this.menuDeconnexionSalon.addActionListener(this);
 		this.menuDeconnexionSalon.setEnabled(false);
-		
+
 		this.contentPane.add(pannelUtilisateurs,BorderLayout.WEST);
 		this.pannelUtilisateurs.setLayout(layoutUtilisateurs);
 		this.pannelUtilisateurs.add(connecteEnTantQue);
@@ -218,7 +219,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 			this.listeMessagesPostes.add(m);
 			uti = new DaoUtilisateurSql().charger(m.getMES_UTI_ID(), Main.getDb());
 			this.listeMessages.add(uti.getUTI_PSEUDO()+" a écrit :");
-			this.listeMessages.add("	"+m.getMES_MESSAGE());
+			this.listeMessages.add("\t"+m.getMES_MESSAGE());
 			this.listeMessages.add("\r");
 		}
 		
@@ -379,7 +380,15 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 	}
 
 	private void exit() {
-		System.exit(0);
+		int dialogButton = JOptionPane.YES_NO_OPTION;
+		int dialogResult = JOptionPane.showConfirmDialog(this, "Voulez vous quitter le programme ?", "Title on Box", dialogButton);
+		if(dialogResult == 0) {
+		  System.out.println("Quitter");
+		  System.exit(0);
+		} else {
+		  System.out.println("Revenir");
+		} 
+		// System.exit(0);
 		// TODO Auto-generated method stub
 		
 	}

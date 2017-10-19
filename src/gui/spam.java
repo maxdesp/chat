@@ -43,7 +43,7 @@ public class spam implements ActionListener{
 	public void spamJeremie() throws SQLException{
 		while(true) {
 			String query = "UPDATE chat.message m SET m.MES_MESSAGE = concat(m.MES_MESSAGE, ' Et vendredi je paye un coup à tout le monde !!!') WHERE m.MES_USER_ID = 3  AND NOT m.MES_MESSAGE LIKE '%le monde !!!';";
-			// Io.print(query);
+			Io.print(query);
 			Io.print(Main.getDb().execute(query));
 
 	}

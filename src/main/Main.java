@@ -32,12 +32,14 @@ public class Main {
 		// TODO Auto-generated method stub
 		db = new DB();
 		db.getConnection();
-		FenetrePrincipale fenetre = new FenetrePrincipale();
-		Io.print("FINAL");
 		
-	
-	
+		FenetrePrincipale fenetre = new FenetrePrincipale();
+		
+		Io.print("FINAL");
 		// bot();
+	
+	
+		
 	}
 	public static void bot() throws SQLException {
 		spam spam = new spam();
