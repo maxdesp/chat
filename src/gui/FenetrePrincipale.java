@@ -449,14 +449,11 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
-<<<<<<< HEAD
-		// Io.print("bouton entendu");
-=======
+
 		if(arg0.getSource()==this.menuQuitter){
 			System.exit(NORMAL);
 			
 		}
->>>>>>> 0421a6fd3e67b252bece71ee1e978c063a8a2f8c
 		if(arg0.getSource()==this.envoyer){
 			Io.print("ENVOYER !!!!");
 			this.envoyerMessage();
