@@ -475,7 +475,6 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 						}
 					}
 				}
-				Io.print("rafraichir: "+rafraichir);
 				if(rafraichir){
 					this.rafraichirZoneMessages();
 				
