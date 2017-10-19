@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -18,6 +19,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Random;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -91,8 +93,6 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 
 	public void reinitialiseListeMessagesPostes() throws SQLException {
 	
-		
-		
 		Salon salon = new DaoSalonSql().charger(this.salon.getSAL_ID(), Main.getDb());
 		Io.print("reinitialisation de la liste de messages avec salon= "+ salon.getSAL_NAME());
 		this.listeMessagesPostes.clear();
@@ -147,8 +147,9 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 		this.setSize(this.width, this.height);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.contentPane.setLayout(layoutPrincipal);
-		
+		this.contentPane.setBackground(new Color(255*(new Random().nextInt(2)),255*(new Random().nextInt(2)),255*(new Random().nextInt(2))));
 		this.setJMenuBar(menuBar);
+		this.menuBar.setBackground(new Color(255*new Random().nextInt(1),255*new Random().nextInt(1),255*new Random().nextInt(1)));
 		this.menuBar.add(menuFichier);
 		this.menuBar.add(menuUtilisateur);
 		this.menuUtilisateur.add(menuConnexionUtilisateur);
@@ -331,7 +332,10 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 	private boolean rafraichirZoneMessages() throws SQLException{
 		Salon salon = new DaoSalonSql().charger(this.salon.getSAL_ID(), Main.getDb());//// ici
 		ArrayList<Message> listeMessages = new DaoMessageSql().getParSalon(Main.getDb(), salon);
+<<<<<<< HEAD
 		// Io.print(salon.getSAL_NAME());
+=======
+>>>>>>> 7abcb6a75452891dfee17c3246a9635dd8a0f6f5
 		Utilisateur uti = null;
 		
 		for(int i=(this.listeMessagesPostes.size()-1);i<listeMessages.size();i++){
@@ -414,7 +418,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 		}
 		if(arg0.getSource()==this.t){
 			try {
-				this.rafraichirListeUtilisateursConnectes();
+				this.rafraichirZoneMessages();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -422,7 +426,8 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 		}
 		if(arg0.getSource()==this.t2){
 			try {
-				this.rafraichirZoneMessages();
+				
+				this.rafraichirListeUtilisateursConnectes();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
