@@ -153,15 +153,13 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.contentPane.setLayout(layoutPrincipal);
 		this.setJMenuBar(menuBar);
-		int c1 = new Random().nextInt(256);
-		int c2 = new Random().nextInt(256);
-		int c3 = new Random().nextInt(256);
+		int c1 = 25*new Random().nextInt(11);
+		int c2 = 25*new Random().nextInt(11);
+		int c3 = 25*new Random().nextInt(11);
 		this.menuBar.setBackground(new Color(c1,c2,c3));
 		this.menuBar.add(menuFichier);
-		this.menuFichier.setForeground(new Color(255-c1,255-c2,255-c3));
 		this.menuBar.add(menuUtilisateur);
 		this.menuUtilisateur.add(menuConnexionUtilisateur);
-		this.menuUtilisateur.setForeground(new Color(255-c1,255-c2,255-c3));
 		this.menuConnexionUtilisateur.addActionListener(this);
 		this.menuUtilisateur.add(menuAjoutUtilisateur);
 		this.menuAjoutUtilisateur.addActionListener(this);
@@ -173,7 +171,6 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 		this.menuDeconnexionUtilisateur.addActionListener(this);
 		this.menuDeconnexionUtilisateur.setEnabled(false);
 		this.menuBar.add(menuSalon);
-		this.menuSalon.setForeground(new Color(255-c1,255-c2,255-c3));
 		this.menuSalon.add(menuConnexionSalon);
 		this.menuConnexionSalon.addActionListener(this);
 		this.menuConnexionSalon.setEnabled(false);
@@ -360,6 +357,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 	
 	private boolean envoyerMessage(){
 		Message message = new Message((int)this.utilisateur.getUTI_ID(),this.message.getText(), (int)this.salon.getSAL_ID());
+		Io.print(message);
 		new DaoMessageSql().creer(message, Main.getDb());
 		return false;
 	}
@@ -511,6 +509,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 						}
 					}
 				}
+				Io.print("rafraichir: "+rafraichir);
 				if(rafraichir){
 					this.rafraichirZoneMessages();
 				
