@@ -153,9 +153,9 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.contentPane.setLayout(layoutPrincipal);
 		this.setJMenuBar(menuBar);
-		int c1 = 25*new Random().nextInt(11);
-		int c2 = 25*new Random().nextInt(11);
-		int c3 = 25*new Random().nextInt(11);
+		int c1 = new Random().nextInt(256);
+		int c2 = new Random().nextInt(256);
+		int c3 = new Random().nextInt(256);
 		this.menuBar.setBackground(new Color(c1,c2,c3));
 		this.menuBar.add(menuFichier);
 		this.menuFichier.setForeground(new Color(255-c1,255-c2,255-c3));
