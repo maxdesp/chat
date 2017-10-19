@@ -15,8 +15,6 @@ public class DaoMessageSql implements IDAO_Message {
 	@Override
 	public void creer(Message o, DB db) {
 		try{
-
-
 			String query = String.format("INSERT INTO chat.message (MES_USER_ID, MES_MESSAGE, MES_SALON_ID) VALUES (%d, '%s', %d);", o.getMES_UTI_ID(),o.getMES_MESSAGE(),o.getMES_SAL_ID());
 			Io.print(query);
 			boolean myResult = db.execute(query);	
