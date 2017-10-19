@@ -52,6 +52,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 	private GridLayout layoutUtilisateurs = new GridLayout(10,1);
 	private JMenuBar menuBar = new JMenuBar();
 	private JMenu menuFichier = new JMenu("Fichier");
+	private JMenuItem menuQuitter = new JMenuItem("Quitter");
 	private JMenu menuUtilisateur = new JMenu("Utilisateur");
 	private JMenuItem menuConnexionUtilisateur = new JMenuItem("Se connecter");
 	private JMenuItem menuAjoutUtilisateur = new JMenuItem("Créer un profil");
@@ -158,7 +159,11 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 		int c3 = 25*new Random().nextInt(11);
 		this.menuBar.setBackground(new Color(c1,c2,c3));
 		this.menuBar.add(menuFichier);
+		this.menuFichier.setForeground(new Color(255-c1,255-c2,255-c3));
+		this.menuFichier.add(this.menuQuitter);
+		this.menuQuitter.addActionListener(this);
 		this.menuBar.add(menuUtilisateur);
+		this.menuUtilisateur.setForeground(new Color(255-c1,255-c2,255-c3));
 		this.menuUtilisateur.add(menuConnexionUtilisateur);
 		this.menuConnexionUtilisateur.addActionListener(this);
 		this.menuUtilisateur.add(menuAjoutUtilisateur);
@@ -171,6 +176,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 		this.menuDeconnexionUtilisateur.addActionListener(this);
 		this.menuDeconnexionUtilisateur.setEnabled(false);
 		this.menuBar.add(menuSalon);
+		this.menuSalon.setForeground(new Color(255-c1,255-c2,255-c3));
 		this.menuSalon.add(menuConnexionSalon);
 		this.menuConnexionSalon.addActionListener(this);
 		this.menuConnexionSalon.setEnabled(false);
@@ -443,7 +449,14 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
+<<<<<<< HEAD
 		// Io.print("bouton entendu");
+=======
+		if(arg0.getSource()==this.menuQuitter){
+			System.exit(NORMAL);
+			
+		}
+>>>>>>> 0421a6fd3e67b252bece71ee1e978c063a8a2f8c
 		if(arg0.getSource()==this.envoyer){
 			Io.print("ENVOYER !!!!");
 			this.envoyerMessage();
