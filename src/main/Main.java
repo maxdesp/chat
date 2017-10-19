@@ -1,7 +1,9 @@
 package main;
 
+import java.awt.Color;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Random;
 
 import gui.FenetrePrincipale;
 import gui.spam;
@@ -32,6 +34,8 @@ public class Main {
 		db.getConnection();
 		FenetrePrincipale fenetre = new FenetrePrincipale();
 		Io.print("FINAL");
+		
+	
 	
 		//bot();
 	}
