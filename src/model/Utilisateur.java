@@ -163,10 +163,10 @@ public class Utilisateur {
 		return false;
 		
 	}
-	public Utilisateur existe() throws SQLException {
+	public Utilisateur existe(DB db) throws SQLException {
 		// TODO Auto-generated method stub
 		DaoUtilisateurSql dao = new DaoUtilisateurSql();
-		return dao.getByIdentifiants(Main.getDb(), this.UTI_PSEUDO, this.UTI_MDP);
+		return dao.getByIdentifiants(db, this.UTI_PSEUDO, this.UTI_MDP);
 	}
 
 }

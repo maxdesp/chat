@@ -79,11 +79,11 @@ public class FenetreConnexionUtilisateur extends JFrame implements ActionListene
 				Utilisateur utilisateurTmp =new Utilisateur();
 				utilisateurTmp.setUTI_PSEUDO(this.textFieldPseudo.getText());
 				utilisateurTmp.setUTI_MDP(this.textFieldMDP.getText());
-				Utilisateur utilisateur = utilisateurTmp.existe();
+				Utilisateur utilisateur = utilisateurTmp.existe(this.f.getDb());
 				
 				if(utilisateur != null){
 					f.setUtilisateur(utilisateur);
-					f.getUtilisateur().seConnecter(Main.getDb());
+					f.getUtilisateur().seConnecter(f.getDb());
 				}
 				else{
 				

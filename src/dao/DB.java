@@ -16,30 +16,7 @@ import main.Io;
 
 public class DB {
 	
-	public String getDbIP() {
-		return dbIP;
-	}
-
-
-
-
-	public void setDbIP(String dbIP) {
-		this.dbIP = dbIP;
-	}
-
-
-
-
-	public String getDbPass() {
-		return dbPass;
-	}
-
-
-
-
-	public void setDbPass(String dbPass) {
-		this.dbPass = dbPass;
-	}
+	
 	private Connection connection;
 	private static Statement statement;
 	private String dbName;
@@ -47,36 +24,37 @@ public class DB {
 	private String dbIP;
 	private String dbPass;
 	private boolean local;
+
 	
 	public DB() throws SQLException, ClassNotFoundException{
+		
 		Class.forName("com.mysql.jdbc.Driver");
 		this.setDbName("chat");
+		this.setDbUser("chat");
 		
-		this.local = false; // CHANGER POUR SE CONNECTER EN LOCAL OU EN DISTANT
-		// distant
-		this.setDbUser("chatuser");
-		this.setDbPass("password");
-		this.setDbIP("192.168.1.78");
-		
+		this.local = false; 
 		if (this.local) {
 			this.setDbUser("root");
 			this.setDbPass("");
 			this.setDbIP("localhost");
 		}
-		// local
-
 
 		this.connection = makeConnection(this.getDbName(),  this.dbUser, this.getDbIP(), this.dbPass);
 		DB.statement = this.connection.createStatement();
 	}
 	
 
+	public DB(String ip, String pass) throws SQLException, ClassNotFoundException{
+		Class.forName("com.mysql.jdbc.Driver");
+		this.setDbName("chat");
+		this.setDbUser("chat");
+		this.setDbPass(pass);
+		this.setDbIP(ip);
 
-
-	// useless if main exists ?
-	public static void main() throws SQLException{
+		this.connection = makeConnection(this.getDbName(),  this.dbUser, this.getDbIP(), this.dbPass);
+		DB.statement = this.connection.createStatement();
 	}
-	
+
 	public Connection makeConnection(String base, String user, String dbIP, String dbPass) throws SQLException, ClassNotFoundException {
 		Class.forName("com.mysql.jdbc.Driver");
 		
@@ -87,17 +65,14 @@ public class DB {
 		
 	}
 	
-
-	
 	public ResultSet executeQuery(String query) throws SQLException {
 		// Io.print(query);
 		return statement.executeQuery(query);
-		
 	}
+	
 	public boolean execute(String query) throws SQLException {
 		//Io.print(query);
 		return statement.execute(query);
-		
 	}
 	
 	/**
@@ -155,6 +130,21 @@ public class DB {
 	public void setStatement(Statement statement) {
 		this.statement = statement;
 	}
+	
+	public String getDbIP() {
+		return dbIP;
+	}
+
+	public void setDbIP(String dbIP) {
+		this.dbIP = dbIP;
+	}
 
 
+	public String getDbPass() {
+		return dbPass;
+	}
+
+	public void setDbPass(String dbPass) {
+		this.dbPass = dbPass;
+	}
 }

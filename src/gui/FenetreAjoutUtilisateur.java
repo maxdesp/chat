@@ -29,20 +29,20 @@ public class FenetreAjoutUtilisateur  extends JFrame implements ActionListener, 
 	private GridLayout layoutCentral = new GridLayout(4,2);
 	private Container pannelPrincipal = this.getContentPane();
 	private JPanel pannelCentral = new JPanel();
-	private JLabel labelCreation = new JLabel("Création du profil");
+	private JLabel labelCreation = new JLabel("Crï¿½ation du profil");
 	private JLabel labelPseudo = new JLabel("Pseudo");
 	private JTextField textFieldPseudo = new JTextField("Ecrivez votre pseudo");
 	private JLabel labelMDP = new JLabel("Mot de passe");
 	private JTextField textFieldMDP = new JTextField("Ecrivez votre mot de passe");
 	private JLabel labelAvatar = new JLabel("Avatar");
 	private JTextField textFieldAvatar = new JTextField("URL de votre avatar");
-	private JButton boutonCreation = new JButton("Création");
+	private JButton boutonCreation = new JButton("Crï¿½ation");
 	private JButton boutonAnnuler = new JButton("Annuler");
 	
 	public FenetreAjoutUtilisateur(FenetrePrincipale f){
 		this.f = f;
 		
-		this.setTitle("Fenetre de création");
+		this.setTitle("Fenetre de crï¿½ation");
 		this.setLocationRelativeTo(null);
 		this.setSize(400,400);
 		
@@ -91,12 +91,12 @@ public class FenetreAjoutUtilisateur  extends JFrame implements ActionListener, 
 				if(!avatar.equals("")&&!avatar.equals("URL de votre avatar")){
 					Utilisateur utilisateur = new Utilisateur(pseudo, mdp, avatar);
 					f.setUtilisateur(utilisateur);
-					new DaoUtilisateurSql().creer(utilisateur, Main.getDb());
+					new DaoUtilisateurSql().creer(utilisateur, f.getDb());
 				}
 				else{
 					Utilisateur utilisateur = new Utilisateur(pseudo, mdp);
 					f.setUtilisateur(utilisateur);
-					new DaoUtilisateurSql().creer(utilisateur, Main.getDb());
+					new DaoUtilisateurSql().creer(utilisateur, f.getDb());
 				}
 				
 			}

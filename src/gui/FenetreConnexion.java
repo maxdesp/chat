@@ -19,6 +19,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import dao.DB;
 import dao.DaoSalonSql;
 import dao.DaoUtilisateurSql;
 import main.Io;
@@ -26,25 +27,38 @@ import main.Main;
 import model.Salon;
 import model.Utilisateur;
 
-public class FenetreConnexionSalon extends JFrame implements ActionListener, KeyListener, MouseListener {
-
+public class FenetreConnexion extends JFrame implements ActionListener, KeyListener, MouseListener {
+	
 	private FenetrePrincipale f;
 	
+	private DB db;
 	private BorderLayout layoutPrincipal = new BorderLayout();
 	private GridLayout layoutCentral = new GridLayout(3,2);
 	private Container pannelPrincipal = this.getContentPane();
 	private JPanel pannelCentral = new JPanel();
-	private JLabel labelConnexion = new JLabel("Connexion au salon");
-	private JLabel labelName = new JLabel("Nom du salon");
-	private JTextField textFieldName = new JTextField("MasterClassSopra");
+	private JLabel labelConnexion = new JLabel("Connexion au serveur");
+	private JLabel labelName = new JLabel("Adresse IP / domaine: ");
+	private JTextField textFieldName = new JTextField("localhost");
 	private JLabel labelMDP = new JLabel("Mot de passe");
-	private JTextField textFieldMDP = new JTextField("Ecrivez votre mot de passe");
+	private JTextField textFieldMDP = new JTextField("");
 	private JButton boutonConnexion = new JButton("Connexion");
 	private JButton boutonAnnuler = new JButton("Annuler");
 	
 
+
+	private boolean connected = false;
+
+
+	public boolean isConnected() {
+		return connected;
+	}
+
+
+	public void setConnected(boolean connected) {
+		this.connected = connected;
+	}
 	
-	public FenetreConnexionSalon(FenetrePrincipale f){
+	public FenetreConnexion(FenetrePrincipale f){
 		this.f = f;
 		
 		this.setTitle("Fenetre de connexion");
@@ -66,13 +80,10 @@ public class FenetreConnexionSalon extends JFrame implements ActionListener, Key
 		this.pannelCentral.add(boutonAnnuler);
 		this.boutonAnnuler.addActionListener(this);
 		this.boutonConnexion.addActionListener(this);
-		
-		
+
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		this.setVisible(true);
 	}
-	
-	
 	
 	
 	
@@ -81,35 +92,29 @@ public class FenetreConnexionSalon extends JFrame implements ActionListener, Key
 		// TODO Auto-generated method stub
 		if(arg0.getSource()==this.boutonConnexion){
 			try {
-				Salon salonTmp =new Salon();
-				salonTmp.setSAL_NAME(this.textFieldName.getText());
-				salonTmp.setSAL_MDP(this.textFieldMDP.getText());
-				Io.print(this.textFieldName.getText());
-				Io.print(this.textFieldMDP.getText());
-				Salon salon = salonTmp.existe(this.f.getDb());
-				// Io.print(salon);
-				Io.print("DEBUG 1:");
-				Io.print(salon.getSAL_ID());
-				if(salon != null){
-					f.setSalon(salon);
-					JLabel lab= new JLabel();
-					lab = f.getConnecteAuSalon2();
-					lab.setText(salon.getSAL_NAME());
-					f.setConnecteAuSalon2(lab);
-					f.reinitialiseListeMessagesPostes();
-					//f.getSalon().seConnecter(f.getDb());
-					//
-				}
-				else{
-				JOptionPane messageErreur = new JOptionPane();
-				messageErreur.showMessageDialog(null, "Salon inexistant ou mauvais mot de passe");
-				}
-			} catch (SQLException e) {
+				String ip = this.textFieldName.getText();
+				String pass = this.textFieldMDP.getText();
+
+				// set db to main window
+				this.f.setDb(new DB(ip, pass));
+				this.f.getDb().getConnection();
+				
+				// set is connected to true
+				this.connected = true;
+				this.f.setConnected(true);
+				
+				// init main window
+				this.f.initWindow();
+				
+			
+			} catch (SQLException | ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+				JOptionPane messageErreur = new JOptionPane();
+				messageErreur.showMessageDialog(null, "Impossible de se connecter, verifier les identifiants");
 			}
 			finally{
-				f.connexionUtilisateur();
+//				f.connexionUtilisateur();
 				this.dispose();
 			}
 		}
@@ -199,6 +204,5 @@ public class FenetreConnexionSalon extends JFrame implements ActionListener, Key
 			this.textFieldMDP.setText("");
 		}
 	}
-
 
 }

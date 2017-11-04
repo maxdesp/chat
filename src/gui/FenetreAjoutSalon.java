@@ -30,19 +30,19 @@ public class FenetreAjoutSalon  extends JFrame implements ActionListener, KeyLis
 	private GridLayout layoutCentral = new GridLayout(4,2);
 	private Container pannelPrincipal = this.getContentPane();
 	private JPanel pannelCentral = new JPanel();
-	private JLabel labelCreation = new JLabel("Création du salon");
+	private JLabel labelCreation = new JLabel("Crï¿½ation du salon");
 	private JLabel labelName = new JLabel("Nom du salon");
 	private JTextField textFieldName = new JTextField("Ecrivez le nom du salon");
 	private JLabel labelMDP = new JLabel("Mot de passe");
 	private JTextField textFieldMDP = new JTextField("Ecrivez votre mot de passe");
-	private JButton boutonCreation = new JButton("Création");
+	private JButton boutonCreation = new JButton("Crï¿½ation");
 	private JButton boutonAnnuler = new JButton("Annuler");
 	private Utilisateur createur= new Utilisateur();
 	
 	public FenetreAjoutSalon(FenetrePrincipale f, Utilisateur user){
 		this.f = f;
 		
-		this.setTitle("Fenetre de création");
+		this.setTitle("Fenetre de crï¿½ation");
 		this.setLocationRelativeTo(null);
 		this.setSize(400,400);
 		
@@ -88,7 +88,7 @@ public class FenetreAjoutSalon  extends JFrame implements ActionListener, KeyLis
 				lab = f.getConnecteAuSalon2();
 				lab.setText(salon.getSAL_NAME());
 				f.setConnecteAuSalon2(lab);	
-				new DaoSalonSql().creer(salon, Main.getDb());
+				new DaoSalonSql().creer(salon, f.getDb());
 				try {
 					f.reinitialiseListeMessagesPostes();
 				} catch (SQLException e) {

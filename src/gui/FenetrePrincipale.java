@@ -33,6 +33,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.Timer;
 
+import dao.DB;
 import dao.DaoMessageSql;
 import dao.DaoSalonSql;
 import dao.DaoUtilisateurSql;
@@ -55,13 +56,13 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 	private JMenuItem menuQuitter = new JMenuItem("Quitter");
 	private JMenu menuUtilisateur = new JMenu("Utilisateur");
 	private JMenuItem menuConnexionUtilisateur = new JMenuItem("Se connecter");
-	private JMenuItem menuAjoutUtilisateur = new JMenuItem("Créer un profil");
+	private JMenuItem menuAjoutUtilisateur = new JMenuItem("Crï¿½er un profil");
 	private JMenuItem menuModifierUtilisateur = new JMenuItem("Modifier un profil");
 	private JMenuItem menuSupprimerUtilisateur = new JMenuItem("Supprimer un profil");
-	private JMenuItem menuDeconnexionUtilisateur = new JMenuItem("Se déconnecter");
+	private JMenuItem menuDeconnexionUtilisateur = new JMenuItem("Se dï¿½connecter");
 	private JMenu menuSalon = new JMenu("Salon");
 	private JMenuItem menuConnexionSalon = new JMenuItem("Entrer dans un salon");
-	private JMenuItem menuAjoutSalon = new JMenuItem("Créer un salon");
+	private JMenuItem menuAjoutSalon = new JMenuItem("Crï¿½er un salon");
 	private JMenuItem menuModifierSalon = new JMenuItem("Modifier un salon");
 	private JMenuItem menuSupprimerSalon = new JMenuItem("Supprimer un salon");
 	private JMenuItem menuDeconnexionSalon = new JMenuItem("Quitter le salon");
@@ -71,10 +72,10 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 	private JPanel pannelEnvoiMessage = new JPanel();
 	private JPanel cell11 = new JPanel();
 	private JPanel cell12 = new JPanel();
-	private JLabel connecteEnTantQue = new JLabel("Connecté en tant que :");
-	private JLabel connecteEnTantQue2 = new JLabel("- non connecté -",SwingConstants.CENTER);
-	private JLabel connecteAuSalon = new JLabel("Connecté au salon :");
-	private JLabel connecteAuSalon2 = new JLabel("- non connecté -",SwingConstants.CENTER);
+	private JLabel connecteEnTantQue = new JLabel("Connectï¿½ en tant que :");
+	private JLabel connecteEnTantQue2 = new JLabel("- non connectï¿½ -",SwingConstants.CENTER);
+	private JLabel connecteAuSalon = new JLabel("Connectï¿½ au salon :");
+	private JLabel connecteAuSalon2 = new JLabel("- non connectï¿½ -",SwingConstants.CENTER);
 	private ArrayList<Utilisateur> usersConnected= new ArrayList<Utilisateur>();
 	public JLabel getConnecteAuSalon2() {
 		return connecteAuSalon2;
@@ -84,7 +85,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 		this.connecteAuSalon2 = connecteAuSalon2;
 	}
 
-	private JLabel listeUtilisateursConnectes = new JLabel("Utilisateurs connectés");
+	private JLabel listeUtilisateursConnectes = new JLabel("Utilisateurs connectï¿½s");
 	private List listeUtilisateursConnectes2 = new List();
 	private List listeMessages = new List();
 	private JTextField message = new JTextField("",50);
@@ -93,23 +94,27 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 	private Salon salon = new Salon();
 	private ArrayList<Message> listeMessagesPostes = new ArrayList<Message>();
 	
-
+	
+	private boolean connected =false;
+	
+	private DB db;
+	
 	public void reinitialiseListeMessagesPostes() throws SQLException {
 	
-		Salon salon = new DaoSalonSql().charger(this.salon.getSAL_ID(), Main.getDb());
+		Salon salon = new DaoSalonSql().charger(this.salon.getSAL_ID(), this.db);
 		Io.print("reinitialisation de la liste de messages avec salon= "+ salon.getSAL_NAME());
 		this.listeMessagesPostes.clear();
 		this.listeMessages.clear();
 		Io.print("taille de la liste de message: " +this.listeMessagesPostes.size());
-		ArrayList<Message> listeMessages = new DaoMessageSql().getParSalon(Main.getDb(), salon);
+		ArrayList<Message> listeMessages = new DaoMessageSql().getParSalon(this.db, salon);
 		
 		Utilisateur uti = null;
 		
 		for(Message m : listeMessages){
 			Io.print(m.getMES_MESSAGE());
 			this.listeMessagesPostes.add(m);
-			uti = new DaoUtilisateurSql().charger(m.getMES_UTI_ID(), Main.getDb());
-			this.listeMessages.add(uti.getUTI_PSEUDO()+" a écrit :");
+			uti = new DaoUtilisateurSql().charger(m.getMES_UTI_ID(), this.db);
+			this.listeMessages.add(uti.getUTI_PSEUDO()+" a ï¿½crit :");
 			this.listeMessages.add("	"+m.getMES_MESSAGE());
 			this.listeMessages.add("\r");
 		}
@@ -136,13 +141,19 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 	}
 
 	public FenetrePrincipale() throws SQLException{
+		FenetreConnexion credentials = new FenetreConnexion(this);
+		Io.print("credentials open");
 
+	}
+	
+	public void initWindow() throws SQLException{
+		
+		
 		this.init();
 		this.t.start();
 		this.t2.start();
 		
 	}
-	
 	private void init() throws SQLException{
 		this.listeMessages.addKeyListener(this);
 		this.listeUtilisateursConnectes.addKeyListener(this);
@@ -220,14 +231,14 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 		this.envoyer.setSize(100, 80);
 		this.envoyer.addActionListener(this);
 		// this.contentPane.addc
-		Salon salon = new DaoSalonSql().charger(Integer.valueOf(1), Main.getDb());
-		ArrayList<Message> listeMessages = new DaoMessageSql().getParSalon(Main.getDb(), salon);
+		Salon salon = new DaoSalonSql().charger(Integer.valueOf(1), this.db);
+		ArrayList<Message> listeMessages = new DaoMessageSql().getParSalon(this.db, salon);
 		Utilisateur uti = null;
 		
 		for(Message m : listeMessages){
 			this.listeMessagesPostes.add(m);
-			uti = new DaoUtilisateurSql().charger(m.getMES_UTI_ID(), Main.getDb());
-			this.listeMessages.add(uti.getUTI_PSEUDO()+" a écrit :");
+			uti = new DaoUtilisateurSql().charger(m.getMES_UTI_ID(), this.db);
+			this.listeMessages.add(uti.getUTI_PSEUDO()+" a ï¿½crit :");
 			this.listeMessages.add("\t"+m.getMES_MESSAGE());
 			this.listeMessages.add("\r");
 		}
@@ -242,14 +253,14 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 		
 		this.listeUtilisateursConnectes2.removeAll();
 		DaoUtilisateurSql daoUtilisateur = new DaoUtilisateurSql();
-		ArrayList<Utilisateur> users =daoUtilisateur.getAll(Main.getDb());
+		ArrayList<Utilisateur> users =daoUtilisateur.getAll(this.db);
 		for(Utilisateur user: users){
 			if (user.isUTI_CONNECTED() == true) {
 				this.listeUtilisateursConnectes2.add((user.getUTI_PSEUDO()));
 				this.usersConnected.add(user);
 			}
 			else {
-				// Io.print(user.getUTI_PSEUDO() + " n'est pas connecté");
+				// Io.print(user.getUTI_PSEUDO() + " n'est pas connectï¿½");
 			}
 			
 		}
@@ -296,12 +307,12 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 	public boolean deconnexionUtilisateur() throws SQLException{
 		this.menuDeconnexionUtilisateur.setEnabled(false);
 		this.menuConnexionUtilisateur.setEnabled(true);
-		this.connecteEnTantQue2.setText("- non connecté -");
+		this.connecteEnTantQue2.setText("- non connectï¿½ -");
 		this.menuAjoutSalon.setEnabled(false);
 		this.menuConnexionSalon.setEnabled(false);
 		this.menuSupprimerSalon.setEnabled(false);
 		this.menuModifierSalon.setEnabled(false);
-		this.utilisateur.seDeconnecter(Main.getDb());
+		this.utilisateur.seDeconnecter(this.db);
 		return false;
 	}
 	
@@ -339,22 +350,22 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 	private boolean deconnexionSalon(){
 		this.menuDeconnexionSalon.setEnabled(false);
 		this.menuConnexionSalon.setEnabled(true);
-		this.connecteAuSalon2.setText("- non connecté -");
-		Io.print("affiche nom du salon: - non connecté -");
+		this.connecteAuSalon2.setText("- non connectï¿½ -");
+		Io.print("affiche nom du salon: - non connectï¿½ -");
 		return false;
 	}
 	
 	private boolean rafraichirZoneMessages() throws SQLException{
-		Salon salon = new DaoSalonSql().charger(this.salon.getSAL_ID(), Main.getDb());//// ici
-		ArrayList<Message> listeMessages = new DaoMessageSql().getParSalon(Main.getDb(), salon);
+		Salon salon = new DaoSalonSql().charger(this.salon.getSAL_ID(), this.db);//// ici
+		ArrayList<Message> listeMessages = new DaoMessageSql().getParSalon(this.db, salon);
 		// Io.print(salon.getSAL_NAME());
 		Utilisateur uti = null;
 		
 		for(int i=(this.listeMessagesPostes.size()-1);i<listeMessages.size();i++){
 			Message m = listeMessages.get(i);
 			this.listeMessagesPostes.add(m);
-			uti = new DaoUtilisateurSql().charger(m.getMES_UTI_ID(), Main.getDb());
-			this.listeMessages.add(uti.getUTI_PSEUDO()+" a écrit :");
+			uti = new DaoUtilisateurSql().charger(m.getMES_UTI_ID(), this.db);
+			this.listeMessages.add(uti.getUTI_PSEUDO()+" a ï¿½crit :");
 			this.listeMessages.add("	"+m.getMES_MESSAGE());
 			this.listeMessages.add("\r");
 		}
@@ -364,7 +375,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 	private boolean envoyerMessage(){
 		Message message = new Message((int)this.utilisateur.getUTI_ID(),this.message.getText(), (int)this.salon.getSAL_ID());
 		Io.print(message);
-		new DaoMessageSql().creer(message, Main.getDb());
+		new DaoMessageSql().creer(message, this.db);
 		return false;
 	}
 	
@@ -401,7 +412,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 		int dialogResult = JOptionPane.showConfirmDialog(this, "Voulez vous quitter le programme ?", "Title on Box", dialogButton);
 		if(dialogResult == 0) {
 		  System.out.println("Deconnecter et quitter");
-		  this.utilisateur.seDeconnecter(Main.getDb());
+		  this.utilisateur.seDeconnecter(this.db);
 		  System.exit(0);
 		 
 		} else {
@@ -428,7 +439,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 			}
 			boolean normal=true;
 			DaoUtilisateurSql daoUtilisateur = new DaoUtilisateurSql();
-			ArrayList<Utilisateur> users =daoUtilisateur.getAll(Main.getDb());
+			ArrayList<Utilisateur> users =daoUtilisateur.getAll(this.db);
 			for(Utilisateur user: users){
 				if (user.isUTI_CONNECTED() == true) {
 					normal=false;
@@ -518,7 +529,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 				}
 				boolean normal=true;
 				DaoUtilisateurSql daoUtilisateur = new DaoUtilisateurSql();
-				ArrayList<Utilisateur> users =daoUtilisateur.getAll(Main.getDb());
+				ArrayList<Utilisateur> users =daoUtilisateur.getAll(this.db);
 				for(Utilisateur user: users){
 					if (user.isUTI_CONNECTED() == true) {
 						normal=false;
@@ -583,5 +594,21 @@ public class FenetrePrincipale extends JFrame implements ActionListener, KeyList
 	public void mouseReleased(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public boolean isConnected() {
+		return connected;
+	}
+
+	public void setConnected(boolean connected) {
+		this.connected = connected;
+	}
+
+	public DB getDb() {
+		return db;
+	}
+
+	public void setDb(DB db) {
+		this.db = db;
 	}
 }
